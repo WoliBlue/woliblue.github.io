@@ -289,11 +289,17 @@ function cardMarkup(item, kind, lang, index) {
   const d = item[lang];
   const tags = (d.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
   const delay = Math.min(index || 0, 6) * 70;
-  return `<a class="card reveal" style="transition-delay:${delay}ms" href="project.html?slug=${item.slug}&kind=${kind}">
-    ${coverMarkup(item.cover, d, lang)}
-    <h4 class="card-title">${d.title}</h4>
-    <p class="card-desc">${d.summary}</p>
-    <div class="card-tags">${tags}</div>
+  // Cada tarjeta es un bloque de color del póster; el color rota rosa → oliva → crema
+  return `<a class="card card-c${(index || 0) % 3} reveal" style="transition-delay:${delay}ms" href="project.html?slug=${item.slug}&kind=${kind}">
+    <div class="card-inner">
+      ${coverMarkup(item.cover, d, lang)}
+      <div class="card-body">
+        <h4 class="card-title">${d.title}</h4>
+        <p class="card-desc">${d.summary}</p>
+        <div class="card-tags">${tags}</div>
+        <span class="card-go" aria-hidden="true">→</span>
+      </div>
+    </div>
   </a>`;
 }
 

@@ -1060,6 +1060,9 @@ html[data-theme="dark"] {
 }
 .pb-a .pb-word { font-size: min(15vw, 30vh); }
 .pb-c .pb-word, .pb-d .pb-word { font-size: min(10.5vw, 24vh); }
+/* ARE|NAS se tocan en el borde entre bloques, como una sola palabra */
+.pb-c .pb-word { left: auto; right: -0.02em; }
+.pb-d .pb-word { left: 0.03em; }
 .pb-vert {
   position: absolute;
   right: 14px;
@@ -1133,4 +1136,99 @@ html[data-theme="dark"] {
   .timeline-item { grid-template-columns: 1fr; }
   .timeline-item .when { grid-row: auto; }
   .timeline-item h5, .timeline-item p:not(.when) { grid-column: 1; }
+}
+
+
+/* =====================================================================
+   Tarjetas en modo póster: bloques de color planos, pegatina y sombra de trama
+   ===================================================================== */
+:root {
+  --c0-bg: #17140f; --c0-fg: #f2ede2; --c0-soft: rgba(242, 237, 226, 0.75);
+  --c1-bg: #4a5320; --c1-fg: #f2ede2; --c1-soft: rgba(242, 237, 226, 0.78);
+  --c2-bg: #f2ede2; --c2-fg: #17140f; --c2-soft: rgba(23, 20, 15, 0.72);
+  --sticker-bg: #17140f; --sticker-fg: #f2ede2;
+}
+html[data-theme="dark"] {
+  --c0-bg: #ec6ea0; --c0-fg: #17140f; --c0-soft: rgba(23, 20, 15, 0.75);
+  --sticker-bg: #17140f; --sticker-fg: #ec6ea0;
+}
+
+.grid { gap: 30px; }
+.card { position: relative; display: block; color: inherit; }
+.card-c0 { --cb: var(--c0-bg); --cf: var(--c0-fg); --cs: var(--c0-soft); }
+.card-c1 { --cb: var(--c1-bg); --cf: var(--c1-fg); --cs: var(--c1-soft); }
+.card-c2 { --cb: var(--c2-bg); --cf: var(--c2-fg); --cs: var(--c2-soft); }
+
+/* Sombra de trama que asoma al levantar la tarjeta */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(var(--text) 30%, transparent 32%);
+  background-size: 12px 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.card-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--cb);
+  color: var(--cf);
+  transition: transform 0.25s var(--spring);
+}
+.card:hover::after, .card:focus-visible::after { opacity: 0.6; }
+.card:hover .card-inner, .card:focus-visible .card-inner { transform: translate(-8px, -8px); }
+.card:hover .card-thumb, .card:hover .card-thumb img { transform: none; }
+.card:hover .card-thumb img { transform: scale(1.05); }
+
+.card .card-thumb { border: none; border-radius: 0; box-shadow: none; }
+.card-body { position: relative; padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card .card-title { color: var(--cf); font-size: 22px; line-height: 1; text-transform: uppercase; letter-spacing: -0.01em; padding-right: 30px; }
+.card .card-desc { color: var(--cs); }
+.card .card-tags { margin-top: auto; color: var(--cf); }
+.card-go { position: absolute; top: 14px; right: 18px; font-family: 'Archivo Black', sans-serif; font-size: 22px; line-height: 1; transition: transform 0.25s var(--spring); }
+.card:hover .card-go { transform: translateX(4px); }
+
+/* Pegatina en vez de etiqueta-píldora */
+.badge {
+  border-radius: 0;
+  background: var(--sticker-bg);
+  color: var(--sticker-fg);
+  top: 14px;
+  left: 14px;
+  padding: 6px 10px;
+  transform: rotate(-3deg);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Destacado: dos bloques planos */
+.featured { border: none; border-radius: 0; box-shadow: none; }
+.featured-media { border-right: none; }
+.featured-label {
+  align-self: flex-start;
+  background: var(--sticker-bg);
+  color: var(--sticker-fg);
+  opacity: 1;
+  padding: 5px 10px;
+  transform: rotate(-2deg);
+}
+.featured-title { text-transform: uppercase; font-size: clamp(34px, 4vw, 56px); letter-spacing: -0.01em; }
+
+/* Tarjeta de GitHub: bloque de trama con etiqueta */
+.other-card.filled {
+  border: none;
+  border-radius: 0;
+  background: var(--c1-bg);
+  color: var(--c1-fg);
+  position: relative;
+  transition: transform 0.25s var(--spring);
+}
+.other-card.filled:hover { transform: translate(-6px, -6px); box-shadow: 6px 6px 0 var(--text); }
+
+@media (max-width: 1100px) {
+  .featured-media { border-bottom: none; }
 }

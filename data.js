@@ -10,6 +10,7 @@ const PROJECTS = {
   games: [
     {
       slug: 'tourist-trap',
+      font: 'Chewy',
       featured: true,
       cover: { type: 'image', src: 'assets/img/tourist-trap/keyart.jpg' },
       logo: 'assets/img/tourist-trap/logo.png',
@@ -125,6 +126,7 @@ const PROJECTS = {
     },
     {
       slug: 'pizza-kaisen',
+      font: 'Bangers',
       cover: { type: 'image', src: 'assets/img/pizza-kaisen.png' },
       gallery: [
         { video: 'assets/video/pizza-kaisen-comic.mp4', poster: 'assets/img/gallery/pizza-kaisen-comic-poster.jpg' },
@@ -191,6 +193,7 @@ const PROJECTS = {
     },
     {
       slug: 'figurines-please',
+      font: 'Silkscreen',
       cover: { type: 'image', src: 'assets/img/figurines-please.png' },
       gallery: [
         'assets/img/gallery/figurines-please-1.jpg',
@@ -259,6 +262,7 @@ const PROJECTS = {
     },
     {
       slug: 'evad-tale',
+      font: 'Pixelify Sans',
       cover: { type: 'image', src: 'assets/img/evad-tale.png' },
       gallery: [
         'assets/img/gallery/evad-tale-1.jpg',
@@ -318,6 +322,7 @@ const PROJECTS = {
     },
     {
       slug: 'offline-working-sheep',
+      font: 'Space Grotesk',
       cover: { type: 'image', src: 'assets/img/ows/menu.jpg' },
       gallery: [
         'assets/img/ows/menu.jpg',
@@ -401,6 +406,7 @@ const PROJECTS = {
     },
     {
       slug: 'chatdefenderxp',
+      font: 'Courier Prime',
       cover: { type: 'image', src: 'assets/img/chatdefenderxp/menu.jpg' },
       gallery: [
         'assets/img/chatdefenderxp/menu.jpg',
@@ -472,6 +478,7 @@ const PROJECTS = {
     },
     {
       slug: 'dig-me-out',
+      font: 'Press Start 2P',
       cover: { type: 'image', src: 'assets/img/dig-me-out/hub.jpg' },
       gallery: [
         'assets/img/dig-me-out/hub.jpg',
@@ -537,6 +544,7 @@ const PROJECTS = {
   other: [
     {
       slug: 'restaurantos',
+      font: 'Nunito',
       cover: { type: 'image', src: 'assets/img/restaurantos-cover.jpg' },
       external: { url: 'https://www.figma.com/slides/7IyBX59VYXxiaZ1q9LT5nX/RestaurantOS--Presentaci%C3%B3n-TFG-?node-id=1-266' },
       repo: 'https://github.com/imadhanaty/TFG_restaurantOS',
@@ -597,6 +605,7 @@ const PROJECTS = {
     },
     {
       slug: 'memorias-de-un-maestro',
+      font: 'Playfair Display',
       cover: { type: 'image', src: 'assets/img/book/card.jpg' },
       gallery: [
         'assets/img/book/cover-page.jpg',
@@ -665,6 +674,7 @@ const PROJECTS = {
     },
     {
       slug: 'playdate-music-player',
+      font: 'Space Mono',
       cover: { type: 'image', src: 'assets/img/playdate/card-cover.png' },
       gallery: [
         'assets/img/playdate/card-cover.png',

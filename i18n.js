@@ -33,8 +33,8 @@ const UI = {
         { when: 'Jun 2024 — Sept 2024', title: 'Servicio al cliente, Kinépolis', desc: 'Ventas de cara al público, mantenimiento, acomodación, cocina y limpieza del cine.' }
       ],
       education: [
-        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova (Málaga)', desc: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).' },
-        { when: 'Sept 2020 — Jun 2022', title: 'IES Sierra Blanca (Málaga)', desc: 'Bachillerato de Humanidades + Selectividad.' }
+        { when: 'Oct 2025 — Dic 2026', title: 'EVAD (Málaga)', desc: 'Máster en Diseño y Desarrollo de Videojuegos. En curso; proyecto final: Tourist Trap.' },
+        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova (Málaga)', desc: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).' }
       ]
     },
     footer: { location: 'Málaga, España' },
@@ -92,8 +92,8 @@ const UI = {
         { when: 'Jun 2024 — Sept 2024', title: 'Customer service, Kinépolis', desc: 'Front-of-house sales, maintenance, ushering, kitchen and cinema cleaning.' }
       ],
       education: [
-        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova (Málaga)', desc: 'Higher Technician in Multiplatform Application Development (DAM).' },
-        { when: 'Sept 2020 — Jun 2022', title: 'IES Sierra Blanca (Málaga)', desc: 'Humanities Baccalaureate + university entrance exams.' }
+        { when: 'Oct 2025 — Dec 2026', title: 'EVAD (Málaga)', desc: 'Master’s in Game Design and Development. In progress; final project: Tourist Trap.' },
+        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova (Málaga)', desc: 'Higher Technician in Multiplatform Application Development (DAM).' }
       ]
     },
     footer: { location: 'Málaga, Spain' },

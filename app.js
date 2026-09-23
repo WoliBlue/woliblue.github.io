@@ -285,6 +285,39 @@ function coverMarkup(cover, langData, lang) {
   </div>`;
 }
 
+/* ============ Fuente propia para el título de cada proyecto ============
+   Una sola petición a Google Fonts con &text= : solo se descargan las letras de los
+   títulos, así que cada fuente pesa unos pocos KB. */
+const TITLE_FONTS = {
+  'Chewy': 'Chewy',
+  'Bangers': 'Bangers',
+  'Silkscreen': 'Silkscreen:wght@700',
+  'Pixelify Sans': 'Pixelify+Sans:wght@700',
+  'Space Grotesk': 'Space+Grotesk:wght@700',
+  'Courier Prime': 'Courier+Prime:wght@700',
+  'Press Start 2P': 'Press+Start+2P',
+  'Nunito': 'Nunito:wght@900',
+  'Playfair Display': 'Playfair+Display:wght@800',
+  'Space Mono': 'Space+Mono:wght@700'
+};
+
+(function loadTitleFonts() {
+  const all = PROJECTS.games.concat(PROJECTS.other).filter(p => p.font);
+  if (!all.length) return;
+  const families = [...new Set(all.map(p => TITLE_FONTS[p.font]).filter(Boolean))];
+  const titles = all.map(p => p.es.title + p.en.title).join('');
+  const chars = [...new Set((titles + titles.toUpperCase()).replace(/\s/g, ''))].join('') + ' ';
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?' + families.map(f => 'family=' + f).join('&') +
+    '&display=swap&text=' + encodeURIComponent(chars);
+  document.head.appendChild(link);
+})();
+
+function titleStyle(item) {
+  return item.font ? ` style="font-family: '${item.font}', 'Archivo Black', sans-serif"` : '';
+}
+
 function cardMarkup(item, kind, lang, index) {
   const d = item[lang];
   const tags = (d.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
@@ -294,7 +327,7 @@ function cardMarkup(item, kind, lang, index) {
     <div class="card-inner">
       ${coverMarkup(item.cover, d, lang)}
       <div class="card-body">
-        <h4 class="card-title">${d.title}</h4>
+        <h4 class="card-title"${titleStyle(item)}>${d.title}</h4>
         <p class="card-desc">${d.summary}</p>
         <div class="card-tags">${tags}</div>
         <span class="card-go" aria-hidden="true">→</span>
@@ -319,7 +352,7 @@ function featuredMarkup(item, lang) {
     </a>
     <div class="featured-body">
       <p class="featured-label">${t(lang, 'featured.label')}</p>
-      <h4 class="featured-title">${d.title}</h4>
+      <h4 class="featured-title"${titleStyle(item)}>${d.title}</h4>
       <p class="featured-summary">${d.summary}</p>
       ${highlights ? `<ul class="featured-highlights">${highlights}</ul>` : ''}
       <div class="card-tags">${tags}</div>
@@ -423,7 +456,7 @@ function renderDetail(lang) {
     <a class="back-link" href="index.html">${t(lang, 'detail.back')}</a>
     <div class="detail-cover">${coverHtml}</div>
     <div class="section-head" style="margin-top:34px;">
-      <h3 class="section-title">${d.title}</h3>
+      <h3 class="section-title"${titleStyle(item)}>${d.title}</h3>
       ${PROJECT_TILE[item.slug] ? decoMarkup(PROJECT_TILE[item.slug], 'deco-detail') : ''}
     </div>
     <div class="card-tags" style="margin-bottom:22px;">${tags}</div>

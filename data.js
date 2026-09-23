@@ -546,7 +546,7 @@ const PROJECTS = {
       slug: 'restaurantos',
       wide: true,
       font: 'Nunito',
-      cover: { type: 'image', src: 'assets/img/restaurantos-cover.jpg' },
+      cover: { type: 'image', src: 'assets/img/restaurantos-cover.svg' },
       external: { url: 'https://www.figma.com/slides/7IyBX59VYXxiaZ1q9LT5nX/RestaurantOS--Presentaci%C3%B3n-TFG-?node-id=1-266' },
       repo: 'https://github.com/imadhanaty/TFG_restaurantOS',
       credits: [

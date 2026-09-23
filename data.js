@@ -148,7 +148,7 @@ const PROJECTS = {
         title: 'Pizza Kaisen',
         badge: 'Ganador · Global Jam 2026',
         alt: 'Portada de Pizza Kaisen',
-        summary: 'Empujones, máscaras y pizza. ¡Sé el último ingrediente en pie!',
+        summary: 'Empujones, máscaras y pizza. Echa de la arena a los clanes del maíz, la cebolla y la piña, y ¡sé el último ingrediente en pie!',
         description: [
           'Un juego de empujones, máscaras y pizza sobre la lucha de cuál es el mejor topping. Ganador del premio a Juego Más Original en la Global Jam 2026.',
           'Eres del Clan del Pepperoni y acabas de recibir tu máscara, pero antes tienes que pasar el ritual de iniciación: sacar de una arena circular a los clanes rivales (maíz, cebolla y el Gran Jefe Piña). Mantén espacio para cargar el empujón, apunta con el ratón, usa la Q para multiplicarte y rebota entre los Pepperonis del escenario.'
@@ -171,7 +171,7 @@ const PROJECTS = {
         title: 'Pizza Kaisen',
         badge: 'Winner · Global Jam 2026',
         alt: 'Pizza Kaisen cover art',
-        summary: 'Shoves, masks and pizza. Be the last topping standing!',
+        summary: 'Shoves, masks and pizza. Knock the corn, onion and pineapple clans out of the arena and be the last topping standing!',
         description: [
           'A game of shoving, masks and pizza about the fight over the best topping. Winner of the Most Original Game award at Global Jam 2026.',
           'You belong to the Pepperoni Clan and just got your mask, but first you must pass the initiation ritual: knock the rival clans (corn, onion and the Great Pineapple Boss) out of a circular arena. Hold space to charge your push, aim with the mouse, press Q to multiply and bounce off the Pepperonis on the stage.'
@@ -219,7 +219,7 @@ const PROJECTS = {
         title: 'Figurines Please',
         badge: 'Ganador Narrativa<br>Jam Navideña 2025',
         alt: 'Portada de Figurines Please',
-        summary: 'Vende figuritas de Belén camelándote a los clientes.',
+        summary: 'Heredas el puesto de figuras del Belén de tu padre. Véndelo todo camelándote a los clientes antes de que acabe la semana.',
         description: [
           'Ganador del premio a Mejor Narrativa en la Jam Navideña 2025. Heredas el puesto de figuras del Belén de tu padre y solo hay una salida: venderlo todo esa semana o quedarte con el puesto para siempre.',
           'Cada cliente es una conversación: tus respuestas le caen mejor o peor, y solo te compran si terminas en positivo. Después toca girarte, elegir la figura que quiere y ponerla en el mantel. Si no llegas a la cuota, el periódico anuncia que el puesto tiene nuevo dueño permanente.'
@@ -241,7 +241,7 @@ const PROJECTS = {
         title: 'Figurines Please',
         badge: 'Narrative Award<br>Christmas Jam 2025',
         alt: 'Figurines Please cover art',
-        summary: 'Sell nativity figurines by charming your customers.',
+        summary: 'You inherit your father’s nativity figurine stall. Sell everything by charming your customers before the week is over.',
         description: [
           'Winner of the Best Narrative award at the 2025 Christmas Jam. You inherit your father’s nativity-figurine stall and there’s only one way out: sell everything this week or be stuck with the stall forever.',
           'Every customer is a conversation: your answers make them like you more or less, and they only buy if you end up in the positive. Then you turn around, pick the figurine they want and place it on the cloth. Miss your quota and the newspaper announces the stall has a new permanent owner.'
@@ -422,7 +422,7 @@ const PROJECTS = {
       es: {
         title: 'ChatDefender XP',
         alt: 'Menú principal de ChatDefenderXP',
-        summary: 'Tu blog está siendo atacado por trolls. Defiéndelo de todo lo que no sea un gato.',
+        summary: 'Tu blog de gatitos está siendo atacado por trolls. Defiéndelo de todo lo que no sea un gato en un internet con estética de Windows XP.',
         description: [
           'WordPressing regala a sus blogueros una herramienta de defensa y tú eres ella: ChatJanitor, la conserje de BlogGatitosLuna2004.wordpressing.blog. El escenario es un trozo de internet de la era dorada, con estética de Windows XP y del Buscaminas.',
           'Aguanta 7 oleadas (7 días) con solo 5 segundos de respiro entre ellas. Por dos cintas transportadoras llegan fotos al ChatRoom: los gatos lo curan, los «NoGatos» lo dañan, así que tienes que disparar a los perros sin darle a ningún gatito mientras frenas a los trolls.',
@@ -450,7 +450,7 @@ const PROJECTS = {
       en: {
         title: 'ChatDefenderXP',
         alt: 'ChatDefenderXP main menu',
-        summary: 'Your blog is under troll attack. Defend it from everything that isn’t a cat.',
+        summary: 'Your kitten blog is under troll attack. Defend it from everything that isn’t a cat, in a Windows XP–era internet.',
         description: [
           'WordPressing gives its bloggers a free defense tool, and you are it: ChatJanitor, the caretaker of BlogGatitosLuna2004.wordpressing.blog. The stage is a chunk of golden-age internet, styled after Windows XP and Minesweeper.',
           'Survive 7 waves (7 days) with only 5 seconds of breathing room between them. Photos travel to the ChatRoom on two conveyor belts: cats heal it, “NotCats” damage it, so you have to shoot the dogs without hitting any kittens while holding off the trolls.',
@@ -544,6 +544,7 @@ const PROJECTS = {
   other: [
     {
       slug: 'restaurantos',
+      wide: true,
       font: 'Nunito',
       cover: { type: 'image', src: 'assets/img/restaurantos-cover.jpg' },
       external: { url: 'https://www.figma.com/slides/7IyBX59VYXxiaZ1q9LT5nX/RestaurantOS--Presentaci%C3%B3n-TFG-?node-id=1-266' },
@@ -751,7 +752,8 @@ const PROJECTS = {
 
 /* Repos de GitHub — tarjeta simple sin página de detalle */
 const GITHUB_CARD = {
+  tags: ['Java', 'Python', 'Kotlin', 'Android Studio', 'PHP'],
   url: 'https://github.com/woliblue?tab=repositories',
-  es: { title: 'Repositorios en GitHub', desc: 'Prácticas y proyectos del ciclo DAM.<br>Java, Python, Android Studio, PHP y más.' },
-  en: { title: 'GitHub repositories', desc: 'DAM coursework and projects.<br>Java, Python, Android Studio, PHP and more.' }
+  es: { title: 'Repositorios en GitHub', desc: 'Prácticas, proyectos del ciclo DAM y experimentos que voy subiendo.' },
+  en: { title: 'GitHub repositories', desc: 'Coursework, DAM projects and experiments I keep uploading.' }
 };

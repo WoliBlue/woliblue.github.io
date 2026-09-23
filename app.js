@@ -328,8 +328,9 @@ function cardMarkup(item, kind, lang, index) {
   const d = item[lang];
   const tags = (d.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
   const delay = Math.min(index || 0, 6) * 70;
-  // Cada tarjeta es un bloque de color del póster; el color rota rosa → oliva → crema
-  return `<a class="card card-c${(index || 0) % 3} reveal" style="transition-delay:${delay}ms" href="project.html?slug=${item.slug}&kind=${kind}">
+  // Cada tarjeta es un bloque de color del póster; el color rota rosa → oliva → crema.
+  // wide: true en data.js = la tarjeta ocupa dos columnas.
+  return `<a class="card card-c${(index || 0) % 3}${item.wide ? ' span-2' : ''} reveal" style="transition-delay:${delay}ms" href="project.html?slug=${item.slug}&kind=${kind}">
     <div class="card-inner">
       ${coverMarkup(item.cover, d, lang)}
       <div class="card-body">
@@ -337,6 +338,26 @@ function cardMarkup(item, kind, lang, index) {
         <p class="card-desc">${d.summary}</p>
         <div class="card-tags">${tags}</div>
         <span class="card-go" aria-hidden="true">→</span>
+      </div>
+    </div>
+  </a>`;
+}
+
+// Tarjeta de GitHub: trama de puntos con la baldosa de GitHub como pegatina
+function githubCardMarkup(lang) {
+  const g = GITHUB_CARD;
+  const tags = (g.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
+  return `<a class="card card-gh span-2 reveal" href="${g.url}" target="_blank" rel="noopener">
+    <div class="card-inner">
+      <div class="gh-art" aria-hidden="true">
+        <span class="gh-tile">${decoSvg('tileGithub')}</span>
+        <span class="gh-handle">@woliblue</span>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">${g[lang].title}</h4>
+        <p class="card-desc">${g[lang].desc}</p>
+        <div class="card-tags">${tags}</div>
+        <span class="card-go" aria-hidden="true">↗</span>
       </div>
     </div>
   </a>`;
@@ -383,12 +404,7 @@ function renderHome(lang) {
   if (gamesGrid) gamesGrid.innerHTML = rest.map((g, i) => cardMarkup(g, 'games', lang, i)).join('');
   if (otherGrid) otherGrid.innerHTML = PROJECTS.other.map((o, i) => cardMarkup(o, 'other', lang, i)).join('');
 
-  const ghCard = document.getElementById('github-card');
-  if (ghCard) {
-    ghCard.href = GITHUB_CARD.url;
-    ghCard.querySelector('h4').textContent = GITHUB_CARD[lang].title;
-    ghCard.querySelector('p').innerHTML = GITHUB_CARD[lang].desc;
-  }
+  if (otherGrid) otherGrid.insertAdjacentHTML('beforeend', githubCardMarkup(lang));
 }
 
 /* ============ Render de la página de detalle ============ */

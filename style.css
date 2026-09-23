@@ -1403,3 +1403,62 @@ button.pb-vert { display: flex; align-items: center; justify-content: center; bo
 
 /* El h1 oculto (accesibilidad) no debe ocupar sitio: lo pisaba .hero > * { position: relative } */
 .hero > .visually-hidden { position: absolute; margin: 0; }
+
+
+/* =====================================================================
+   Cuadrícula fija por tamaño de pantalla (antes auto-fill dejaba huecos en monitores anchos)
+   ===================================================================== */
+#games-grid, #other-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row dense; }
+#games-grid .card, #other-grid .card { height: 100%; }
+.card.span-2 { grid-column: span 2; }
+/* La tarjeta ancha mantiene la misma altura de imagen que las de una columna */
+.card.span-2 .card-thumb { aspect-ratio: 2.62 / 1; }
+
+/* En monitores muy anchos el contenido no pasa de un ancho cómodo */
+#juegos, #otros-proyectos, #sobre-mi { max-width: 1640px; margin-left: auto; margin-right: auto; }
+section.contact-band { max-width: 1512px; margin-left: auto; margin-right: auto; }
+footer { max-width: 1640px; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 1100px) {
+  #games-grid, #other-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #games-grid, #other-grid { grid-template-columns: 1fr; }
+  .card.span-2 { grid-column: auto; }
+  .card.span-2 .card-thumb { aspect-ratio: 4 / 3.2; }
+}
+@media (max-width: 860px) {
+  section.contact-band { margin-left: 26px; margin-right: 26px; }
+}
+
+/* Tarjeta de GitHub */
+:root { --gh-bg: #cf4e86; --gh-fg: #f2ede2; --gh-soft: rgba(242, 237, 226, 0.82); --gh-dots: #f2ede2; }
+html[data-theme="dark"] { --gh-bg: #1d1b17; --gh-fg: #f2ede2; --gh-soft: rgba(242, 237, 226, 0.72); --gh-dots: #ec6ea0; }
+.card-gh { --cb: var(--gh-bg); --cf: var(--gh-fg); --cs: var(--gh-soft); }
+.gh-art {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 200px;
+  background-image: radial-gradient(var(--gh-dots) 30%, transparent 32%);
+  background-size: 20px 20px;
+  background-repeat: space;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gh-tile { width: clamp(90px, 9vw, 130px); aspect-ratio: 1; transform: rotate(-5deg); filter: drop-shadow(7px 7px 0 #17140f); transition: transform 0.3s var(--spring); }
+.gh-tile svg { width: 100%; height: 100%; display: block; }
+.card-gh:hover .gh-tile { transform: rotate(0deg) scale(1.05); }
+.gh-handle {
+  position: absolute;
+  right: 22px;
+  bottom: 20px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 14px;
+  background: #f2ede2;
+  color: #17140f;
+  border: 3px solid #17140f;
+  padding: 6px 12px;
+  transform: rotate(3deg);
+  box-shadow: 4px 4px 0 #17140f;
+}

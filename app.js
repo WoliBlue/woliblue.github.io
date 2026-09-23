@@ -696,7 +696,7 @@ const reprintBtn = document.getElementById('reprint');
 if (reprintBtn) reprintBtn.addEventListener('click', reprintPoster);
 
 /* ============ Guiño: la oveja ============
-   Pulsar la oveja del pie → salta y dice «¡Beeeee!». Código Konami → cruza un rebaño. */
+   Pulsar la oveja del pie → salta y dice «¡Beeeee!». */
 function bleat(sheepEl) {
   if (!sheepEl) return;
   let bubble = sheepEl.querySelector('.bleat');
@@ -715,35 +715,6 @@ function bleat(sheepEl) {
 
 const footerSheep = document.querySelector('.footer-sheep');
 if (footerSheep) footerSheep.addEventListener('click', () => bleat(footerSheep));
-
-function sheepStampede() {
-  if (document.querySelector('.stampede')) return;
-  const herd = document.createElement('div');
-  herd.className = 'stampede';
-  herd.setAttribute('aria-hidden', 'true');
-  for (let i = 0; i < 6; i++) {
-    const s = document.createElement('span');
-    s.className = 'stampede-sheep';
-    s.style.animationDelay = (i * 0.28) + 's';
-    s.innerHTML = `<span class="stampede-hop" style="animation-delay:${i * 0.11}s">${decoSvg('tileSheep')}</span>` +
-      (i === 0 ? `<span class="bleat">${t(currentLang, 'hero.bleat')}</span>` : '');
-    herd.appendChild(s);
-  }
-  document.body.appendChild(herd);
-  setTimeout(() => herd.remove(), 5200);
-  bleat(footerSheep);
-}
-
-const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-let konamiPos = 0;
-document.addEventListener('keydown', function (e) {
-  const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-  konamiPos = key === KONAMI[konamiPos] ? konamiPos + 1 : (key === KONAMI[0] ? 1 : 0);
-  if (konamiPos === KONAMI.length) {
-    konamiPos = 0;
-    sheepStampede();
-  }
-});
 
 /* ============ Arranque ============ */
 applyLang(currentLang);

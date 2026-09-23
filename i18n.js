@@ -49,6 +49,7 @@ const UI = {
       notFoundTitle: 'Proyecto no encontrado',
       notFoundBack: '← Volver al portfolio'
     },
+    contactBand: { label: '¿Hablamos?', hint: 'Pulsa para copiar el correo' },
     toast: { copied: 'CORREO COPIADO AL PORTAPAPELES', failed: 'No se pudo copiar — ' },
     placeholder: { pending: 'Imagen pendiente — sustituye' },
     featured: { label: 'Proyecto destacado', view: 'Ver ficha completa', trailer: '▶ Gameplay Alpha Septiembre', role: 'Mi papel' },
@@ -108,6 +109,7 @@ const UI = {
       notFoundTitle: 'Project not found',
       notFoundBack: '← Back to portfolio'
     },
+    contactBand: { label: 'Let’s talk', hint: 'Click to copy the email' },
     toast: { copied: 'EMAIL COPIED TO CLIPBOARD', failed: 'Could not copy — ' },
     placeholder: { pending: 'Image pending — replace' },
     featured: { label: 'Featured project', view: 'View full project', trailer: '▶ Alpha Gameplay · September', role: 'My role' },

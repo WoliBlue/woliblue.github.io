@@ -1106,8 +1106,18 @@ html[data-theme="dark"] {
 @keyframes swirl-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
 /* Títulos de sección: sin números, con franja de trama */
-.section-head { align-items: center; }
-.head-dots { flex: 1; align-self: stretch; min-height: 28px; max-height: 44px; margin-top: 6px; background-image: radial-gradient(var(--text) 30%, transparent 32%); background-size: 14px 14px; opacity: 0.55; }
+/* La franja mide lo mismo que las mayúsculas del título y se apoya en su línea base */
+.section-head { align-items: baseline; }
+.head-dots {
+  flex: 1;
+  align-self: baseline;
+  font-size: clamp(30px, 5vw, 52px);
+  height: 0.72em;
+  background-image: radial-gradient(var(--text) 30%, transparent 32%);
+  background-size: 0.24em 0.24em;
+  background-position: 0 100%;
+  opacity: 0.55;
+}
 #juegos .section-head, #sobre-mi .section-head { padding-right: 130px; }
 #otros-proyectos .section-head { padding-right: 190px; }
 .detail-section .section-head .head-dots { display: none; }

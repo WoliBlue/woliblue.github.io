@@ -9,9 +9,9 @@ const UI = {
       eyebrow: 'Portfolio 2026',
       role: 'PROGRAMADOR DE UNITY & GAME DESIGNER',
       lede: 'Programador de Unity y Game Designer en Málaga, con formación como Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).',
-      itch: '▶ itch.io/woliblue',
-      github: '⌥ github.com/woliblue',
-      contact: '✉ Contactar'
+      cv: 'Descargar CV',
+      scroll: 'Desliza',
+      contact: 'Copiar email'
     },
     section: { juegos: 'Juegos', otros: 'Otros proyectos', sobremi: 'Sobre mí' },
     about: {
@@ -68,9 +68,9 @@ const UI = {
       eyebrow: 'Portfolio 2026',
       role: 'UNITY PROGRAMMER & GAME DESIGNER',
       lede: 'Unity Programmer and Game Designer based in Málaga, Spain, with a Higher Technician degree in Multiplatform Application Development (DAM).',
-      itch: '▶ itch.io/woliblue',
-      github: '⌥ github.com/woliblue',
-      contact: '✉ Contact'
+      cv: 'Download CV',
+      scroll: 'Scroll',
+      contact: 'Copy email'
     },
     section: { juegos: 'Games', otros: 'Other projects', sobremi: 'About' },
     about: {

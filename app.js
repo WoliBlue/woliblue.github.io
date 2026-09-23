@@ -312,7 +312,7 @@ function featuredMarkup(item, lang) {
       ${d.badge ? `<span class="badge">${d.badge}</span>` : ''}
     </a>
     <div class="featured-body">
-      <p class="featured-label">★ ${t(lang, 'featured.label')}</p>
+      <p class="featured-label">${t(lang, 'featured.label')}</p>
       <h4 class="featured-title">${d.title}</h4>
       <p class="featured-summary">${d.summary}</p>
       ${highlights ? `<ul class="featured-highlights">${highlights}</ul>` : ''}
@@ -399,10 +399,10 @@ function renderDetail(lang) {
 
   const links = [];
   if (item.external && d.external) {
-    links.push(`<a class="pill pill-accent" href="${item.external.url}" target="_blank" rel="noopener">▶ ${d.external.label}</a>`);
+    links.push(`<a class="pill pill-accent" href="${item.external.url}" target="_blank" rel="noopener">${d.external.label} ↗</a>`);
   }
   if (item.repo) {
-    links.push(`<a class="pill" href="${item.repo}" target="_blank" rel="noopener">⌥ ${t(lang, 'detail.repo')}</a>`);
+    links.push(`<a class="pill" href="${item.repo}" target="_blank" rel="noopener">${t(lang, 'detail.repo')} ↗</a>`);
   }
   if (!links.length && item.video) {
     links.push(`<button type="button" class="pill pill-accent" data-play-video="${item.video.src}" data-poster="${item.video.poster || ''}">${t(lang, 'featured.trailer')}</button>`);

@@ -35,7 +35,7 @@ const TILES = {
 
   // itch.io (enlace en el footer): tiendita con toldo festoneado
   tileItch: () => decoTile(100, 100, 'itch', `
-    <g class="c-body">
+    <g class="c-white">
       <path d="M26 20 L74 20 L80 31 L20 31 Z"/>
       <circle cx="26" cy="31" r="6"/><circle cx="38" cy="31" r="6"/><circle cx="50" cy="31" r="6"/><circle cx="62" cy="31" r="6"/><circle cx="74" cy="31" r="6"/>
       <path d="M25 36 L75 36 L75 72 Q75 80 67 80 L33 80 Q25 80 25 72 Z"/>

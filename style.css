@@ -313,6 +313,7 @@ html[data-theme="dark"] {
 .c-soft { fill: var(--c-soft); }
 .c-accent { fill: var(--c-accent); }
 .c-crust { fill: var(--c-crust); }
+.c-white { fill: #fff; }
 .c-ink { fill: var(--c-ink); }
 .c-round { stroke: var(--c-accent); stroke-width: 3; stroke-linejoin: round; }
 .c-round-lg { stroke: var(--c-body); stroke-width: 6; stroke-linejoin: round; }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0c0a">
+<title>Proyecto — Jose Arenas</title>
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jose Arenas — Portfolio">
+<meta property="og:description" content="Programador de Unity y Game Designer. Juegos, proyectos y CV.">
+<meta property="og:image" content="https://woliblue.github.io/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jose Arenas — Portfolio">
+<meta name="twitter:description" content="Programador de Unity y Game Designer. Juegos, proyectos y CV.">
+<meta name="twitter:image" content="https://woliblue.github.io/assets/img/og-image.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== Sidebar ===== -->
+  <nav class="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html#inicio" class="nav-icon" title="Inicio" aria-label="Inicio">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span>
+        <span class="nav-label" data-i18n="nav.inicio">Inicio</span>
+      </a>
+      <a href="index.html#juegos" class="nav-icon" title="Juegos" aria-label="Juegos">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10v4"/><path d="M5 12h4"/><circle cx="16" cy="10.5" r="1"/><circle cx="18.5" cy="13" r="1"/></svg></span>
+        <span class="nav-label" data-i18n="nav.juegos">Juegos</span>
+      </a>
+      <a href="index.html#otros-proyectos" class="nav-icon" title="Otros proyectos" aria-label="Otros proyectos">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span>
+        <span class="nav-label" data-i18n="nav.proyectos">Proyectos</span>
+      </a>
+      <a href="index.html#sobre-mi" class="nav-icon" title="Sobre mí" aria-label="Sobre mí">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
+        <span class="nav-label" data-i18n="nav.sobremi">Sobre mí</span>
+      </a>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="nav-icon lang-toggle" id="langToggle" title="Cambiar idioma" aria-label="Cambiar idioma">
+        <span class="icon-box lang-icon" id="langIcon">ES</span>
+        <span class="nav-label" id="langLabel">English</span>
+      </button>
+      <button class="nav-icon theme-toggle" id="themeToggle" title="Cambiar tema" aria-label="Cambiar tema">
+        <span class="icon-box"><svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></span>
+        <span class="nav-label" id="themeLabel">Oscuro</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Main ===== -->
+  <div class="main">
+    <section id="project-detail" class="detail-section">
+      <!-- Contenido generado por app.js a partir de data.js -->
+    </section>
+
+    <footer>
+      <span>© 2026 Jose Arenas Venegas</span>
+      <span data-i18n="footer.location">Málaga, España</span>
+    </footer>
+  </div>
+</div>
+
+<script src="i18n.js"></script>
+<script src="data.js"></script>
+<script src="deco.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

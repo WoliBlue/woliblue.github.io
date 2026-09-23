@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0c0a">
+<title>Jose Arenas — Portfolio</title>
+<meta name="description" content="Portfolio de Jose Arenas Venegas, programador de Unity y Game Designer.">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jose Arenas — Portfolio">
+<meta property="og:description" content="Programador de Unity y Game Designer. Juegos, proyectos y CV.">
+<meta property="og:image" content="https://woliblue.github.io/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jose Arenas — Portfolio">
+<meta name="twitter:description" content="Programador de Unity y Game Designer. Juegos, proyectos y CV.">
+<meta name="twitter:image" content="https://woliblue.github.io/assets/img/og-image.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== Sidebar ===== -->
+  <nav class="sidebar">
+    <div class="sidebar-top">
+      <a href="#inicio" class="nav-icon" title="Inicio" aria-label="Inicio">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span>
+        <span class="nav-label" data-i18n="nav.inicio">Inicio</span>
+      </a>
+      <a href="#juegos" class="nav-icon" title="Juegos" aria-label="Juegos">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10v4"/><path d="M5 12h4"/><circle cx="16" cy="10.5" r="1"/><circle cx="18.5" cy="13" r="1"/></svg></span>
+        <span class="nav-label" data-i18n="nav.juegos">Juegos</span>
+      </a>
+      <a href="#otros-proyectos" class="nav-icon" title="Otros proyectos" aria-label="Otros proyectos">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span>
+        <span class="nav-label" data-i18n="nav.proyectos">Proyectos</span>
+      </a>
+      <a href="#sobre-mi" class="nav-icon" title="Sobre mí" aria-label="Sobre mí">
+        <span class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
+        <span class="nav-label" data-i18n="nav.sobremi">Sobre mí</span>
+      </a>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="nav-icon lang-toggle" id="langToggle" title="Cambiar idioma" aria-label="Cambiar idioma">
+        <span class="icon-box lang-icon" id="langIcon">ES</span>
+        <span class="nav-label" id="langLabel">English</span>
+      </button>
+      <button class="nav-icon theme-toggle" id="themeToggle" title="Cambiar tema" aria-label="Cambiar tema">
+        <span class="icon-box"><svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></span>
+        <span class="nav-label" id="themeLabel">Oscuro</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Main ===== -->
+  <div class="main">
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Portfolio 2026</p>
+      <h1 class="name">JOSE ARENAS</h1>
+      <h2 class="role" data-i18n="hero.role">PROGRAMADOR DE UNITY &amp; GAME DESIGNER</h2>
+      <p class="hero-lede" data-i18n="hero.lede">Programador de Unity y Game Designer en Málaga, con formación como Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).</p>
+      <div class="hero-links">
+        <a class="pill" href="https://woliblue.itch.io/" target="_blank" rel="noopener" data-i18n="hero.itch">▶ itch.io/woliblue</a>
+        <a class="pill" href="https://github.com/woliblue" target="_blank" rel="noopener" data-i18n="hero.github">⌥ github.com/woliblue</a>
+        <a class="pill" href="https://www.linkedin.com/in/jose-arenas-venegas/" target="_blank" rel="noopener">in LinkedIn</a>
+        <button class="pill" data-copy-email data-i18n="hero.contact">✉ Contactar</button>
+        <a class="pill" href="cv.pdf" target="_blank" rel="noopener">Descargar CV</a>
+
+      </div>
+    </section>
+
+    <!-- Juegos -->
+    <section id="juegos">
+      <span class="mascot deco-games" data-deco="tileMole"></span>
+      <div class="section-head reveal">
+        <span class="section-num">01</span>
+        <h3 class="section-title" data-i18n="section.juegos">Juegos</h3>
+      </div>
+
+      <div id="featured-game">
+        <!-- Proyecto destacado (featured: true en data.js) -->
+      </div>
+
+      <div class="grid" id="games-grid">
+        <!-- Generado por app.js a partir de data.js -->
+      </div>
+    </section>
+
+    <!-- Otros proyectos -->
+    <section id="otros-proyectos">
+      <span class="mascot deco-other" data-deco="tileFish"></span>
+      <div class="section-head reveal">
+        <span class="section-num">02</span>
+        <h3 class="section-title" data-i18n="section.otros">Otros proyectos</h3>
+      </div>
+
+      <div class="grid" id="other-grid">
+        <!-- Generado por app.js a partir de data.js -->
+      </div>
+
+      <div class="other-grid" style="margin-top:24px;">
+        <a class="other-card filled reveal" id="github-card" href="#" target="_blank" rel="noopener">
+          <div>
+            <h4></h4>
+            <p></p>
+          </div>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre-mi">
+      <span class="mascot deco-about" data-deco="tilePizza"></span>
+      <div class="section-head reveal">
+        <span class="section-num">03</span>
+        <h3 class="section-title" data-i18n="section.sobremi">Sobre mí</h3>
+      </div>
+
+      <div class="about-wrap reveal">
+        <div class="about-side">
+          <div class="about-photo" data-deco="avatar"></div>
+
+          <h4 data-i18n="about.contacto">Contacto</h4>
+          <p class="contact-line" data-i18n="footer.location">Málaga, España</p>
+          <a class="contact-line" data-phone href="#">…</a><br>
+          <button class="contact-line contact-copy" data-copy-email data-email-text>…</button><br>
+          <a class="contact-line" href="https://github.com/woliblue" target="_blank" rel="noopener">github.com/woliblue</a><br>
+          <a class="contact-line" href="https://www.linkedin.com/in/jose-arenas-venegas/" target="_blank" rel="noopener">linkedin.com/in/jose-arenas-venegas</a><br>
+          <a class="contact-line" href="https://woliblue.itch.io/" target="_blank" rel="noopener">woliblue.itch.io</a>
+
+          <h4 data-i18n="about.idiomas">Idiomas</h4>
+          <ul id="idiomas-list"></ul>
+
+          <h4 data-i18n="about.skills">Skills técnicos</h4>
+          <ul>
+            <li>Unity / C#</li>
+            <li>Java</li>
+            <li>Kotlin</li>
+            <li>Python</li>
+            <li>PHP</li>
+            <li>HTML/CSS</li>
+            <li>SQL</li>
+            <li>MongoDB</li>
+            <li>Git/GitHub</li>
+          </ul>
+
+          <h4 data-i18n="about.social">Habilidades sociales</h4>
+          <ul id="social-list"></ul>
+        </div>
+
+        <div class="about-body">
+          <p class="lede" data-i18n="about.lede">Programador de Unity y Game Designer. He diseñado y programado sistemas de gameplay, diálogos, minijuegos y niveles, tanto en equipo como en proyectos individuales. Soy Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y también programo en Java, Python, Kotlin y C#.</p>
+
+          <h4 style="margin-top:0;" data-i18n="about.experiencia">Experiencia</h4>
+          <div class="timeline" id="experience-timeline"></div>
+
+          <h4 data-i18n="about.estudios">Estudios</h4>
+          <div class="timeline" id="education-timeline"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-home">
+      <div class="footer-tiles">
+        <a class="footer-tile footer-link" href="https://github.com/woliblue" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub" data-deco="tileGithub"></a>
+        <a class="footer-tile footer-link" href="https://www.linkedin.com/in/jose-arenas-venegas/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn" data-deco="tileLinkedin"></a>
+        <span class="footer-tile footer-sheep deco-footer" data-deco="tileSheep" aria-hidden="true"></span>
+      </div>
+      <span>© 2026 Jose Arenas Venegas</span>
+      <span data-i18n="footer.location">Málaga, España</span>
+    </footer>
+
+  </div>
+</div>
+
+<script src="i18n.js"></script>
+<script src="data.js"></script>
+<script src="deco.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

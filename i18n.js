@@ -10,6 +10,8 @@ const UI = {
       role: 'PROGRAMADOR DE UNITY & GAME DESIGNER',
       lede: 'Programador de Unity y Game Designer en Málaga, con formación como Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).',
       cv: 'Descargar CV',
+      nowLabel: 'Ahora mismo',
+      now: 'Terminando Tourist Trap, mi TFM (MVP presentado en septiembre).',
       scroll: 'Desliza',
       contact: 'Copiar email'
     },
@@ -70,6 +72,8 @@ const UI = {
       role: 'UNITY PROGRAMMER & GAME DESIGNER',
       lede: 'Unity Programmer and Game Designer based in Málaga, Spain, with a Higher Technician degree in Multiplatform Application Development (DAM).',
       cv: 'Download CV',
+      nowLabel: 'Right now',
+      now: 'Finishing Tourist Trap, my master’s thesis game (MVP presented in September).',
       scroll: 'Scroll',
       contact: 'Copy email'
     },

@@ -259,6 +259,7 @@ section { padding: 90px 64px; position: relative; }
   --tile-ink: #17140f;
   --tile-github: #17140f;
   --tile-linkedin: #0a66c2;
+  --tile-itch: #fa5c5c;
   --c-body: #f2ede2;
   --c-soft: #f7b6cf;
   --c-accent: #ec6ea0;
@@ -1305,4 +1306,18 @@ section.contact-band {
 .cb-hint { margin: 12px 0 0; font-size: 13px; font-weight: 700; opacity: 0.75; }
 @media (max-width: 860px) {
   section.contact-band { margin: 10px 26px 0; }
+}
+
+
+/* «Ahora mismo»: pegatina + una línea, se edita en i18n.js → hero.now */
+.now { margin: 0 0 4px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 14px; font-weight: 600; color: var(--pe-fg); }
+.now-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--pe-accent);
+  color: #17140f;
+  padding: 4px 9px;
+  transform: rotate(-2deg);
 }

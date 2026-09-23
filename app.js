@@ -90,6 +90,11 @@ function applyLang(lang) {
   });
 
   updateThemeLabel();
+  const reprintBtn = document.getElementById('reprint');
+  if (reprintBtn) {
+    reprintBtn.title = t(lang, 'hero.reprint');
+    reprintBtn.setAttribute('aria-label', t(lang, 'hero.reprint'));
+  }
   renderAbout(lang);
   renderHome(lang);
   renderDetail(lang);
@@ -605,6 +610,7 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 function switchTheme(next) {
   root.classList.add('theme-switching');
   applyTheme(next);
+  resetPoster();
   void root.offsetHeight;
   requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('theme-switching')));
 }
@@ -625,6 +631,119 @@ if (langToggle) {
     );
   });
 }
+
+/* ============ Reimprimir el póster ============
+   Pulsar «Portfolio 2026» baraja los colores de los bloques dentro de la paleta.
+   Reglas: bloques que se tocan nunca repiten color y el texto siempre contrasta. */
+const POSTER_INK = {
+  pink: ['#ec6ea0', '#17140f'], olive: ['#4a5320', '#f2ede2'], cream: ['#f2ede2', '#17140f'],
+  charcoal: ['#1d1b17', '#f2ede2'], ink: ['#17140f', '#f2ede2'], deep: ['#cf4e86', '#f2ede2']
+};
+const POSTER_SETS = {
+  dark: { blocks: ['pink', 'olive', 'cream', 'charcoal'], dots: ['#ec6ea0', '#f2ede2'] },
+  light: { blocks: ['ink', 'olive', 'cream', 'deep'], dots: ['#17140f', '#f2ede2', '#4a5320'] }
+};
+// Vecinos en la cuadrícula del póster (a = JOSE, c = ARE, d = NAS, e = texto, f = espiral)
+const POSTER_NEIGHBOURS = [['a', 'c'], ['a', 'd'], ['c', 'd'], ['c', 'e'], ['d', 'e'], ['e', 'f']];
+let lastPosterKey = '';
+
+function shuffled(list) {
+  return list.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(p => p[1]);
+}
+
+function randomPoster(set) {
+  for (let i = 0; i < 200; i++) {
+    const pick = {};
+    ['a', 'c', 'd', 'e', 'f'].forEach(k => { pick[k] = set.blocks[Math.floor(Math.random() * set.blocks.length)]; });
+    const ok = POSTER_NEIGHBOURS.every(([x, y]) => pick[x] !== pick[y]);
+    const key = Object.values(pick).join();
+    if (ok && key !== lastPosterKey) { lastPosterKey = key; return pick; }
+  }
+  return null;
+}
+
+function reprintPoster() {
+  const poster = document.querySelector('.poster');
+  if (!poster) return;
+  const theme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  const set = POSTER_SETS[theme];
+  const pick = randomPoster(set);
+  if (!pick) return;
+  const vars = {};
+  ['a', 'c', 'd', 'f'].forEach(function (k) {
+    vars[`--p${k}-bg`] = POSTER_INK[pick[k]][0];
+    vars[`--p${k}-fg`] = POSTER_INK[pick[k]][1];
+  });
+  const [eBg, eFg] = POSTER_INK[pick.e];
+  vars['--pe-bg'] = eBg;
+  vars['--pe-fg'] = eFg;
+  // El rol va en color de acento: rosa sobre oscuros, oliva sobre crema, negro sobre rosas
+  vars['--pe-accent'] = pick.e === 'cream' ? '#4a5320' : (pick.e === 'pink' || pick.e === 'deep') ? '#17140f' : '#ec6ea0';
+  vars['--dot'] = shuffled(set.dots)[0];
+  Object.entries(vars).forEach(([k, v]) => poster.style.setProperty(k, v));
+  poster.classList.remove('is-reprinting');
+  void poster.offsetWidth;
+  poster.classList.add('is-reprinting');
+}
+
+function resetPoster() {
+  const poster = document.querySelector('.poster');
+  if (poster) poster.removeAttribute('style');
+  lastPosterKey = '';
+}
+
+const reprintBtn = document.getElementById('reprint');
+if (reprintBtn) reprintBtn.addEventListener('click', reprintPoster);
+
+/* ============ Guiño: la oveja ============
+   Pulsar la oveja del pie → salta y dice «¡Beeeee!». Código Konami → cruza un rebaño. */
+function bleat(sheepEl) {
+  if (!sheepEl) return;
+  let bubble = sheepEl.querySelector('.bleat');
+  if (!bubble) {
+    bubble = document.createElement('span');
+    bubble.className = 'bleat';
+    sheepEl.appendChild(bubble);
+  }
+  bubble.textContent = t(currentLang, 'hero.bleat');
+  sheepEl.classList.remove('is-bleating');
+  void sheepEl.offsetWidth;
+  sheepEl.classList.add('is-bleating');
+  clearTimeout(sheepEl._bleatTimer);
+  sheepEl._bleatTimer = setTimeout(() => sheepEl.classList.remove('is-bleating'), 1800);
+}
+
+const footerSheep = document.querySelector('.footer-sheep');
+if (footerSheep) footerSheep.addEventListener('click', () => bleat(footerSheep));
+
+function sheepStampede() {
+  if (document.querySelector('.stampede')) return;
+  const herd = document.createElement('div');
+  herd.className = 'stampede';
+  herd.setAttribute('aria-hidden', 'true');
+  for (let i = 0; i < 6; i++) {
+    const s = document.createElement('span');
+    s.className = 'stampede-sheep';
+    s.style.animationDelay = (i * 0.28) + 's';
+    s.innerHTML = `<span class="stampede-hop" style="animation-delay:${i * 0.11}s">${decoSvg('tileSheep')}</span>` +
+      (i === 0 ? `<span class="bleat">${t(currentLang, 'hero.bleat')}</span>` : '');
+    herd.appendChild(s);
+  }
+  document.body.appendChild(herd);
+  setTimeout(() => herd.remove(), 5200);
+  bleat(footerSheep);
+}
+
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiPos = 0;
+document.addEventListener('keydown', function (e) {
+  const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  konamiPos = key === KONAMI[konamiPos] ? konamiPos + 1 : (key === KONAMI[0] ? 1 : 0);
+  if (konamiPos === KONAMI.length) {
+    konamiPos = 0;
+    sheepStampede();
+  }
+});
 
 /* ============ Arranque ============ */
 applyLang(currentLang);

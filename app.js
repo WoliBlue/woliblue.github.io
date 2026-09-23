@@ -94,6 +94,7 @@ function applyLang(lang) {
   if (reprintBtn) {
     reprintBtn.title = t(lang, 'hero.reprint');
     reprintBtn.setAttribute('aria-label', t(lang, 'hero.reprint'));
+    if (typeof snapPosterLabel === 'function') snapPosterLabel();
   }
   renderAbout(lang);
   renderHome(lang);
@@ -386,7 +387,7 @@ function renderHome(lang) {
   if (ghCard) {
     ghCard.href = GITHUB_CARD.url;
     ghCard.querySelector('h4').textContent = GITHUB_CARD[lang].title;
-    ghCard.querySelector('p').textContent = GITHUB_CARD[lang].desc;
+    ghCard.querySelector('p').innerHTML = GITHUB_CARD[lang].desc;
   }
 }
 
@@ -636,12 +637,12 @@ if (langToggle) {
    Pulsar «Portfolio 2026» baraja los colores de los bloques dentro de la paleta.
    Reglas: bloques que se tocan nunca repiten color y el texto siempre contrasta. */
 const POSTER_INK = {
-  pink: ['#ec6ea0', '#17140f'], olive: ['#4a5320', '#f2ede2'], cream: ['#f2ede2', '#17140f'],
+  pink: ['#ec6ea0', '#17140f'], olive: ['#5b6b1a', '#f2ede2'], cream: ['#f2ede2', '#17140f'],
   charcoal: ['#1d1b17', '#f2ede2'], ink: ['#17140f', '#f2ede2'], deep: ['#cf4e86', '#f2ede2']
 };
 const POSTER_SETS = {
   dark: { blocks: ['pink', 'olive', 'cream', 'charcoal'], dots: ['#ec6ea0', '#f2ede2'] },
-  light: { blocks: ['ink', 'olive', 'cream', 'deep'], dots: ['#17140f', '#f2ede2', '#4a5320'] }
+  light: { blocks: ['ink', 'olive', 'cream', 'deep'], dots: ['#17140f', '#f2ede2', '#5b6b1a'] }
 };
 // Vecinos en la cuadrícula del póster (a = JOSE, c = ARE, d = NAS, e = texto, f = espiral)
 const POSTER_NEIGHBOURS = [['a', 'c'], ['a', 'd'], ['c', 'd'], ['c', 'e'], ['d', 'e'], ['e', 'f']];
@@ -678,7 +679,7 @@ function reprintPoster() {
   vars['--pe-bg'] = eBg;
   vars['--pe-fg'] = eFg;
   // El rol va en color de acento: rosa sobre oscuros, oliva sobre crema, negro sobre rosas
-  vars['--pe-accent'] = pick.e === 'cream' ? '#4a5320' : (pick.e === 'pink' || pick.e === 'deep') ? '#17140f' : '#ec6ea0';
+  vars['--pe-accent'] = pick.e === 'cream' ? '#5b6b1a' : (pick.e === 'pink' || pick.e === 'deep') ? '#17140f' : '#ec6ea0';
   vars['--dot'] = shuffled(set.dots)[0];
   Object.entries(vars).forEach(([k, v]) => poster.style.setProperty(k, v));
   poster.classList.remove('is-reprinting');
@@ -716,6 +717,55 @@ function bleat(sheepEl) {
 const footerSheep = document.querySelector('.footer-sheep');
 if (footerSheep) footerSheep.addEventListener('click', () => bleat(footerSheep));
 
+/* ============ Etiqueta «Portfolio 2026» encajada en la trama ============
+   La trama usa background-repeat: space (puntos enteros y centrados). La etiqueta se
+   coloca entre filas y columnas de puntos, así tapa los mismos arriba y abajo. */
+function snapPosterLabel() {
+  const box = document.querySelector('.pb-dots');
+  const label = document.getElementById('reprint');
+  if (!box || !label || getComputedStyle(label).display === 'none') return;
+  const cell = 22;
+  const W = box.clientWidth, H = box.clientHeight;
+  const nx = Math.floor(W / cell), ny = Math.floor(H / cell);
+  if (nx < 3 || ny < 3) return;
+  const px = (W - cell) / (nx - 1), py = (H - cell) / (ny - 1);
+  Object.assign(label.style, { left: '', top: '', width: '', height: '', right: '' });
+  const w0 = label.offsetWidth, h0 = label.offsetHeight;
+  const cols = Math.max(1, Math.ceil(w0 / px)), rows = Math.max(1, Math.ceil(h0 / py));
+  const right = W - cell / 2 - px / 2;
+  Object.assign(label.style, {
+    right: 'auto',
+    left: (right - cols * px) + 'px',
+    top: (cell / 2 + py / 2) + 'px',
+    width: (cols * px) + 'px',
+    height: (rows * py) + 'px'
+  });
+}
+addEventListener('resize', snapPosterLabel);
+if (document.fonts) document.fonts.ready.then(snapPosterLabel);
+
+/* ============ Los ojos del gato robot siguen al ratón ============ */
+(function initCatEyes() {
+  const photo = document.querySelector('.about-photo');
+  if (!photo || !matchMedia('(pointer: fine)').matches) return;
+  let raf = 0, mx = 0, my = 0;
+  addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = 0;
+      const eyes = photo.querySelector('.cat-eyes');
+      if (!eyes) return;
+      const r = photo.getBoundingClientRect();
+      const dx = mx - (r.left + r.width / 2), dy = my - (r.top + r.height * 0.5);
+      const d = Math.hypot(dx, dy) || 1;
+      const k = Math.min(1, d / 300);
+      eyes.setAttribute('transform', `translate(${(dx / d * 7 * k).toFixed(2)} ${(dy / d * 5 * k).toFixed(2)})`);
+    });
+  }, { passive: true });
+})();
+
 /* ============ Arranque ============ */
 applyLang(currentLang);
 initNavPath();
+snapPosterLabel();

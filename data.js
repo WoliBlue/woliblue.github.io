@@ -47,11 +47,11 @@ const PROJECTS = {
         title: 'Tourist Trap',
         badge: 'TFM · YaloséGames',
         alt: 'Arte principal de Tourist Trap',
-        summary: 'Simulador de cocina con toques tycoon: lleva tu propio chiringuito andaluz, cocina a base de minijuegos y sobrevive al caos del verano hasta llegar a las 5 estrellas.',
+        summary: 'Simulador de Cocina Tycoon: lleva tu propio chiringuito andaluz, cocina a base de minijuegos y sobrevive a los clientes hambrientos.',
         highlights: [
-          'Gestión + cocina en tiempo real con vista isométrica',
-          '5 minijuegos de cocina, uno por estación',
-          'Eventos caóticos: gaviotas, incendios y clientes especiales'
+          'Gestión + Cocina en tiempo real',
+          'Minijuegos Variados de Cocina',
+          'Eventos caóticos: gaviotas, incendios, tsunamis…'
         ],
         description: [
           'Compras un «Rasca y gana» en la gasolinera y te toca… un chiringuito. Mala suerte: era un «Rasca y paga». El chiringuito está en ruinas, viene con deuda y tu tío Rogelio Chiringelio sueña con verlo algún día en las 5 estrellas.',
@@ -87,11 +87,11 @@ const PROJECTS = {
         title: 'Tourist Trap',
         badge: 'Master’s thesis · YaloséGames',
         alt: 'Tourist Trap key art',
-        summary: 'A cooking sim with tycoon elements: run your own Andalusian beach bar, cook through minigames and survive the summer chaos until you reach 5 stars.',
+        summary: 'Cooking Tycoon sim: run your own Andalusian beach bar, cook through minigames and survive the hungry customers.',
         highlights: [
-          'Real-time management + cooking in isometric view',
-          '5 cooking minigames, one per station',
-          'Chaotic events: seagulls, fires and special customers'
+          'Management + real-time Cooking',
+          'Varied Cooking Minigames',
+          'Chaotic events: seagulls, fires, tsunamis…'
         ],
         description: [
           'You buy a scratch card at the gas station and win… a beach bar. Bad luck: it was a “scratch and pay”. The chiringuito is falling apart, comes with debt, and your uncle Rogelio Chiringelio dreams of seeing it reach 5 stars one day.',
@@ -148,7 +148,7 @@ const PROJECTS = {
         title: 'Pizza Kaisen',
         badge: 'Ganador · Global Jam 2026',
         alt: 'Portada de Pizza Kaisen',
-        summary: 'Juego de empujones, máscaras y pizza. Programación en Unity: movimiento, IA enemiga y menús.',
+        summary: 'Empujones, máscaras y pizza. ¡Sé el último ingrediente en pie!',
         description: [
           'Un juego de empujones, máscaras y pizza sobre la lucha de cuál es el mejor topping. Ganador del premio a Juego Más Original en la Global Jam 2026.',
           'Eres del Clan del Pepperoni y acabas de recibir tu máscara, pero antes tienes que pasar el ritual de iniciación: sacar de una arena circular a los clanes rivales (maíz, cebolla y el Gran Jefe Piña). Mantén espacio para cargar el empujón, apunta con el ratón, usa la Q para multiplicarte y rebota entre los Pepperonis del escenario.'
@@ -171,7 +171,7 @@ const PROJECTS = {
         title: 'Pizza Kaisen',
         badge: 'Winner · Global Jam 2026',
         alt: 'Pizza Kaisen cover art',
-        summary: 'A game about shoving, masks and pizza. Unity programming: movement, enemy AI and menus.',
+        summary: 'Shoves, masks and pizza. Be the last topping standing!',
         description: [
           'A game of shoving, masks and pizza about the fight over the best topping. Winner of the Most Original Game award at Global Jam 2026.',
           'You belong to the Pepperoni Clan and just got your mask, but first you must pass the initiation ritual: knock the rival clans (corn, onion and the Great Pineapple Boss) out of a circular arena. Hold space to charge your push, aim with the mouse, press Q to multiply and bounce off the Pepperonis on the stage.'
@@ -217,9 +217,9 @@ const PROJECTS = {
       ],
       es: {
         title: 'Figurines Please',
-        badge: 'Ganador Narrativa · Jam Navideña 2025',
+        badge: 'Ganador Narrativa<br>Jam Navideña 2025',
         alt: 'Portada de Figurines Please',
-        summary: 'Ganador a Mejor Narrativa en la Jam Navideña 2025. Vende figuritas de Belén camelándote a los clientes. Programación del sistema de diálogos.',
+        summary: 'Vende figuritas de Belén camelándote a los clientes.',
         description: [
           'Ganador del premio a Mejor Narrativa en la Jam Navideña 2025. Heredas el puesto de figuras del Belén de tu padre y solo hay una salida: venderlo todo esa semana o quedarte con el puesto para siempre.',
           'Cada cliente es una conversación: tus respuestas le caen mejor o peor, y solo te compran si terminas en positivo. Después toca girarte, elegir la figura que quiere y ponerla en el mantel. Si no llegas a la cuota, el periódico anuncia que el puesto tiene nuevo dueño permanente.'
@@ -239,9 +239,9 @@ const PROJECTS = {
       },
       en: {
         title: 'Figurines Please',
-        badge: 'Narrative Award · Christmas Jam 2025',
+        badge: 'Narrative Award<br>Christmas Jam 2025',
         alt: 'Figurines Please cover art',
-        summary: 'Best Narrative winner at the 2025 Christmas Jam. Sell nativity figurines by charming your customers. Dialogue system programming.',
+        summary: 'Sell nativity figurines by charming your customers.',
         description: [
           'Winner of the Best Narrative award at the 2025 Christmas Jam. You inherit your father’s nativity-figurine stall and there’s only one way out: sell everything this week or be stuck with the stall forever.',
           'Every customer is a conversation: your answers make them like you more or less, and they only buy if you end up in the positive. Then you turn around, pick the figurine they want and place it on the cloth. Miss your quota and the newspaper announces the stall has a new permanent owner.'
@@ -272,7 +272,7 @@ const PROJECTS = {
       es: {
         title: 'EVAD TALE',
         alt: 'Portada de EVAD TALE',
-        summary: 'Averigua qué esconde la sala de profesores de la EVAD tras quedarte encerrado en una Jam.',
+        summary: 'Averigua qué esconde la sala de profesores de la EVAD tras quedarte encerrado en una Jam. Inspirado en Undertale.',
         description: [
           'No te lo vas a creer... te quedas encerrado en la EVAD después de una Jam y para salir tienes que descubrir qué se esconde tras la puerta de la sala de profesores.'
         ],
@@ -297,7 +297,7 @@ const PROJECTS = {
       en: {
         title: 'EVAD TALE',
         alt: 'EVAD TALE cover art',
-        summary: "Find out what's hidden behind the EVAD teachers' lounge door after getting locked in during a Jam.",
+        summary: "Find out what's hidden behind the EVAD teachers' lounge door after getting locked in during a Jam. Inspired by Undertale.",
         description: [
           "You won't believe it... you get locked inside EVAD after a Jam, and to get out you have to find out what's hidden behind the teachers' lounge door."
         ],
@@ -342,7 +342,7 @@ const PROJECTS = {
       es: {
         title: 'Offline Working Sheep',
         alt: 'Menú principal de Offline Working Sheep dentro de la oficina',
-        summary: 'Aventura en primera persona de sigilo y puzles: eres el último empleado presencial y las ovejas-robot de tu empresa se han rebelado.',
+        summary: 'Te echas una siesta en el trabajo y, al despertar, las ovejas-robot de tu empresa se han rebelado. Eres el único en la oficina, así que te toca escapar.',
         description: [
           'Te echas una siesta en el descanso del almuerzo y, al despertar, tu ordenador está lleno de notificaciones: las Ovejabots que fabrica tu empresa se han sublevado. Eres el único que sigue trabajando en presencial (por vivir lo bastante cerca), así que te toca escapar.',
           'Con las Smart Glasses de la empresa hablas por «Sheepcord» con tu superior, que te guía desde la comodidad de su casa. Cada zona alterna sigilo, puzle y un respiro: esconderte en los cubículos, estudiar las rutas de los robots y resolver puzles de trayectoria con los GOAT para conseguir las tres keycards. Solo tienes una carga de pistola aturdidora.',
@@ -374,7 +374,7 @@ const PROJECTS = {
       en: {
         title: 'Offline Working Sheep',
         alt: 'Offline Working Sheep main menu inside the office',
-        summary: 'First-person stealth and puzzle adventure: you’re the last in-office employee and your company’s robot sheep have rebelled.',
+        summary: 'You nap through your lunch break and wake up to find your company’s robot sheep have rebelled. You’re the only one in the office, so it’s on you to escape.',
         description: [
           'You take a nap during your lunch break and wake up to a computer full of notifications: the Sheepbots your company builds have risen up. You’re the only one still working on-site (because you live close enough), so it’s on you to escape.',
           'Through the company’s Smart Glasses you talk on “Sheepcord” with your manager, who guides you from the comfort of home. Each area alternates stealth, puzzle and a breather: hide in the cubicles, study the robots’ routes and solve trajectory puzzles with the GOATs to get all three keycards. You only get one stun-gun charge.',
@@ -420,9 +420,9 @@ const PROJECTS = {
         'assets/img/chatdefenderxp/pause.jpg'
       ],
       es: {
-        title: 'ChatDefenderXP',
+        title: 'ChatDefender XP',
         alt: 'Menú principal de ChatDefenderXP',
-        summary: 'Twin-stick shooter con estética Windows XP: defiende el chat de un blog de gatitos de oleadas de trolls… y dispara a todo lo que no sea un gato.',
+        summary: 'Tu blog está siendo atacado por trolls. Defiéndelo de todo lo que no sea un gato.',
         description: [
           'WordPressing regala a sus blogueros una herramienta de defensa y tú eres ella: ChatJanitor, la conserje de BlogGatitosLuna2004.wordpressing.blog. El escenario es un trozo de internet de la era dorada, con estética de Windows XP y del Buscaminas.',
           'Aguanta 7 oleadas (7 días) con solo 5 segundos de respiro entre ellas. Por dos cintas transportadoras llegan fotos al ChatRoom: los gatos lo curan, los «NoGatos» lo dañan, así que tienes que disparar a los perros sin darle a ningún gatito mientras frenas a los trolls.',
@@ -433,7 +433,7 @@ const PROJECTS = {
           'Game design completo: high concept, GDD, oleadas y balance',
           'Desarrollo en Unity'
         ],
-        tags: ['Unity', 'Shooter', 'Proyecto individual'],
+        tags: ['Unity', 'Twin-stick shooter', 'Proyecto individual'],
         meta: [
           { label: 'Tipo', value: 'Proyecto individual' },
           { label: 'Género', value: 'Twin-stick shooter' },
@@ -450,7 +450,7 @@ const PROJECTS = {
       en: {
         title: 'ChatDefenderXP',
         alt: 'ChatDefenderXP main menu',
-        summary: 'Windows XP-styled twin-stick shooter: defend a cat blog’s chat from waves of trolls… and shoot everything that isn’t a cat.',
+        summary: 'Your blog is under troll attack. Defend it from everything that isn’t a cat.',
         description: [
           'WordPressing gives its bloggers a free defense tool, and you are it: ChatJanitor, the caretaker of BlogGatitosLuna2004.wordpressing.blog. The stage is a chunk of golden-age internet, styled after Windows XP and Minesweeper.',
           'Survive 7 waves (7 days) with only 5 seconds of breathing room between them. Photos travel to the ChatRoom on two conveyor belts: cats heal it, “NotCats” damage it, so you have to shoot the dogs without hitting any kittens while holding off the trolls.',
@@ -461,7 +461,7 @@ const PROJECTS = {
           'Full game design: high concept, GDD, waves and balancing',
           'Development in Unity'
         ],
-        tags: ['Unity', 'Shooter', 'Solo project'],
+        tags: ['Unity', 'Twin-stick shooter', 'Solo project'],
         meta: [
           { label: 'Type', value: 'Solo project' },
           { label: 'Genre', value: 'Twin-stick shooter' },
@@ -495,7 +495,7 @@ const PROJECTS = {
       es: {
         title: 'Dig Me Out!',
         alt: 'Hub de Dig Me Out! dentro de la mina',
-        summary: 'Infinite runner de pixel art: una minera atrapada bajo tierra corre, salta y hace parry para pagar su deuda… que no para de crecer.',
+        summary: 'Una minera atrapada bajo tierra. Corre, salta y haz parry para pagar tu deuda… que no para de crecer.',
         description: [
           'La protagonista solo picaba minerales fáciles cerca de la superficie, hasta que un derrumbe la deja muy bajo tierra. Xeferías, un jefazo con un corazón aún más grande, le ofrece ayuda para volver arriba… a cambio de trabajar para él y pagar el billete de vuelta.',
           'Corres de forma automática y cada vez más rápido. Saltas una vez, y en el aire haces un parry que te impulsa al golpear a un enemigo, así que el combate y el plataformeo son la misma mecánica. Recoges monedas de 1, 10, 20 y 50, power-ups que se usan solos y esquivas pinchos y plataformas que se caen. Tres golpes y se acabó la run.',
@@ -518,7 +518,7 @@ const PROJECTS = {
       en: {
         title: 'Dig Me Out!',
         alt: 'Dig Me Out! hub inside the mine',
-        summary: 'Pixel-art infinite runner: a miner trapped underground runs, jumps and parries to pay off her debt… which keeps growing.',
+        summary: 'A miner trapped underground. Run, jump and parry to pay off your debt… which keeps growing.',
         description: [
           'The protagonist only ever mined the easy stuff near the surface, until a cave-in leaves her deep underground. Xeferías, a big boss with an even bigger heart, offers to help her get back up… in exchange for working for him and paying for the ticket out.',
           'You run automatically and faster and faster. You jump once, and in mid-air you parry, which launches you forward when it hits an enemy — so combat and platforming are the same mechanic. You collect coins worth 1, 10, 20 and 50, auto-used power-ups, and dodge spikes and collapsing platforms. Three hits and the run is over.',
@@ -558,9 +558,9 @@ const PROJECTS = {
         title: 'RestaurantOS',
         badge: 'TFG · Medac Nova',
         alt: 'Logo de RestaurantOS',
-        summary: 'Proyecto de Fin de Grado: app Android de pedidos y reservas para restaurantes, sin comisiones ni dependencia de Uber Eats o Glovo.',
+        summary: 'App Android de pedidos y reservas para restaurantes, sin comisiones ni dependencia de plataformas de terceros.',
         description: [
-          'Muchos restaurantes dependen de plataformas externas como Uber Eats, Just Eat o Glovo para recibir pedidos, lo que implica comisiones altas y poca personalización. Eso reduce sus beneficios y limita su relación directa con el cliente.',
+          'Muchos restaurantes dependen de plataformas de reparto de terceros para recibir pedidos, lo que implica comisiones altas y poca personalización. Eso reduce sus beneficios y limita su relación directa con el cliente.',
           'RestaurantOS ofrece una aplicación propia para cada restaurante: sin comisiones, fácil de usar y personalizable. El cliente navega el menú, guarda favoritos, gestiona el carrito y paga; el restaurante tiene un panel de administración con los pedidos pendientes y completados.',
           'Es una app Android nativa en Java, con Firebase para autenticación y base de datos y Stripe para los pagos.'
         ],
@@ -582,9 +582,9 @@ const PROJECTS = {
         title: 'RestaurantOS',
         badge: 'Capstone · Medac Nova',
         alt: 'RestaurantOS logo',
-        summary: 'Capstone project: an Android ordering and booking app for restaurants, with no commissions and no dependency on Uber Eats or Glovo.',
+        summary: 'An Android ordering and booking app for restaurants, with no commissions and no dependency on third-party platforms.',
         description: [
-          'Many restaurants depend on external platforms like Uber Eats, Just Eat or Glovo to receive orders, which means high commissions and little room for personalization. That cuts into their margins and limits their direct relationship with customers.',
+          'Many restaurants depend on third-party delivery platforms to receive orders, which means high commissions and little room for personalization. That cuts into their margins and limits their direct relationship with customers.',
           'RestaurantOS gives each restaurant its own app: no commissions, easy to use and customizable. Customers browse the menu, save favorites, manage their cart and pay; the restaurant gets an admin panel with pending and completed orders.',
           'It’s a native Android app in Java, using Firebase for authentication and data and Stripe for payments.'
         ],
@@ -623,11 +623,11 @@ const PROJECTS = {
       ],
       es: {
         title: 'Memorias de un Maestro',
-        badge: 'Libro · 205 páginas',
+        badge: 'Libro',
         alt: 'Cubierta de Memorias de un Maestro. Crónicas y leyendas de Loja',
-        summary: 'Maquetación y limpieza del libro de mi abuelo, José Arenas Ropero, cronista oficial de Loja: 205 páginas de memorias, crónicas, leyendas y poesía.',
+        summary: 'Maquetación y limpieza del libro de José Arenas Ropero, cronista oficial de Loja.<br>Memorias, crónicas, leyendas y poesía.',
         description: [
-          '«Memorias de un Maestro. Crónicas y leyendas de Loja» es el libro de mi abuelo, maestro y cronista oficial de Loja: los recuerdos de toda una vida dedicada a la enseñanza, junto a crónicas históricas, leyendas, romances y poesía de la ciudad.',
+          '«Memorias de un Maestro. Crónicas y leyendas de Loja» es el libro de José Arenas Ropero, maestro y cronista oficial de Loja: los recuerdos de toda una vida dedicada a la enseñanza, junto a crónicas históricas, leyendas, romances y poesía de la ciudad.',
           'Mi trabajo fue llevar un material muy heterogéneo a un libro coherente: limpiar y unificar el texto, montar la estructura de capítulos y el índice, componer las secciones de poesía y colocar las fotografías históricas con sus pies.',
           'Las ilustraciones y la cubierta son de Alejandra García Arenas.'
         ],
@@ -648,11 +648,11 @@ const PROJECTS = {
       },
       en: {
         title: 'Memorias de un Maestro',
-        badge: 'Book · 205 pages',
+        badge: 'Book',
         alt: 'Cover of Memorias de un Maestro. Crónicas y leyendas de Loja',
-        summary: 'Layout and text cleanup for my grandfather’s book, José Arenas Ropero, official chronicler of Loja: 205 pages of memoirs, chronicles, legends and poetry.',
+        summary: 'Layout and text cleanup for the book by José Arenas Ropero, official chronicler of Loja.<br>Memoirs, chronicles, legends and poetry.',
         description: [
-          '“Memorias de un Maestro. Crónicas y leyendas de Loja” (Memoirs of a Teacher: Chronicles and Legends of Loja) is my grandfather’s book. A teacher and Loja’s official chronicler, he collects memories of a life devoted to teaching alongside historical chronicles, legends, ballads and poetry about the town.',
+          '“Memorias de un Maestro. Crónicas y leyendas de Loja” (Memoirs of a Teacher: Chronicles and Legends of Loja) is the book by José Arenas Ropero. A teacher and Loja’s official chronicler, he collects memories of a life devoted to teaching alongside historical chronicles, legends, ballads and poetry about the town.',
           'My job was to turn very mixed material into a coherent book: clean up and unify the text, build the chapter structure and index, typeset the poetry sections, and place the historical photos with their captions.',
           'The illustrations and cover are by Alejandra García Arenas.'
         ],
@@ -691,7 +691,7 @@ const PROJECTS = {
         title: 'Playdate Music Player',
         badge: 'Playdate · Lua',
         alt: 'Tarjeta de inicio del Playdate MP3 Player',
-        summary: 'Reproductor de MP3 para la consola Playdate: 11 visualizadores en 1-bit, ambiente de lluvia y control con la manivela.',
+        summary: 'Reproductor de MP3 para la consola Playdate.<br>11 visualizadores en 1-bit, ambiente de lluvia y control con la manivela.',
         description: [
           'Un reproductor de música para la Playdate, la portátil de pantalla 1-bit con manivela. Metes tus MP3 en la carpeta de la app por USB (como las ROMs en un emulador) y aparecen en una lista con reproducción automática y modo aleatorio.',
           'Tiene 11 visualizadores (casete con bobinas que giran, sunburst, ecualizador, bichos, partículas, lluvia, péndulo, arena, vórtice…), modo oscuro, modo zen sin interfaz, estelas y cambio automático de tema. La manivela controla el volumen o avanza por la canción, y la cruceta se puede configurar desde el menú.',
@@ -720,7 +720,7 @@ const PROJECTS = {
         title: 'Playdate Music Player',
         badge: 'Playdate · Lua',
         alt: 'Playdate MP3 Player launcher card',
-        summary: 'MP3 player for the Playdate console: 11 1-bit visualizers, rain ambience and crank controls.',
+        summary: 'MP3 player for the Playdate console.<br>11 1-bit visualizers, rain ambience and crank controls.',
         description: [
           'A music player for the Playdate, the handheld with a 1-bit screen and a crank. You drop your MP3s into the app’s folder over USB (like ROMs in an emulator) and they show up in a list with autoplay and shuffle.',
           'It has 11 visualizers (cassette with spinning reels, sunburst, EQ, bugs, particles, rain, pendulum, sand, vortex…), dark mode, a HUD-free zen mode, trails and automatic theme cycling. The crank controls volume or scrubs through the song, and the D-pad action can be set from the menu.',
@@ -752,6 +752,6 @@ const PROJECTS = {
 /* Repos de GitHub — tarjeta simple sin página de detalle */
 const GITHUB_CARD = {
   url: 'https://github.com/woliblue?tab=repositories',
-  es: { title: 'Repositorios en GitHub', desc: 'Prácticas y proyectos del ciclo DAM: Java, Python, Android Studio, PHP y más.' },
-  en: { title: 'GitHub repositories', desc: 'DAM coursework and projects: Java, Python, Android Studio, PHP and more.' }
+  es: { title: 'Repositorios en GitHub', desc: 'Prácticas y proyectos del ciclo DAM.<br>Java, Python, Android Studio, PHP y más.' },
+  en: { title: 'GitHub repositories', desc: 'DAM coursework and projects.<br>Java, Python, Android Studio, PHP and more.' }
 };

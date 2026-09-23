@@ -8,12 +8,12 @@ const UI = {
     hero: {
       eyebrow: 'Portfolio 2026',
       role: 'PROGRAMADOR DE UNITY & GAME DESIGNER',
-      lede: 'Programador de Unity y Game Designer en Málaga, con formación como Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).',
+      lede: 'Programador de Unity y Game Designer en Málaga, con formación de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).',
       cv: 'Descargar CV',
       reprint: 'Reimprimir el póster',
       bleat: '¡Beeeee!',
       nowLabel: 'Ahora mismo',
-      now: 'Terminando Tourist Trap, mi TFM (MVP presentado en septiembre).',
+      now: 'Desarrollando Tourist Trap',
       scroll: 'Desliza',
       contact: 'Copiar email'
     },
@@ -25,20 +25,21 @@ const UI = {
       social: 'Habilidades sociales',
       experiencia: 'Experiencia',
       estudios: 'Estudios',
-      lede: 'Programador de Unity y Game Designer. He diseñado y programado sistemas de gameplay, diálogos, minijuegos y niveles, tanto en equipo como en proyectos individuales. Soy Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y también programo en Java, Python, Kotlin y C#.',
+      lede: 'Programador de Unity y Game Designer. Diseño y programo sistemas de gameplay, diálogos, minijuegos y niveles, tanto en equipo como en proyectos individuales.',
+      lede2: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma. También programo en Java, Python, Kotlin y C#.',
       idiomasList: [
         { lang: 'Español', level: 'Nativo' },
         { lang: 'Inglés', level: 'C2 (Cambridge)' }
       ],
-      socialList: ['Trabajo en equipo', 'Atención al público', 'Paciencia'],
+      socialList: ['Trabajo en equipo', 'Comunicación', 'Resolución de problemas', 'Adaptabilidad', 'Creatividad', 'Atención al público', 'Paciencia'],
       experience: [
         { when: 'Jun 2025 — Sept 2025', title: 'Traductor en Marbellatrad', desc: 'Colaboración en la preparación de traducciones juradas (inglés/español) y soporte técnico especializado.' },
-        { when: 'Mar 2025 — Jun 2025', title: 'Prácticas en EY', desc: 'Gestión proactiva de incidencias y automatización de tareas mediante BluePrism, Kibana y TrustPortal.' },
+        { when: 'Mar 2025 — Jun 2025', title: 'Prácticas en EY GDS', desc: 'Gestión proactiva de incidencias y automatización de tareas mediante BluePrism, Kibana y TrustPortal.' },
         { when: 'Jun 2024 — Sept 2024', title: 'Servicio al cliente, Kinépolis', desc: 'Ventas de cara al público, mantenimiento, acomodación, cocina y limpieza del cine.' }
       ],
       education: [
-        { when: 'Oct 2025 — Dic 2026', title: 'EVAD (Málaga)', desc: 'Máster en Diseño y Desarrollo de Videojuegos. En curso; proyecto final: Tourist Trap.' },
-        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova (Málaga)', desc: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).' }
+        { when: 'Oct 2025 — Dic 2026', title: 'Escuela Superior de Videojuegos y Arte Digital, Málaga', desc: 'Máster en Diseño y Desarrollo de Videojuegos, en curso.' },
+        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova, Málaga', desc: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).' }
       ]
     },
     footer: { location: 'Málaga, España' },
@@ -56,7 +57,7 @@ const UI = {
     contactBand: { label: '¿Hablamos?', hint: 'Pulsa para copiar el correo' },
     toast: { copied: 'CORREO COPIADO AL PORTAPAPELES', failed: 'No se pudo copiar — ' },
     placeholder: { pending: 'Imagen pendiente — sustituye' },
-    featured: { label: 'Proyecto destacado', view: 'Ver ficha completa', trailer: '▶ Gameplay Alpha Septiembre', role: 'Mi papel' },
+    featured: { label: 'Proyecto destacado', view: 'Ver ficha completa', trailer: '▶ Gameplay Alpha 09/26', role: 'Mi papel' },
     page404: {
       code: '404',
       title: 'Esta página se ha perdido de camino a la Global Jam.',
@@ -77,7 +78,7 @@ const UI = {
       reprint: 'Reprint the poster',
       bleat: 'Baaaaa!',
       nowLabel: 'Right now',
-      now: 'Finishing Tourist Trap, my master’s thesis game (MVP presented in September).',
+      now: 'Developing Tourist Trap',
       scroll: 'Scroll',
       contact: 'Copy email'
     },
@@ -89,20 +90,21 @@ const UI = {
       social: 'Soft skills',
       experiencia: 'Experience',
       estudios: 'Education',
-      lede: 'Unity Programmer and Game Designer. I’ve designed and programmed gameplay systems, dialogue, minigames and levels, both in teams and on solo projects. I hold a Higher Technician degree in Multiplatform Application Development and also code in Java, Python, Kotlin and C#.',
+      lede: 'Unity Programmer and Game Designer. I design and program gameplay systems, dialogue, minigames and levels, both in teams and on solo projects.',
+      lede2: 'Higher Technician in Multiplatform Application Development. I also code in Java, Python, Kotlin and C#.',
       idiomasList: [
         { lang: 'Spanish', level: 'Native' },
         { lang: 'English', level: 'C2 (Cambridge)' }
       ],
-      socialList: ['Teamwork', 'Customer service', 'Patience'],
+      socialList: ['Teamwork', 'Communication', 'Problem solving', 'Adaptability', 'Creativity', 'Customer service', 'Patience'],
       experience: [
         { when: 'Jun 2025 — Sept 2025', title: 'Translator at Marbellatrad', desc: 'Helped prepare sworn translations (English/Spanish) and provided specialized technical support.' },
-        { when: 'Mar 2025 — Jun 2025', title: 'Internship at EY', desc: 'Proactive incident management and task automation using BluePrism, Kibana and TrustPortal.' },
+        { when: 'Mar 2025 — Jun 2025', title: 'Internship at EY GDS', desc: 'Proactive incident management and task automation using BluePrism, Kibana and TrustPortal.' },
         { when: 'Jun 2024 — Sept 2024', title: 'Customer service, Kinépolis', desc: 'Front-of-house sales, maintenance, ushering, kitchen and cinema cleaning.' }
       ],
       education: [
-        { when: 'Oct 2025 — Dec 2026', title: 'EVAD (Málaga)', desc: 'Master’s in Game Design and Development. In progress; final project: Tourist Trap.' },
-        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova (Málaga)', desc: 'Higher Technician in Multiplatform Application Development (DAM).' }
+        { when: 'Oct 2025 — Dec 2026', title: 'Escuela Superior de Videojuegos y Arte Digital, Málaga', desc: 'Master’s in Game Design and Development, in progress.' },
+        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova, Málaga', desc: 'Higher Technician in Multiplatform Application Development (DAM).' }
       ]
     },
     footer: { location: 'Málaga, Spain' },
@@ -120,7 +122,7 @@ const UI = {
     contactBand: { label: 'Let’s talk', hint: 'Click to copy the email' },
     toast: { copied: 'EMAIL COPIED TO CLIPBOARD', failed: 'Could not copy — ' },
     placeholder: { pending: 'Image pending — replace' },
-    featured: { label: 'Featured project', view: 'View full project', trailer: '▶ Alpha Gameplay · September', role: 'My role' },
+    featured: { label: 'Featured project', view: 'View full project', trailer: '▶ Gameplay Alpha 09/26', role: 'My role' },
     page404: {
       code: '404',
       title: 'This page got lost on its way to the Global Jam.',

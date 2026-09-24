@@ -653,12 +653,12 @@ if (langToggle) {
    Pulsar «Portfolio 2026» baraja los colores de los bloques dentro de la paleta.
    Reglas: bloques que se tocan nunca repiten color y el texto siempre contrasta. */
 const POSTER_INK = {
-  pink: ['#ec6ea0', '#17140f'], olive: ['#5b6b1a', '#f2ede2'], cream: ['#f2ede2', '#17140f'],
+  pink: ['#ec6ea0', '#17140f'], olive: ['#a4be5c', '#17140f'], cream: ['#f2ede2', '#17140f'],
   charcoal: ['#1d1b17', '#f2ede2'], ink: ['#17140f', '#f2ede2'], deep: ['#cf4e86', '#f2ede2']
 };
 const POSTER_SETS = {
   dark: { blocks: ['pink', 'olive', 'cream', 'charcoal'], dots: ['#ec6ea0', '#f2ede2'] },
-  light: { blocks: ['ink', 'olive', 'cream', 'deep'], dots: ['#17140f', '#f2ede2', '#5b6b1a'] }
+  light: { blocks: ['ink', 'olive', 'cream', 'deep'], dots: ['#17140f', '#f2ede2', '#a4be5c'] }
 };
 // Vecinos en la cuadrícula del póster (a = JOSE, c = ARE, d = NAS, e = texto, f = espiral)
 const POSTER_NEIGHBOURS = [['a', 'c'], ['a', 'd'], ['c', 'd'], ['c', 'e'], ['d', 'e'], ['e', 'f']];
@@ -695,7 +695,8 @@ function reprintPoster() {
   vars['--pe-bg'] = eBg;
   vars['--pe-fg'] = eFg;
   // El rol va en color de acento: rosa sobre oscuros, oliva sobre crema, negro sobre rosas
-  vars['--pe-accent'] = pick.e === 'cream' ? '#5b6b1a' : (pick.e === 'pink' || pick.e === 'deep') ? '#17140f' : '#ec6ea0';
+  // El rol va en rosa sobre los fondos oscuros y en negro sobre los claros
+  vars['--pe-accent'] = (pick.e === 'charcoal' || pick.e === 'ink') ? '#ec6ea0' : '#17140f';
   vars['--dot'] = shuffled(set.dots)[0];
   Object.entries(vars).forEach(([k, v]) => poster.style.setProperty(k, v));
   poster.classList.remove('is-reprinting');

@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* OLIVA: prueba temporal #5b6b1a (oscura #48541a).
-   La ORIGINAL era #4a5320 (oscura #3d431c): buscar y reemplazar para volver. */
+/* VERDE: pistacho claro #a4be5c (oscuro #8aa446), con texto NEGRO encima.
+   Historial: oliva original #4a5320 / #3d431c → prueba #5b6b1a / #48541a → pistacho.
+   Volver a la oliva no es solo cambiar el color: también el texto encima (negro → crema). */
 :root {
   --bg: #ec6ea0;
   --bg-soft: #f082ae;
   --text: #17140f;
   --text-soft: #3a3530;
   --card: #f2ede2;
-  --card-text: #5b6b1a;
+  --card-text: #17140f;
   --sidebar-icon: #f2ede2;
   --sidebar-icon-line: #17140f;
   --border: #17140f;
-  --accent: #5b6b1a;
+  --accent: #17140f;
   --link-underline: #17140f;
   --shadow: rgba(23, 20, 15, 0.25);
   --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -23,8 +24,8 @@ html[data-theme="dark"] {
   --bg-soft: #161611;
   --text: #ec6ea0;
   --text-soft: #f4a8c6;
-  --card: #48541a;
-  --card-text: #f2ede2;
+  --card: #8aa446;
+  --card-text: #17140f;
   --sidebar-icon: #f2ede2;
   --sidebar-icon-line: #ec6ea0;
   --border: #ec6ea0;
@@ -248,15 +249,15 @@ section { padding: 90px 64px; position: relative; }
 :root {
   --d-body: #f2ede2;   /* lana, queso, cuerpo */
   --d-mass: #17140f;   /* caras, patas, zapatos */
-  --d-acc: #5b6b1a;    /* corteza, palo */
-  --d-ground: #5b6b1a; /* tierra del topo */
+  --d-acc: #a4be5c;    /* corteza, palo */
+  --d-ground: #a4be5c; /* tierra del topo */
   --d-pink: #c93f7c;   /* nariz, pepperoni, zarpas */
   --d-eye: #f2ede2;
   --d-ink: #17140f;
 }
 /* Baldosas (mismo sistema que los iconos de Offline Working Sheep) */
 :root {
-  --tile-olive: #5b6b1a;
+  --tile-olive: #7f9a3a;
   --tile-deep: #cf4e86;
   --tile-ink: #17140f;
   --tile-github: #24292f;
@@ -271,7 +272,7 @@ section { padding: 90px 64px; position: relative; }
 /* En oscuro la paleta se invierte: criaturas rosas, detalles negros, baldosas vino/oliva/carbón */
 html[data-theme="dark"] {
   --tile-olive: #5a2140;
-  --tile-deep: #48541a;
+  --tile-deep: #3f5226;
   --tile-ink: #2a2622;
   --tile-github: #24292f;
   --tile-linkedin: #0a66c2;
@@ -283,7 +284,7 @@ html[data-theme="dark"] {
 }
 html[data-theme="dark"] {
   --d-body: #ec6ea0;
-  --d-mass: #5b6b1a;
+  --d-mass: #3f5226;
   --d-acc: #f2ede2;
   --d-ground: #262a12;
   --d-pink: #f2ede2;
@@ -1030,14 +1031,14 @@ footer {
 :root {
   --pa-bg: #17140f; --pa-fg: #ec6ea0;
   --pc-bg: #f2ede2; --pc-fg: #17140f;
-  --pd-bg: #5b6b1a; --pd-fg: #f2ede2;
+  --pd-bg: #a4be5c; --pd-fg: #17140f;
   --pe-bg: #17140f; --pe-fg: #f2ede2; --pe-accent: #ec6ea0;
   --pf-bg: #f2ede2; --pf-fg: #17140f;
   --dot: #17140f;
 }
 html[data-theme="dark"] {
   --pa-bg: #ec6ea0; --pa-fg: #17140f;
-  --pc-bg: #5b6b1a; --pc-fg: #f2ede2;
+  --pc-bg: #a4be5c; --pc-fg: #17140f;
   --pd-bg: #f2ede2; --pd-fg: #17140f;
   --pe-bg: #1d1b17; --pe-fg: #f2ede2; --pe-accent: #ec6ea0;
   --pf-bg: #ec6ea0; --pf-fg: #17140f;
@@ -1168,7 +1169,7 @@ html[data-theme="dark"] {
    ===================================================================== */
 :root {
   --c0-bg: #17140f; --c0-fg: #f2ede2; --c0-soft: rgba(242, 237, 226, 0.75);
-  --c1-bg: #5b6b1a; --c1-fg: #f2ede2; --c1-soft: rgba(242, 237, 226, 0.78);
+  --c1-bg: #a4be5c; --c1-fg: #17140f; --c1-soft: rgba(23, 20, 15, 0.75);
   --c2-bg: #f2ede2; --c2-fg: #17140f; --c2-soft: rgba(23, 20, 15, 0.72);
   --sticker-bg: #17140f; --sticker-fg: #f2ede2;
 }
@@ -1479,3 +1480,13 @@ button.pb-vert { font-size: clamp(13px, 0.75vw, 24px); }
   button.pb-vert { display: none; }
   .swirl { width: 56px; }
 }
+
+
+/* Con el pistacho claro, lo que va encima de verde o de rosa va en negro */
+html[data-theme="dark"] .nav-icon.is-active .icon-box svg { stroke: #17140f; }
+html[data-theme="dark"] .pill-accent { color: #17140f; }
+
+/* Botón del CV más discreto */
+.cv-button { font-size: clamp(13px, 1.05vw, 28px); padding: 0.7em 1em; border-width: 2px; box-shadow: 5px 5px 0 var(--dot); }
+.cv-button:hover, .cv-button:focus-visible { box-shadow: 8px 8px 0 var(--dot); }
+@media (max-width: 860px) { .cv-button { font-size: 14px; } }

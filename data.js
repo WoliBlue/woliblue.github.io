@@ -40,6 +40,7 @@ const PROJECTS = {
         { name: 'Amanda Cascales Valentín', role: 'Unity' },
         { name: 'Carlos Cañizares', role: '3D' },
         { name: 'David Olofsson', role: '3D · Rigging · Animación' },
+        { name: 'David', role: '3D' },
         { name: 'Amir Daniel Domínguez El Qamch', role: '2D' },
         { name: 'Ernesto Miranda Ramos', role: '2D' }
       ],

@@ -38,7 +38,6 @@ const PROJECTS = {
         { name: 'Pepe Arenas Venegas', role: 'Game design · Unity' },
         { name: 'Sebastian Olaechea Gazzo', role: 'Unity' },
         { name: 'Amanda Cascales Valentín', role: 'Unity' },
-        { name: 'Carlos Cañizares', role: '3D' },
         { name: 'David Olofsson', role: '3D · Rigging · Animación' },
         { name: 'David Moreno Atienza', role: '3D' },
         { name: 'Amir Daniel Domínguez El Qamch', role: '2D' },

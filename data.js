@@ -40,8 +40,8 @@ const PROJECTS = {
         { name: 'Amanda Cascales Valentín', role: 'Unity' },
         { name: 'Carlos Cañizares', role: '3D' },
         { name: 'David Olofsson', role: '3D · Rigging · Animación' },
-        { name: 'Dani', role: '2D' },
-        { name: 'Ernesto', role: '2D' }
+        { name: 'Amir Daniel Domínguez El Qamch', role: '2D' },
+        { name: 'Ernesto Miranda Ramos', role: '2D' }
       ],
       es: {
         title: 'Tourist Trap',

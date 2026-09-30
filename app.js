@@ -90,6 +90,8 @@ function applyLang(lang) {
   });
 
   updateThemeLabel();
+  // El botón del CV descarga la versión del idioma activo
+  document.querySelectorAll('[data-cv]').forEach(a => { a.href = lang === 'en' ? 'cv-en.pdf' : 'cv-es.pdf'; });
   const reprintBtn = document.getElementById('reprint');
   if (reprintBtn) {
     reprintBtn.title = t(lang, 'hero.reprint');

@@ -1294,7 +1294,7 @@ html[data-theme="dark"] {
 
 
 /* Franja de contacto al final: bloque de póster con el correo en grande */
-section.contact-band {
+section.contact-band, .contact-page .contact-band {
   margin: 20px 64px 0;
   padding: clamp(28px, 4vw, 56px);
   background: var(--pa-bg);
@@ -1490,3 +1490,60 @@ html[data-theme="dark"] .pill-accent { color: #17140f; }
 .cv-button { font-size: clamp(13px, 1.05vw, 28px); padding: 0.7em 1em; border-width: 2px; box-shadow: 5px 5px 0 var(--dot); }
 .cv-button:hover, .cv-button:focus-visible { box-shadow: 8px 8px 0 var(--dot); }
 @media (max-width: 860px) { .cv-button { font-size: 14px; } }
+
+
+/* =====================================================================
+   Formulario de contacto (franja «¿Hablamos?»)
+   ===================================================================== */
+.cb-form {
+  margin-top: clamp(22px, 2.6vw, 36px);
+  display: flex; flex-direction: column; gap: 14px;
+  max-width: 900px;
+}
+.cb-form-title { margin: 0; font-family: 'Archivo Black', sans-serif; font-size: clamp(16px, 1.5vw, 26px); text-transform: uppercase; letter-spacing: 0.04em; }
+.cb-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cb-field { display: flex; flex-direction: column; gap: 6px; }
+.cb-field span { font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+.cb-field input, .cb-field select, .cb-field textarea {
+  font: inherit; font-size: 15px; font-weight: 500;
+  color: #17140f; background: #f2ede2;
+  border: 2px solid #17140f; border-radius: 0;
+  padding: 10px 12px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+  color-scheme: light;
+}
+.cb-field textarea { resize: vertical; min-height: 120px; }
+.cb-field input:focus, .cb-field select:focus, .cb-field textarea:focus { outline: 3px solid #17140f; outline-offset: 2px; }
+.cb-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.cb-send {
+  font-family: 'Archivo Black', sans-serif; font-size: clamp(13px, 1vw, 18px); text-transform: uppercase;
+  color: var(--pa-bg); background: var(--pa-fg); border: 2px solid var(--pa-fg);
+  padding: 0.9em 1.4em; cursor: pointer;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cb-send:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3); }
+.cb-note { margin: 0; font-size: 13px; font-weight: 600; opacity: 0.8; }
+.cb-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+@media (max-width: 640px) { .cb-row { grid-template-columns: 1fr; } }
+
+
+/* Botón bajo la franja «¿Hablamos?» */
+.cb-more-wrap { max-width: 1512px; margin: 18px auto 0; padding: 0 64px; display: flex; justify-content: flex-end; }
+.cb-more {
+  font-family: 'Archivo Black', sans-serif; font-size: clamp(14px, 1.1vw, 20px); text-transform: uppercase;
+  text-decoration: none; color: var(--text);
+  border: 2px solid var(--text); padding: 0.8em 1.2em;
+  box-shadow: 5px 5px 0 var(--text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cb-more:hover, .cb-more:focus-visible { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--text); }
+
+/* Página de contacto */
+.contact-page { padding-top: 56px; }
+.contact-page .contact-band { margin: 0; max-width: 1100px; }
+.cb-page-title { margin: 0 0 6px; font-family: 'Archivo Black', sans-serif; font-size: clamp(36px, 5vw, 80px); line-height: 1; }
+@media (max-width: 860px) {
+  .cb-more-wrap { padding: 0 26px; justify-content: stretch; }
+  .cb-more { flex: 1; text-align: center; }
+}

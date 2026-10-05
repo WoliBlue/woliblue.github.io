@@ -15,6 +15,7 @@ const CONTACT = {
 function fillContact() {
   document.querySelectorAll('[data-copy-email]').forEach(el => el.setAttribute('data-copy', CONTACT.email));
   document.querySelectorAll('[data-email-text]').forEach(el => { el.textContent = CONTACT.email; });
+  document.querySelectorAll('form[data-formsubmit]').forEach(f => { f.action = 'https://formsubmit.co/' + CONTACT.email; });
   document.querySelectorAll('[data-phone]').forEach(function (a) {
     a.href = 'tel:' + CONTACT.phone.join('');
     a.textContent = CONTACT.phone.join(' ');
@@ -784,7 +785,16 @@ if (document.fonts) document.fonts.ready.then(snapPosterLabel);
   }, { passive: true });
 })();
 
+/* ============ Aviso tras enviar el formulario (FormSubmit vuelve con ?enviado=1) ============ */
+function checkFormSent() {
+  const params = new URLSearchParams(location.search);
+  if (!params.has('enviado')) return;
+  showToast(t(currentLang, 'toast.sent'));
+  history.replaceState(null, '', location.pathname + location.hash);
+}
+
 /* ============ Arranque ============ */
 applyLang(currentLang);
 initNavPath();
+checkFormSent();
 snapPosterLabel();

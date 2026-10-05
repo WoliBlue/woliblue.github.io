@@ -6,20 +6,12 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0c0c0a">
-<title>Proyecto — Jose Arenas</title>
+<title>Contacto — Jose Arenas</title>
+<meta name="description" content="Contacta con Jose Arenas, programador de Unity y Game Designer.">
 
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jose Arenas — Portfolio">
-<meta property="og:description" content="Programador de Unity y Game Designer. Juegos, proyectos y CV.">
-<meta property="og:image" content="https://woliblue.github.io/assets/img/og-image.png?v=2">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Jose Arenas — Portfolio">
-<meta name="twitter:description" content="Programador de Unity y Game Designer. Juegos, proyectos y CV.">
-<meta name="twitter:image" content="https://woliblue.github.io/assets/img/og-image.png?v=2">
 
 <link rel="stylesheet" href="style.css?v=3194c44a">
 </head>
@@ -61,8 +53,39 @@
 
   <!-- ===== Main ===== -->
   <div class="main">
-    <section id="project-detail" class="detail-section">
-      <!-- Contenido generado por app.js a partir de data.js -->
+    <section class="contact-page">
+      <a class="back-link" href="index.html#contacto" data-i18n="contactForm.back">← Volver al portfolio</a>
+      <div class="contact-band">
+        <p class="cb-label" data-i18n="contactForm.kicker">Contacto</p>
+        <h1 class="cb-page-title" data-i18n="contactForm.title">Escríbeme</h1>
+        <p class="cb-hint" data-i18n="contactForm.intro">Cuéntame qué necesitas y te respondo al correo que me dejes.</p>
+      <!-- El action lo pone app.js con el correo (así no aparece en el HTML para los bots) -->
+      <form class="cb-form" method="POST" data-formsubmit>
+                <input type="hidden" name="_subject" value="[Portfolio] Nuevo mensaje desde woliblue.github.io">
+        <input type="hidden" name="Origen" value="Portfolio personal · woliblue.github.io">
+        <input type="hidden" name="_next" value="https://woliblue.github.io/contacto.html?enviado=1">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" class="cb-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="cb-row">
+          <label class="cb-field"><span data-i18n="contactForm.name">Nombre</span><input type="text" name="nombre" required maxlength="80" autocomplete="name"></label>
+          <label class="cb-field"><span data-i18n="contactForm.email">Correo</span><input type="email" name="email" required maxlength="120" autocomplete="email"></label>
+        </div>
+        <label class="cb-field"><span data-i18n="contactForm.reason">Motivo</span>
+          <select name="motivo" required>
+            <option value="" disabled selected data-i18n="contactForm.pick">Elige uno…</option>
+            <option value="Oferta de trabajo" data-i18n="contactForm.job">Oferta de trabajo</option>
+            <option value="Colaboración / proyecto" data-i18n="contactForm.collab">Colaboración / proyecto</option>
+            <option value="Game jam" data-i18n="contactForm.jam">Game jam</option>
+            <option value="Otro" data-i18n="contactForm.other">Otro</option>
+          </select>
+        </label>
+        <label class="cb-field"><span data-i18n="contactForm.message">Mensaje</span><textarea name="mensaje" rows="5" required maxlength="3000"></textarea></label>
+        <div class="cb-actions">
+          <button type="submit" class="cb-send" data-i18n="contactForm.send">Enviar mensaje</button>
+          <p class="cb-note" data-i18n="contactForm.note">Solo usaré tus datos para responderte.</p>
+        </div>
+      </form>
+      </div>
     </section>
 
     <footer>

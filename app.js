@@ -793,6 +793,24 @@ function checkFormSent() {
   history.replaceState(null, '', location.pathname + location.hash);
 }
 
+/* ============ Validación del correo del formulario ============ */
+(function initEmailCheck() {
+  const input = document.querySelector('[data-email-check]');
+  if (!input) return;
+  const err = input.form.querySelector('.cb-error');
+  function check(show) {
+    const bad = input.value.trim() !== '' && (input.validity.typeMismatch || input.validity.patternMismatch);
+    input.setCustomValidity(bad ? t(currentLang, 'contactForm.badEmail') : '');
+    if (show && err) err.hidden = !bad;
+  }
+  input.addEventListener('input', () => check(!err.hidden));
+  input.addEventListener('blur', () => check(true));
+  input.form.addEventListener('submit', function (e) {
+    check(true);
+    if (!input.form.checkValidity()) { e.preventDefault(); input.form.reportValidity(); }
+  });
+})();
+
 /* ============ Arranque ============ */
 applyLang(currentLang);
 initNavPath();

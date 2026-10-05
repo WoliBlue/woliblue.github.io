@@ -1547,3 +1547,7 @@ html[data-theme="dark"] .pill-accent { color: #17140f; }
   .cb-more-wrap { padding: 0 26px; justify-content: stretch; }
   .cb-more { flex: 1; text-align: center; }
 }
+
+/* Campos mal rellenados (al salir del campo o al intentar enviar) */
+.cb-field input:user-invalid, .cb-field select:user-invalid, .cb-field textarea:user-invalid { border-color: #c4122f; box-shadow: 4px 4px 0 #c4122f; }
+.cb-error { margin: 0; font-weight: 800; font-size: 14px; color: #17140f; background: #f2ede2; border: 2px solid #c4122f; padding: 8px 12px; align-self: flex-start; }

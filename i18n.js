@@ -55,7 +55,7 @@ const UI = {
       notFoundBack: '← Volver al portfolio'
     },
     contactBand: { label: '¿Hablamos?', hint: 'Pulsa para copiar el correo' },
-    contactForm: { cta: 'O contáctame por aquí', kicker: 'Contacto', title: 'Escríbeme', intro: 'Cuéntame qué necesitas y te respondo al correo que me dejes.', back: '← Volver al portfolio', name: 'Nombre', email: 'Correo', reason: 'Motivo', pick: 'Elige uno…', job: 'Oferta de trabajo', collab: 'Colaboración / proyecto', jam: 'Game jam', other: 'Otro', message: 'Mensaje', send: 'Enviar mensaje', note: 'Solo usaré tus datos para responderte.' },
+    contactForm: { cta: 'O contáctame por aquí', kicker: 'Contacto', title: 'Escríbeme', intro: 'Cuéntame qué necesitas y te respondo al correo que me dejes.', back: '← Volver al portfolio', name: 'Nombre', email: 'Correo', reason: 'Motivo', pick: 'Elige uno…', job: 'Oferta de trabajo', collab: 'Colaboración / proyecto', jam: 'Game jam', other: 'Otro', message: 'Mensaje', send: 'Enviar mensaje', note: 'Solo usaré tus datos para responderte.', badEmail: 'Escribe un correo válido, por ejemplo nombre@dominio.com' },
     toast: { copied: 'CORREO COPIADO AL PORTAPAPELES', failed: 'No se pudo copiar — ', sent: '¡MENSAJE ENVIADO! TE RESPONDO PRONTO' },
     placeholder: { pending: 'Imagen pendiente — sustituye' },
     featured: { label: 'Proyecto destacado', view: 'Ver ficha completa', trailer: '▶ Gameplay Alpha 09/26', role: 'Mi papel' },
@@ -121,7 +121,7 @@ const UI = {
       notFoundBack: '← Back to portfolio'
     },
     contactBand: { label: 'Let’s talk', hint: 'Click to copy the email' },
-    contactForm: { cta: 'Or contact me here', kicker: 'Contact', title: 'Write to me', intro: 'Tell me what you need and I’ll reply to the email you leave.', back: '← Back to the portfolio', name: 'Name', email: 'Email', reason: 'Reason', pick: 'Choose one…', job: 'Job offer', collab: 'Collaboration / project', jam: 'Game jam', other: 'Other', message: 'Message', send: 'Send message', note: 'I’ll only use your details to reply.' },
+    contactForm: { cta: 'Or contact me here', kicker: 'Contact', title: 'Write to me', intro: 'Tell me what you need and I’ll reply to the email you leave.', back: '← Back to the portfolio', name: 'Name', email: 'Email', reason: 'Reason', pick: 'Choose one…', job: 'Job offer', collab: 'Collaboration / project', jam: 'Game jam', other: 'Other', message: 'Message', send: 'Send message', note: 'I’ll only use your details to reply.', badEmail: 'Enter a valid email, e.g. name@domain.com' },
     toast: { copied: 'EMAIL COPIED TO CLIPBOARD', failed: 'Could not copy — ', sent: 'MESSAGE SENT! I’LL GET BACK TO YOU SOON' },
     placeholder: { pending: 'Image pending — replace' },
     featured: { label: 'Featured project', view: 'View full project', trailer: '▶ Gameplay Alpha 09/26', role: 'My role' },

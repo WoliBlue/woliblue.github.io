@@ -8,6 +8,7 @@ const UI = {
     hero: {
       eyebrow: 'Portfolio 2026',
       role: 'PROGRAMADOR DE UNITY & GAME DESIGNER',
+      contactBtn: 'Contacto',
       lede: 'Programador de Unity y Game Designer en Málaga, con formación de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).',
       cv: 'Descargar CV',
       reprint: 'Reimprimir el póster',
@@ -45,6 +46,8 @@ const UI = {
     footer: { location: 'Málaga, España' },
     detail: {
       back: '← Volver al portfolio',
+      backGames: '← Volver a Juegos',
+      backOther: '← Volver a Proyectos',
       role: 'Qué hice',
       howToPlay: 'Cómo se juega',
       credits: 'Créditos',
@@ -74,6 +77,7 @@ const UI = {
     hero: {
       eyebrow: 'Portfolio 2026',
       role: 'UNITY PROGRAMMER & GAME DESIGNER',
+      contactBtn: 'Contact',
       lede: 'Unity Programmer and Game Designer based in Málaga, Spain, with a Higher Technician degree in Multiplatform Application Development (DAM).',
       cv: 'Download CV',
       reprint: 'Reprint the poster',
@@ -111,6 +115,8 @@ const UI = {
     footer: { location: 'Málaga, Spain' },
     detail: {
       back: '← Back to portfolio',
+      backGames: '← Back to Games',
+      backOther: '← Back to Projects',
       role: 'What I did',
       howToPlay: 'How to play',
       credits: 'Credits',

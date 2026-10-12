@@ -14,17 +14,21 @@ const PROJECTS = {
       featured: true,
       cover: { type: 'image', src: 'assets/img/tourist-trap/keyart.jpg' },
       logo: 'assets/img/tourist-trap/logo.png',
+      external: { url: 'https://yalosegames.github.io/' },
       video: { src: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
       gallery: [
         { video: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
+        { video: 'assets/video/tourist-trap-gameplay-horizontal.mp4', poster: 'assets/img/tourist-trap/gameplay-horizontal-poster.jpg' },
+        { video: 'assets/video/tourist-trap-gameplay-vertical.mp4', poster: 'assets/img/tourist-trap/gameplay-vertical-poster.jpg' },
         'assets/img/tourist-trap/beach-aerial.jpg',
         'assets/img/tourist-trap/chiringuito.jpg',
         'assets/img/tourist-trap/prep-phase.jpg',
         'assets/img/tourist-trap/service.jpg',
-        'assets/img/tourist-trap/minigame-oven.jpg',
-        'assets/img/tourist-trap/minigame-pan.jpg',
-        'assets/img/tourist-trap/minigame-tomato.jpg',
-        'assets/img/tourist-trap/minigame-espetos.jpg',
+        'assets/img/tourist-trap/anim-servicio-en-sala.webp',
+        'assets/img/tourist-trap/anim-horno.webp',
+        'assets/img/tourist-trap/anim-minijuego-sarten.webp',
+        'assets/img/tourist-trap/anim-minijuego-tomate.webp',
+        'assets/img/tourist-trap/anim-espetos.webp',
         { video: 'assets/video/tourist-trap-results.mp4', poster: 'assets/img/tourist-trap/results-anim-poster.jpg' },
         'assets/img/tourist-trap/results.jpg',
         'assets/img/tourist-trap/beach-characters.jpg',
@@ -46,6 +50,7 @@ const PROJECTS = {
       es: {
         title: 'Tourist Trap',
         badge: 'TFM · YaloséGames',
+        external: { label: 'Web de YaloséGames' },
         alt: 'Arte principal de Tourist Trap',
         summary: 'Simulador de Cocina Tycoon: lleva tu propio chiringuito andaluz, cocina a base de minijuegos y sobrevive a los clientes hambrientos.',
         highlights: [
@@ -54,17 +59,14 @@ const PROJECTS = {
           'Eventos caóticos: gaviotas, incendios, tsunamis…'
         ],
         description: [
-          'Compras un «Rasca y gana» en la gasolinera y te toca… un chiringuito. Mala suerte: era un «Rasca y paga». El chiringuito está en ruinas, viene con deuda y tu tío Rogelio Chiringelio sueña con verlo algún día en las 5 estrellas.',
-          'Cada día se divide en tres fases. En la preparación compras mejoras y colocas el mobiliario desde el móvil; en el servicio tomas comandas, cocinas y sirves en tiempo real antes de que se agote la paciencia de los clientes; y al cierre recibes una nota de la F a la A que sube o baja tu reputación.',
-          'Cada estación de cocina es un minijuego: secuencias de flechas en la sartén, pulsar en el momento justo en el horno, machacar botones en la tabla de cortar o vigilar la espetera para que no se queme nada. Todo mientras las gaviotas lo llenan todo de «regalitos», se incendia la cocina o aparecen clientes como Karen, Poseidón o tres gaviotas dentro de una gabardina.',
-          'Es el Trabajo Fin de Máster del estudio YaloséGames (en desarrollo empezó llamándose «Guiri’s Trap»). El MVP se presentó en septiembre de 2026; la hoja de ruta incluye expansión del chiringuito, cámara libre, cinemáticas, más narrativa y multijugador.'
+          'Te toca un chiringuito en un «Rasca y gana»… con deuda incluida. Tu misión: levantarlo hasta las 5 estrellas.',
+          'Cada día preparas el local, cocinas en tiempo real con minijuegos (sartén, horno, tabla de cortar y espetos) y sobrevives a gaviotas, incendios y clientes imposibles. Al cierre, una nota sube o baja tu reputación.',
+          'Trabajo Fin de Máster del estudio YaloséGames. MVP presentado en septiembre de 2026.'
         ],
         role: [
           'Game design y programación de gameplay en Unity',
-          'Minijuegos de cocina y sistema de clientes',
-          'Eventos y hazards (sí, la caca de gaviota)',
-          'Diseño de nivel y escenario de pruebas',
-          'Iluminación, sonido en escenas y animaciones'
+          'Minijuegos de cocina, clientes y eventos',
+          'Diseño de nivel, iluminación y sonido'
         ],
         tags: ['Unity', 'Management', 'Cooking', 'TFM'],
         meta: [
@@ -75,17 +77,11 @@ const PROJECTS = {
           { label: 'Estado', value: 'MVP · septiembre 2026' },
           { label: 'Motor', value: 'Unity' }
         ],
-        controls: [
-          'WASD / Stick izquierdo — moverse (8 direcciones)',
-          'Shift / Botón oeste — sprint',
-          'E / Botón sur — interactuar',
-          'Flechas / Cruceta — minijuego de la sartén',
-          'Ratón — gestión del mobiliario'
-        ]
       },
       en: {
         title: 'Tourist Trap',
         badge: 'Master’s thesis · YaloséGames',
+        external: { label: 'YaloséGames website' },
         alt: 'Tourist Trap key art',
         summary: 'Cooking Tycoon sim: run your own Andalusian beach bar, cook through minigames and survive the hungry customers.',
         highlights: [
@@ -94,17 +90,14 @@ const PROJECTS = {
           'Chaotic events: seagulls, fires, tsunamis…'
         ],
         description: [
-          'You buy a scratch card at the gas station and win… a beach bar. Bad luck: it was a “scratch and pay”. The chiringuito is falling apart, comes with debt, and your uncle Rogelio Chiringelio dreams of seeing it reach 5 stars one day.',
-          'Every day has three phases. In preparation you buy upgrades and arrange furniture from your phone; during service you take orders, cook and serve in real time before customers run out of patience; and at closing you get an F-to-A grade that raises or lowers your reputation.',
-          'Every kitchen station is a minigame: arrow sequences on the frying pan, perfect timing on the oven, button-mashing on the cutting board, or keeping an eye on the espeto grill so nothing burns. All while seagulls leave “gifts” everywhere, the kitchen catches fire, or customers like Karen, Poseidon or three seagulls in a trench coat walk in.',
-          'It’s the master’s thesis project of the YaloséGames studio (it started out as “Guiri’s Trap”). The MVP was presented in September 2026; the roadmap includes bar expansion, free camera, cutscenes, more narrative and multiplayer.'
+          'You win a beach bar on a scratch card… debt included. Your mission: take it all the way to 5 stars.',
+          'Each day you set up the bar, cook in real time through minigames (frying pan, oven, chopping board and espetos) and survive seagulls, fires and impossible customers. At closing, a grade raises or lowers your reputation.',
+          'Master’s thesis project of the YaloséGames studio. MVP presented in September 2026.'
         ],
         role: [
           'Game design and gameplay programming in Unity',
-          'Cooking minigames and customer system',
-          'Events and hazards (yes, the seagull poop)',
-          'Level design and test scene',
-          'Lighting, in-scene audio and animations'
+          'Cooking minigames, customers and events',
+          'Level design, lighting and sound'
         ],
         tags: ['Unity', 'Management', 'Cooking', 'Master’s thesis'],
         meta: [
@@ -115,13 +108,6 @@ const PROJECTS = {
           { label: 'Status', value: 'MVP · September 2026' },
           { label: 'Engine', value: 'Unity' }
         ],
-        controls: [
-          'WASD / Left stick — move (8 directions)',
-          'Shift / West button — sprint',
-          'E / South button — interact',
-          'Arrows / D-pad — frying pan minigame',
-          'Mouse — furniture management'
-        ]
       }
     },
     {
@@ -407,7 +393,7 @@ const PROJECTS = {
     {
       slug: 'chatdefenderxp',
       font: 'Courier Prime',
-      cover: { type: 'image', src: 'assets/img/chatdefenderxp/menu.jpg' },
+      cover: { type: 'image', src: 'assets/img/chatdefenderxp/cover.jpg' },
       gallery: [
         'assets/img/chatdefenderxp/menu.jpg',
         'assets/img/chatdefenderxp/wave-hud.jpg',
@@ -421,7 +407,7 @@ const PROJECTS = {
       ],
       es: {
         title: 'ChatDefender XP',
-        alt: 'Menú principal de ChatDefenderXP',
+        alt: 'Portada de ChatDefender XP: un troll enorme hecho de bloques rojos avanza por la cinta transportadora',
         summary: 'Tu blog de gatitos está siendo atacado por trolls. Defiéndelo de todo lo que no sea un gato en un internet con estética de Windows XP.',
         description: [
           'WordPressing regala a sus blogueros una herramienta de defensa y tú eres ella: ChatJanitor, la conserje de BlogGatitosLuna2004.wordpressing.blog. El escenario es un trozo de internet de la era dorada, con estética de Windows XP y del Buscaminas.',
@@ -449,7 +435,7 @@ const PROJECTS = {
       },
       en: {
         title: 'ChatDefenderXP',
-        alt: 'ChatDefenderXP main menu',
+        alt: 'ChatDefender XP cover: a huge troll made of red blocks advances along the conveyor belt',
         summary: 'Your kitten blog is under troll attack. Defend it from everything that isn’t a cat, in a Windows XP–era internet.',
         description: [
           'WordPressing gives its bloggers a free defense tool, and you are it: ChatJanitor, the caretaker of BlogGatitosLuna2004.wordpressing.blog. The stage is a chunk of golden-age internet, styled after Windows XP and Minesweeper.',

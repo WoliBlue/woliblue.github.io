@@ -1456,3 +1456,10 @@ html[data-theme="dark"] .pill-accent { color: #17140f; }
 
 /* Vuelta desde un proyecto: su tarjeta se queda marcada unos segundos */
 .card.is-selected, .featured.is-selected { outline: 4px solid var(--accent); outline-offset: 8px; }
+
+/* Portada: un poco de dither de fondo (fondo-dither.js), detrás del nombre, el rol y los botones */
+.hero.hero-simple { position: relative; overflow: hidden; }
+.hero-simple > .hero-dither { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+
+/* Ficha de Offline Working Sheep: la oveja en 3D con paleta + dither (oveja-dither.js). La luz sigue al ratón */
+.oveja-dither { display: block; width: 100%; aspect-ratio: 1; margin-top: 12px; }

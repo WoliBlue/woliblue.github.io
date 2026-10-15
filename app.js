@@ -500,6 +500,7 @@ function renderDetail(lang) {
         ${metaHtml}
         <div class="detail-external">${externalHtml}</div>
         ${PROJECT_ILLUSTRATION[item.slug] ? decoMarkup(PROJECT_ILLUSTRATION[item.slug], 'deco-side') : ''}
+        ${item.slug === 'offline-working-sheep' ? '<canvas class="oveja-dither" aria-hidden="true"></canvas>' : ''}
       </div>
     </div>
   `;

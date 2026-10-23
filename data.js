@@ -327,7 +327,7 @@ const PROJECTS = {
       ],
       es: {
         title: 'Offline Working Sheep',
-        alt: 'Portada de Offline Working Sheep, con los iconos del pollo y la oveja de las aplicaciones del juego',
+        alt: 'Portada de Offline Working Sheep, con los iconos del pollo y la cabra de las aplicaciones del juego',
         summary: 'Te echas una siesta en el trabajo y, al despertar, las ovejas-robot de tu empresa se han rebelado. Eres el único en la oficina, así que te toca escapar.',
         description: [
           'Te echas una siesta en el descanso del almuerzo y, al despertar, tu ordenador está lleno de notificaciones: las Ovejabots que fabrica tu empresa se han sublevado. Eres el único que sigue trabajando en presencial (por vivir lo bastante cerca), así que te toca escapar.',
@@ -359,7 +359,7 @@ const PROJECTS = {
       },
       en: {
         title: 'Offline Working Sheep',
-        alt: 'Offline Working Sheep cover, with the chicken and sheep app icons from the game',
+        alt: 'Offline Working Sheep cover, with the chicken and goat app icons from the game',
         summary: 'You nap through your lunch break and wake up to find your company’s robot sheep have rebelled. You’re the only one in the office, so it’s on you to escape.',
         description: [
           'You take a nap during your lunch break and wake up to a computer full of notifications: the Sheepbots your company builds have risen up. You’re the only one still working on-site (because you live close enough), so it’s on you to escape.',

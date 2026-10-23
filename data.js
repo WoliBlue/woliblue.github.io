@@ -18,7 +18,7 @@ const PROJECTS = {
       video: { src: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
       gallery: [
         { video: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
-        { video: 'assets/video/tourist-trap-gameplay-horizontal.mp4', poster: 'assets/img/tourist-trap/gameplay-horizontal-poster.jpg' },
+        { video: 'assets/video/tourist-trap-gameplay-alpha-16-10.mp4', poster: 'assets/img/tourist-trap/gameplay-alpha-16-10-poster.jpg' },
         { video: 'assets/video/tourist-trap-gameplay-vertical.mp4', poster: 'assets/img/tourist-trap/gameplay-vertical-poster.jpg' },
         'assets/img/tourist-trap/beach-aerial.jpg',
         'assets/img/tourist-trap/chiringuito.jpg',

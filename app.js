@@ -437,7 +437,10 @@ function renderDetail(lang) {
   currentGallery = (item.gallery || []).map(normalizeMedia);
 
   const tags = (d.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
-  const desc = (d.description || []).map(p => `<p>${p}</p>`).join('');
+  const starsHtml = item.stars
+    ? `<div class="detail-stars" aria-hidden="true">${'<img src="assets/img/tourist-trap/deco/estrella.webp" alt="" loading="lazy">'.repeat(item.stars)}</div>`
+    : '';
+  const desc = (d.description || []).map((p, i) => `<p>${p}</p>${i === 0 ? starsHtml : ''}`).join('');
 
   const metaHtml = (d.meta && d.meta.length)
     ? `<div class="detail-meta">${d.meta.map(m => `<div><span class="meta-label">${m.label}</span><span class="meta-value">${m.value}</span></div>`).join('')}</div>`
@@ -456,6 +459,14 @@ function renderDetail(lang) {
           return `<button type="button" class="gallery-thumb${m.type === 'video' ? ' is-video' : ''}" data-gallery-index="${i}"><img src="${thumbSrc}" alt="${d.title} — ${i + 1}" loading="lazy">${playBadge}</button>`;
         }).join('')
       }</div></div>`
+    : '';
+
+  const castHtml = (item.cast && item.cast.length)
+    ? `<div class="detail-block"><h4>${t(lang, 'detail.cast')}</h4><ul class="cast-grid">${item.cast.map(c => `<li><img src="${c.img}" alt="${c[lang].alt}" loading="lazy"><span>${c[lang].name}</span></li>`).join('')}</ul></div>`
+    : '';
+
+  const menuHtml = (item.menu && item.menu.length)
+    ? `<div class="detail-block"><h4>${t(lang, 'detail.menu')}</h4><ul class="menu-grid">${item.menu.map(m => `<li><img src="${m.img}" alt="" loading="lazy"><span>${m[lang]}</span></li>`).join('')}</ul></div>`
     : '';
 
   const controlsHtml = (d.controls && d.controls.length)
@@ -495,6 +506,8 @@ function renderDetail(lang) {
         ${desc}
         ${roleHtml}
         ${galleryHtml}
+        ${castHtml}
+        ${menuHtml}
         ${controlsHtml}
         ${creditsHtml}
       </div>

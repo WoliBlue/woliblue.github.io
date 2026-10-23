@@ -3,6 +3,7 @@
  * gallery: lista de imágenes (string) o vídeos ({ video, poster }). Vacía o ausente = sin galería.
  * featured: true = se muestra como tarjeta grande arriba del todo en Juegos (solo uno).
  * video: vídeo que sustituye a la portada en la página de detalle.
+ * stars / cast / menu: adornos de la ficha (estrellas, personajes y platos con su imagen); ver app.js → renderDetail.
  */
 
 const PROJECTS = {
@@ -16,6 +17,25 @@ const PROJECTS = {
       logo: 'assets/img/tourist-trap/logo.png',
       external: { url: 'https://yalosegames.github.io/' },
       video: { src: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
+      stars: 5,
+      cast: [
+        { img: 'assets/img/tourist-trap/deco/personaje-curro.webp', es: { name: 'Curro', alt: 'Curro, el cocinero' }, en: { name: 'Curro', alt: 'Curro, the cook' } },
+        { img: 'assets/img/tourist-trap/deco/personaje-rogelio.webp', es: { name: 'Rogelio', alt: 'Rogelio, con su bastón' }, en: { name: 'Rogelio', alt: 'Rogelio, with his walking stick' } }
+      ],
+      menu: [
+        { img: 'assets/img/tourist-trap/deco/plato-boquerones.webp', es: 'Boquerones', en: 'Fried anchovies' },
+        { img: 'assets/img/tourist-trap/deco/plato-calamares.webp', es: 'Calamares', en: 'Calamari' },
+        { img: 'assets/img/tourist-trap/deco/plato-paella.webp', es: 'Paella', en: 'Paella' },
+        { img: 'assets/img/tourist-trap/deco/plato-gazpacho.webp', es: 'Gazpacho', en: 'Gazpacho' },
+        { img: 'assets/img/tourist-trap/deco/plato-patatas-bravas.webp', es: 'Patatas bravas', en: 'Patatas bravas' },
+        { img: 'assets/img/tourist-trap/deco/plato-pinchitos.webp', es: 'Pinchitos', en: 'Pinchitos' },
+        { img: 'assets/img/tourist-trap/deco/plato-tomate.webp', es: 'Tomate aliñado', en: 'Tomato salad' },
+        { img: 'assets/img/tourist-trap/deco/plato-berenjenas.webp', es: 'Berenjenas', en: 'Fried aubergine' },
+        { img: 'assets/img/tourist-trap/deco/plato-chanquetes.webp', es: 'Chanquetes', en: 'Fried whitebait' },
+        { img: 'assets/img/tourist-trap/deco/plato-ensalada.webp', es: 'Ensalada', en: 'Salad' },
+        { img: 'assets/img/tourist-trap/deco/plato-lenguado.webp', es: 'Lenguado', en: 'Sole' },
+        { img: 'assets/img/tourist-trap/deco/plato-lubina.webp', es: 'Lubina', en: 'Sea bass' }
+      ],
       gallery: [
         { video: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
         { video: 'assets/video/tourist-trap-gameplay-alpha-16-10.mp4', poster: 'assets/img/tourist-trap/gameplay-alpha-16-10-poster.jpg' },

@@ -529,72 +529,11 @@ const PROJECTS = {
 
   other: [
     {
-      slug: 'restaurantos',
-      wide: true,
-      font: 'Nunito',
-      cover: { type: 'image', src: 'assets/img/restaurantos-cover.svg' },
-      external: { url: 'https://www.figma.com/slides/7IyBX59VYXxiaZ1q9LT5nX/RestaurantOS--Presentaci%C3%B3n-TFG-?node-id=1-266' },
-      repo: 'https://github.com/imadhanaty/TFG_restaurantOS',
-      credits: [
-        { name: 'José Arenas', role: 'UI/UX · Android' },
-        { name: 'Imad Hanaty', role: 'Business logic' },
-        { name: 'Sergio Suárez', role: 'Database' },
-        { name: 'Luis Herencia', role: 'Lead & programming' }
-      ],
-      es: {
-        title: 'RestaurantOS',
-        badge: 'TFG · Medac Nova',
-        alt: 'Logo de RestaurantOS',
-        summary: 'App Android de pedidos y reservas para restaurantes, sin comisiones ni dependencia de plataformas de terceros.',
-        description: [
-          'Muchos restaurantes dependen de plataformas de reparto de terceros para recibir pedidos, lo que implica comisiones altas y poca personalización. Eso reduce sus beneficios y limita su relación directa con el cliente.',
-          'RestaurantOS ofrece una aplicación propia para cada restaurante: sin comisiones, fácil de usar y personalizable. El cliente navega el menú, guarda favoritos, gestiona el carrito y paga; el restaurante tiene un panel de administración con los pedidos pendientes y completados.',
-          'Es una app Android nativa en Java, con Firebase para autenticación y base de datos y Stripe para los pagos.'
-        ],
-        role: [
-          'Diseño UI/UX de toda la app',
-          'Implementación en Android (Java) de login, registro y recuperar contraseña',
-          'Pantallas de inicio, menú, carrito, favoritos, perfil y compra',
-          'Navegación principal'
-        ],
-        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'TFG'],
-        meta: [
-          { label: 'Entrega', value: 'Junio 2025' },
-          { label: 'Plataforma', value: 'Android' },
-          { label: 'Tecnología', value: 'Java · Firebase · Stripe' }
-        ],
-        external: { label: 'Ver presentación en Figma' }
-      },
-      en: {
-        title: 'RestaurantOS',
-        badge: 'Capstone · Medac Nova',
-        alt: 'RestaurantOS logo',
-        summary: 'An Android ordering and booking app for restaurants, with no commissions and no dependency on third-party platforms.',
-        description: [
-          'Many restaurants depend on third-party delivery platforms to receive orders, which means high commissions and little room for personalization. That cuts into their margins and limits their direct relationship with customers.',
-          'RestaurantOS gives each restaurant its own app: no commissions, easy to use and customizable. Customers browse the menu, save favorites, manage their cart and pay; the restaurant gets an admin panel with pending and completed orders.',
-          'It’s a native Android app in Java, using Firebase for authentication and data and Stripe for payments.'
-        ],
-        role: [
-          'UI/UX design of the whole app',
-          'Android (Java) implementation of login, sign-up and password recovery',
-          'Home, menu, cart, favorites, profile and checkout screens',
-          'Main navigation'
-        ],
-        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'Capstone'],
-        meta: [
-          { label: 'Delivered', value: 'June 2025' },
-          { label: 'Platform', value: 'Android' },
-          { label: 'Tech', value: 'Java · Firebase · Stripe' }
-        ],
-        external: { label: 'View presentation on Figma' }
-      }
-    },
-    {
       slug: 'marbellatrad',
       font: 'Source Serif 4',
-      cover: { type: 'image', src: 'assets/img/marbellatrad/card.jpg' },
+      cover: { type: 'image', src: 'assets/img/marbellatrad/portada-logo.png' },
       gallery: [
+        'assets/img/marbellatrad/card.jpg',
         'assets/img/marbellatrad/inicio-pasos.jpg',
         'assets/img/marbellatrad/inicio-validez.jpg',
         'assets/img/marbellatrad/servicios.jpg',
@@ -612,13 +551,13 @@ const PROJECTS = {
         description: [
           'MarbellaTrad es el despacho de una traductora-intérprete jurada de inglés y español en Marbella. Su web necesitaba explicar con claridad qué es una traducción jurada, cómo se pide y cuánto se tarda, y facilitar el contacto por WhatsApp o en la oficina.',
           'Rediseñé la web completa: portada con los cuatro pasos del trámite, qué documentos se traducen, qué incluye una traducción jurada, preguntas frecuentes, servicios, quiénes somos, contacto y blog, con versión de escritorio y de móvil. Elegí una paleta azul marino y papel cálido, tipografía Source Serif 4 con Inter, y bordes y sombras finos para que transmita seriedad sin frialdad.',
-          'El diseño está hecho en FigCraft y está aplicado en la web de WordPress (tema Astra y editor de bloques). Además dejé revisados los textos en español e inglés y una guía paso a paso para montar las páginas.'
+          'El diseño está hecho en FigCraft y está aplicado en la web de WordPress (tema Astra y editor de bloques). Además dejé revisados los textos en español e inglés.'
         ],
         role: [
           'Diseño UI de la web: 7 maquetas (inicio en escritorio y móvil, servicios, contacto, quiénes somos, blog y artículo)',
           'Sistema visual: paleta, tipografía, componentes y rejilla',
           'Revisión de los textos de la web en español e inglés, a partir de los de 2024',
-          'Bloques y hoja de estilos para WordPress, y guía para aplicarlos'
+          'Bloques y hoja de estilos para WordPress.'
         ],
         tags: ['Diseño web', 'UI/UX', 'WordPress', 'FigCraft', 'Bilingüe'],
         meta: [
@@ -658,10 +597,11 @@ const PROJECTS = {
     {
       slug: 'yalosegames-web',
       font: 'Lilita One',
-      cover: { type: 'image', src: 'assets/img/yalosegames/card.jpg' },
+      cover: { type: 'image', src: 'assets/img/yalosegames/portada-logo.png' },
       external: { url: 'https://yalosegames.github.io/' },
       repo: 'https://github.com/YaloseGames/yalosegames.github.io',
       gallery: [
+        'assets/img/yalosegames/card.jpg',
         'assets/img/yalosegames/tourist-trap.jpg',
         'assets/img/yalosegames/historia-personajes.jpg',
         'assets/img/yalosegames/quienes-somos.jpg',
@@ -675,7 +615,7 @@ const PROJECTS = {
         summary: 'La web del estudio indie YaloséGames y de Tourist Trap: un chiringuito dibujado a mano, en HTML y CSS, bilingüe y con modo noche.',
         description: [
           'Web del estudio indie YaloséGames (Málaga) y de su primer juego, Tourist Trap. Tiene portada, página del juego con la historia y los personajes, quiénes somos, contacto con kit de prensa, blog y una página 404 con el Capitán Guirilencia.',
-          'El diseño sale del propio juego: toldo de rayas, azulejo andaluz, nubes y un sol que cambia a luna. Todo lleva contorno grueso chocolate y sombra dura, como las letras del logo. Está documentado en una ficha de sistema de diseño (paleta como variables, tipografías Lilita One e Inter, reglas de componentes).',
+          'El diseño sale de los propios assets del juego: toldo de rayas, azulejo andaluz, nubes y un sol que cambia a luna. Todo lleva contorno grueso chocolate y sombra dura, como las letras del logo.',
           'Es HTML y CSS, sin JavaScript (salvo el visor del libro de arte): el modo día/noche funciona con un truco de CSS, y un script de Python genera la versión en inglés a partir de las páginas en español. Se publica con GitHub Pages, que también construye el blog (Jekyll). Los logos e ilustraciones son del equipo de arte del estudio.'
         ],
         role: [
@@ -683,7 +623,7 @@ const PROJECTS = {
           'Sistema de diseño: paleta, tipografía y componentes, con su documentación',
           'Modo día/noche solo con CSS',
           'Versión en español e inglés con un script de traducción de páginas',
-          'Blog con GitHub Pages y visor «flipbook» del libro de arte de Tourist Trap (29 páginas)'
+          'Blog con GitHub Pages y visor «flipbook» del libro de arte de Tourist Trap'
         ],
         tags: ['Diseño web', 'HTML', 'CSS', 'GitHub Pages', 'Bilingüe'],
         meta: [
@@ -862,6 +802,68 @@ const PROJECTS = {
           'Crank — volume or scrub through the song',
           'Menu — shuffle, visualizer and D-pad action'
         ]
+      }
+    },
+    {
+      slug: 'restaurantos',
+      wide: true,
+      font: 'Nunito',
+      cover: { type: 'image', src: 'assets/img/restaurantos-cover.svg' },
+      external: { url: 'https://www.figma.com/slides/7IyBX59VYXxiaZ1q9LT5nX/RestaurantOS--Presentaci%C3%B3n-TFG-?node-id=1-266' },
+      repo: 'https://github.com/imadhanaty/TFG_restaurantOS',
+      credits: [
+        { name: 'José Arenas', role: 'UI/UX · Android' },
+        { name: 'Imad Hanaty', role: 'Business logic' },
+        { name: 'Sergio Suárez', role: 'Database' },
+        { name: 'Luis Herencia', role: 'Lead & programming' }
+      ],
+      es: {
+        title: 'RestaurantOS',
+        badge: 'TFG · Medac Nova',
+        alt: 'Logo de RestaurantOS',
+        summary: 'App Android de pedidos y reservas para restaurantes, sin comisiones ni dependencia de plataformas de terceros.',
+        description: [
+          'Muchos restaurantes dependen de plataformas de reparto de terceros para recibir pedidos, lo que implica comisiones altas y poca personalización. Eso reduce sus beneficios y limita su relación directa con el cliente.',
+          'RestaurantOS ofrece una aplicación propia para cada restaurante: sin comisiones, fácil de usar y personalizable. El cliente navega el menú, guarda favoritos, gestiona el carrito y paga; el restaurante tiene un panel de administración con los pedidos pendientes y completados.',
+          'Es una app Android nativa en Java, con Firebase para autenticación y base de datos y Stripe para los pagos.'
+        ],
+        role: [
+          'Diseño UI/UX de toda la app',
+          'Implementación en Android (Java) de login, registro y recuperar contraseña',
+          'Pantallas de inicio, menú, carrito, favoritos, perfil y compra',
+          'Navegación principal'
+        ],
+        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'TFG'],
+        meta: [
+          { label: 'Entrega', value: 'Junio 2025' },
+          { label: 'Plataforma', value: 'Android' },
+          { label: 'Tecnología', value: 'Java · Firebase · Stripe' }
+        ],
+        external: { label: 'Ver presentación en Figma' }
+      },
+      en: {
+        title: 'RestaurantOS',
+        badge: 'Capstone · Medac Nova',
+        alt: 'RestaurantOS logo',
+        summary: 'An Android ordering and booking app for restaurants, with no commissions and no dependency on third-party platforms.',
+        description: [
+          'Many restaurants depend on third-party delivery platforms to receive orders, which means high commissions and little room for personalization. That cuts into their margins and limits their direct relationship with customers.',
+          'RestaurantOS gives each restaurant its own app: no commissions, easy to use and customizable. Customers browse the menu, save favorites, manage their cart and pay; the restaurant gets an admin panel with pending and completed orders.',
+          'It’s a native Android app in Java, using Firebase for authentication and data and Stripe for payments.'
+        ],
+        role: [
+          'UI/UX design of the whole app',
+          'Android (Java) implementation of login, sign-up and password recovery',
+          'Home, menu, cart, favorites, profile and checkout screens',
+          'Main navigation'
+        ],
+        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'Capstone'],
+        meta: [
+          { label: 'Delivered', value: 'June 2025' },
+          { label: 'Platform', value: 'Android' },
+          { label: 'Tech', value: 'Java · Firebase · Stripe' }
+        ],
+        external: { label: 'View presentation on Figma' }
       }
     }
   ]

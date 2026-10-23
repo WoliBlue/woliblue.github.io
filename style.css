@@ -1158,8 +1158,11 @@ html[data-theme="dark"] {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: radial-gradient(var(--text) 30%, transparent 32%);
-  background-size: 12px 12px;
+  /* Los puntos se anclan a la esquina inferior derecha y la celda mide lo mismo que el desplazamiento de la tarjeta (8px):
+     la franja visible lleva siempre una fila de puntos enteros, sea cual sea el tamaño de la tarjeta */
+  background-image: radial-gradient(circle, var(--text) 2.2px, transparent 2.8px);
+  background-size: 8px 8px;
+  background-position: 100% 100%;
   opacity: 0;
   transition: opacity 0.2s ease;
 }

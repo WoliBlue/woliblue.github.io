@@ -465,7 +465,7 @@ const PROJECTS = {
     {
       slug: 'dig-me-out',
       font: 'Press Start 2P',
-      cover: { type: 'image', src: 'assets/img/dig-me-out/cover.jpg' },
+      cover: { type: 'image', src: 'assets/img/dig-me-out/hub.jpg' },
       gallery: [
         'assets/img/dig-me-out/hub.jpg',
         'assets/img/dig-me-out/menu.jpg',

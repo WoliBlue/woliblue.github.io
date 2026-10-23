@@ -591,6 +591,137 @@ const PROJECTS = {
       }
     },
     {
+      slug: 'marbellatrad',
+      font: 'Source Serif 4',
+      cover: { type: 'image', src: 'assets/img/marbellatrad/card.jpg' },
+      gallery: [
+        'assets/img/marbellatrad/inicio-pasos.jpg',
+        'assets/img/marbellatrad/inicio-validez.jpg',
+        'assets/img/marbellatrad/servicios.jpg',
+        'assets/img/marbellatrad/quienes-somos.jpg',
+        'assets/img/marbellatrad/contacto.jpg',
+        'assets/img/marbellatrad/blog.jpg',
+        'assets/img/marbellatrad/movil.jpg'
+      ],
+      external: { url: 'https://www.marbellatrad.es/' },
+      es: {
+        title: 'MarbellaTrad',
+        badge: 'Rediseño web',
+        alt: 'Portada del rediseño de la web de MarbellaTrad, traducciones juradas inglés-español en Marbella',
+        summary: 'Rediseño de la web de una traductora-intérprete jurada de Marbella: más clara, con los pasos del trámite a la vista y pensada para el móvil.',
+        description: [
+          'MarbellaTrad es el despacho de una traductora-intérprete jurada de inglés y español en Marbella. Su web necesitaba explicar con claridad qué es una traducción jurada, cómo se pide y cuánto se tarda, y facilitar el contacto por WhatsApp o en la oficina.',
+          'Rediseñé la web completa: portada con los cuatro pasos del trámite, qué documentos se traducen, qué incluye una traducción jurada, preguntas frecuentes, servicios, quiénes somos, contacto y blog, con versión de escritorio y de móvil. Elegí una paleta azul marino y papel cálido, tipografía Source Serif 4 con Inter, y bordes y sombras finos para que transmita seriedad sin frialdad.',
+          'El diseño está hecho en FigCraft y está aplicado en la web de WordPress (tema Astra y editor de bloques). Además dejé revisados los textos en español e inglés y una guía paso a paso para montar las páginas.'
+        ],
+        role: [
+          'Diseño UI de la web: 7 maquetas (inicio en escritorio y móvil, servicios, contacto, quiénes somos, blog y artículo)',
+          'Sistema visual: paleta, tipografía, componentes y rejilla',
+          'Revisión de los textos de la web en español e inglés, a partir de los de 2024',
+          'Bloques y hoja de estilos para WordPress, y guía para aplicarlos'
+        ],
+        tags: ['Diseño web', 'UI/UX', 'WordPress', 'FigCraft', 'Bilingüe'],
+        meta: [
+          { label: 'Fecha', value: 'Octubre 2026' },
+          { label: 'Para', value: 'MarbellaTrad, Marbella' },
+          { label: 'Plataforma', value: 'WordPress · Astra' },
+          { label: 'Estado', value: 'Publicada' }
+        ],
+        external: { label: 'Ver la web de MarbellaTrad' }
+      },
+      en: {
+        title: 'MarbellaTrad',
+        badge: 'Web redesign',
+        alt: 'Home page of the MarbellaTrad website redesign, English-Spanish sworn translations in Marbella',
+        summary: 'Redesign of the website of a sworn translator-interpreter in Marbella: clearer, with the steps of the process in plain view and built for mobile.',
+        description: [
+          'MarbellaTrad is the office of a sworn English–Spanish translator-interpreter in Marbella. Its website needed to explain clearly what a sworn translation is, how to request one and how long it takes, and to make contact easy by WhatsApp or in person.',
+          'I redesigned the whole site: a home page with the four steps of the process, the documents they translate, what a sworn translation includes, FAQs, services, about, contact and a blog, in desktop and mobile versions. I chose a navy and warm paper palette, Source Serif 4 with Inter, and thin borders and shadows so it feels serious without feeling cold.',
+          'The design is built in FigCraft and applied on top of the existing WordPress site (Astra theme and block editor). I also revised the copy in Spanish and English and wrote a step-by-step guide to build the pages.'
+        ],
+        role: [
+          'Web UI design: 7 mockups (home on desktop and mobile, services, contact, about, blog and article)',
+          'Visual system: palette, typography, components and grid',
+          'Revising the site copy in Spanish and English, from the 2024 texts',
+          'WordPress blocks and stylesheet, plus a guide to apply them'
+        ],
+        tags: ['Web design', 'UI/UX', 'WordPress', 'FigCraft', 'Bilingual'],
+        meta: [
+          { label: 'Date', value: 'October 2026' },
+          { label: 'For', value: 'MarbellaTrad, Marbella' },
+          { label: 'Platform', value: 'WordPress · Astra' },
+          { label: 'Status', value: 'Live' }
+        ],
+        external: { label: 'Visit the MarbellaTrad website' }
+      }
+    },
+    {
+      slug: 'yalosegames-web',
+      font: 'Lilita One',
+      cover: { type: 'image', src: 'assets/img/yalosegames/card.jpg' },
+      external: { url: 'https://yalosegames.github.io/' },
+      repo: 'https://github.com/YaloseGames/yalosegames.github.io',
+      gallery: [
+        'assets/img/yalosegames/tourist-trap.jpg',
+        'assets/img/yalosegames/historia-personajes.jpg',
+        'assets/img/yalosegames/quienes-somos.jpg',
+        'assets/img/yalosegames/contacto.jpg',
+        'assets/img/yalosegames/ingles.jpg'
+      ],
+      es: {
+        title: 'Web de YaloséGames',
+        badge: 'Web · Estudio',
+        alt: 'Portada de la web de YaloséGames: logo del estudio y una imagen de Tourist Trap',
+        summary: 'La web del estudio indie YaloséGames y de Tourist Trap: un chiringuito dibujado a mano, en HTML y CSS, bilingüe y con modo noche.',
+        description: [
+          'Web del estudio indie YaloséGames (Málaga) y de su primer juego, Tourist Trap. Tiene portada, página del juego con la historia y los personajes, quiénes somos, contacto con kit de prensa, blog y una página 404 con el Capitán Guirilencia.',
+          'El diseño sale del propio juego: toldo de rayas, azulejo andaluz, nubes y un sol que cambia a luna. Todo lleva contorno grueso chocolate y sombra dura, como las letras del logo. Está documentado en una ficha de sistema de diseño (paleta como variables, tipografías Lilita One e Inter, reglas de componentes).',
+          'Es HTML y CSS, sin JavaScript (salvo el visor del libro de arte): el modo día/noche funciona con un truco de CSS, y un script de Python genera la versión en inglés a partir de las páginas en español. Se publica con GitHub Pages, que también construye el blog (Jekyll). Los logos e ilustraciones son del equipo de arte del estudio.'
+        ],
+        role: [
+          'Diseño y maquetación de la web (HTML y CSS)',
+          'Sistema de diseño: paleta, tipografía y componentes, con su documentación',
+          'Modo día/noche solo con CSS',
+          'Versión en español e inglés con un script de traducción de páginas',
+          'Blog con GitHub Pages y visor «flipbook» del libro de arte de Tourist Trap (29 páginas)'
+        ],
+        tags: ['Diseño web', 'HTML', 'CSS', 'GitHub Pages', 'Bilingüe'],
+        meta: [
+          { label: 'Fecha', value: 'Septiembre-octubre 2026' },
+          { label: 'Estudio', value: 'YaloséGames, Málaga' },
+          { label: 'Tecnología', value: 'HTML · CSS · GitHub Pages' },
+          { label: 'Estado', value: 'Publicada' }
+        ],
+        external: { label: 'Ver la web' }
+      },
+      en: {
+        title: 'YaloséGames website',
+        badge: 'Web · Studio',
+        alt: 'Home page of the YaloséGames website: the studio logo and an image from Tourist Trap',
+        summary: 'The website of the indie studio YaloséGames and of Tourist Trap: a hand-drawn beach bar in plain HTML and CSS, bilingual and with a night mode.',
+        description: [
+          'Website of the indie studio YaloséGames (Málaga) and its first game, Tourist Trap. It has a home page, a game page with the story and characters, an about page, a contact page with a press kit, a blog and a 404 page with Captain Guirilencia.',
+          'The design comes from the game itself: striped awning, Andalusian tiles, clouds and a sun that turns into a moon. Everything has a thick chocolate outline and a hard shadow, like the logo lettering. It is documented in a design system sheet (palette as variables, Lilita One and Inter typefaces, component rules).',
+          'It is plain HTML and CSS with no JavaScript (except the art-book viewer): day/night mode works with a CSS trick, and a Python script generates the English version from the Spanish pages. It is published with GitHub Pages, which also builds the blog (Jekyll). The logos and illustrations are by the studio’s art team.'
+        ],
+        role: [
+          'Design and layout of the website (HTML and CSS)',
+          'Design system: palette, typography and components, with its documentation',
+          'Day/night mode with CSS only',
+          'Spanish and English versions with a page-translation script',
+          'Blog on GitHub Pages and a “flipbook” viewer for the Tourist Trap art book (29 pages)'
+        ],
+        tags: ['Web design', 'HTML', 'CSS', 'GitHub Pages', 'Bilingual'],
+        meta: [
+          { label: 'Date', value: 'September–October 2026' },
+          { label: 'Studio', value: 'YaloséGames, Málaga' },
+          { label: 'Tech', value: 'HTML · CSS · GitHub Pages' },
+          { label: 'Status', value: 'Live' }
+        ],
+        external: { label: 'Visit the website' }
+      }
+    },
+    {
       slug: 'memorias-de-un-maestro',
       font: 'Playfair Display',
       cover: { type: 'image', src: 'assets/img/book/card.jpg' },

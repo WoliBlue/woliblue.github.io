@@ -306,6 +306,8 @@ const TITLE_FONTS = {
   'Press Start 2P': 'Press+Start+2P',
   'Nunito': 'Nunito:wght@900',
   'Playfair Display': 'Playfair+Display:wght@800',
+  'Source Serif 4': 'Source+Serif+4:wght@700',
+  'Lilita One': 'Lilita+One',
   'Space Mono': 'Space+Mono:wght@700'
 };
 

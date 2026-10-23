@@ -309,7 +309,7 @@ const PROJECTS = {
     {
       slug: 'offline-working-sheep',
       font: 'Space Grotesk',
-      cover: { type: 'image', src: 'assets/img/ows/menu.jpg' },
+      cover: { type: 'image', src: 'assets/img/ows/cover.jpg' },
       gallery: [
         'assets/img/ows/menu.jpg',
         'assets/img/ows/alert-room.jpg',
@@ -465,7 +465,7 @@ const PROJECTS = {
     {
       slug: 'dig-me-out',
       font: 'Press Start 2P',
-      cover: { type: 'image', src: 'assets/img/dig-me-out/hub.jpg' },
+      cover: { type: 'image', src: 'assets/img/dig-me-out/cover.jpg' },
       gallery: [
         'assets/img/dig-me-out/hub.jpg',
         'assets/img/dig-me-out/menu.jpg',

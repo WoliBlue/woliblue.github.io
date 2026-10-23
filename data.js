@@ -327,7 +327,7 @@ const PROJECTS = {
       ],
       es: {
         title: 'Offline Working Sheep',
-        alt: 'Menú principal de Offline Working Sheep dentro de la oficina',
+        alt: 'Portada de Offline Working Sheep, con los iconos del pollo y la oveja de las aplicaciones del juego',
         summary: 'Te echas una siesta en el trabajo y, al despertar, las ovejas-robot de tu empresa se han rebelado. Eres el único en la oficina, así que te toca escapar.',
         description: [
           'Te echas una siesta en el descanso del almuerzo y, al despertar, tu ordenador está lleno de notificaciones: las Ovejabots que fabrica tu empresa se han sublevado. Eres el único que sigue trabajando en presencial (por vivir lo bastante cerca), así que te toca escapar.',
@@ -359,7 +359,7 @@ const PROJECTS = {
       },
       en: {
         title: 'Offline Working Sheep',
-        alt: 'Offline Working Sheep main menu inside the office',
+        alt: 'Offline Working Sheep cover, with the chicken and sheep app icons from the game',
         summary: 'You nap through your lunch break and wake up to find your company’s robot sheep have rebelled. You’re the only one in the office, so it’s on you to escape.',
         description: [
           'You take a nap during your lunch break and wake up to a computer full of notifications: the Sheepbots your company builds have risen up. You’re the only one still working on-site (because you live close enough), so it’s on you to escape.',
@@ -465,7 +465,7 @@ const PROJECTS = {
     {
       slug: 'dig-me-out',
       font: 'Press Start 2P',
-      cover: { type: 'image', src: 'assets/img/dig-me-out/hub.jpg' },
+      cover: { type: 'image', src: 'assets/img/dig-me-out/cover.jpg' },
       gallery: [
         'assets/img/dig-me-out/hub.jpg',
         'assets/img/dig-me-out/menu.jpg',
@@ -480,7 +480,7 @@ const PROJECTS = {
       ],
       es: {
         title: 'Dig Me Out!',
-        alt: 'Hub de Dig Me Out! dentro de la mina',
+        alt: 'Logo de Dig Me Out! y la minera protagonista saltando sobre el suelo del juego',
         summary: 'Una minera atrapada bajo tierra. Corre, salta y haz parry para pagar tu deuda… que no para de crecer.',
         description: [
           'La protagonista solo picaba minerales fáciles cerca de la superficie, hasta que un derrumbe la deja muy bajo tierra. Xeferías, un jefazo con un corazón aún más grande, le ofrece ayuda para volver arriba… a cambio de trabajar para él y pagar el billete de vuelta.',
@@ -503,7 +503,7 @@ const PROJECTS = {
       },
       en: {
         title: 'Dig Me Out!',
-        alt: 'Dig Me Out! hub inside the mine',
+        alt: 'Dig Me Out! logo and the miner protagonist jumping over the game ground',
         summary: 'A miner trapped underground. Run, jump and parry to pay off your debt… which keeps growing.',
         description: [
           'The protagonist only ever mined the easy stuff near the surface, until a cave-in leaves her deep underground. Xeferías, a big boss with an even bigger heart, offers to help her get back up… in exchange for working for him and paying for the ticket out.',

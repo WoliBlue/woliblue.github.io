@@ -16,7 +16,7 @@ const PROJECTS = {
       cover: { type: 'image', src: 'assets/img/tourist-trap/keyart.jpg' },
       logo: 'assets/img/tourist-trap/logo.png',
       external: { url: 'https://yalosegames.github.io/' },
-      video: { src: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
+      video: { src: 'assets/video/tourist-trap-gameplay-hito-05-11.mp4', poster: 'assets/img/tourist-trap/gameplay-hito-05-11-poster.jpg' },
       stars: 5,
       cast: [
         { img: 'assets/img/tourist-trap/deco/personaje-curro.webp', es: { name: 'Curro', alt: 'Curro, el cocinero' }, en: { name: 'Curro', alt: 'Curro, the cook' } },
@@ -38,7 +38,7 @@ const PROJECTS = {
       ],
       gallery: [
         { video: 'assets/video/tourist-trap-trailer.mp4', poster: 'assets/img/tourist-trap/title-screen.jpg' },
-        { video: 'assets/video/tourist-trap-gameplay-alpha-16-10.mp4', poster: 'assets/img/tourist-trap/gameplay-alpha-16-10-poster.jpg' },
+        { video: 'assets/video/tourist-trap-gameplay-hito-05-11.mp4', poster: 'assets/img/tourist-trap/gameplay-hito-05-11-poster.jpg' },
         { video: 'assets/video/tourist-trap-gameplay-vertical.mp4', poster: 'assets/img/tourist-trap/gameplay-vertical-poster.jpg' },
         'assets/img/tourist-trap/beach-aerial.jpg',
         'assets/img/tourist-trap/chiringuito.jpg',

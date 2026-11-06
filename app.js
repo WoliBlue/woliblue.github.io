@@ -757,18 +757,11 @@ initNavPath();
 checkFormSent();
 selectFromBack();
 
-// Portada: la pantalla de Tourist Trap encadena los minigifs (data-clips) y se para con «reducir movimiento»
+// Portada: la pantalla de Tourist Trap (un vídeo en bucle) se para con «reducir movimiento»
 (function () {
   const v = document.querySelector('.hero-clip');
   if (!v) return;
-  const clips = v.dataset.clips.split(' ');
-  let i = 0;
   const mq = matchMedia('(prefers-reduced-motion: reduce)');
-  v.addEventListener('ended', () => {
-    i = (i + 1) % clips.length;
-    v.src = clips[i];
-    v.play().catch(() => {});
-  });
   const sync = () => { if (mq.matches) { v.pause(); } else { v.play().catch(() => {}); } };
   mq.addEventListener('change', sync);
   sync();

@@ -1,0 +1,522 @@
+/* =====================================================================
+   Blísters de Housegotchi (blister.js los dibuja): uno por juego.
+   El cartón lleva siempre el rótulo de Housegotchi y el logo del juego;
+   cada juego cambia el fondo y el color de detalle (.hgb-<slug>). Lo usan housegotchi.html
+   (paquete grande y caja de cacharros) y project.html (botón «Recoger»).
+   ===================================================================== */
+/* el rótulo de Housegotchi también fuera de housegotchi.html */
+@font-face {
+  font-family: 'Kuronuri 35';
+  src: url('assets/fonts/kuronuri/kuronuri-35-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+.hg-pack {
+  position: relative;
+  z-index: 3;
+  justify-self: center;
+  align-self: start;
+  width: min(600px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding-bottom: 32px;
+  transition: opacity 0.45s ease, translate 0.55s cubic-bezier(0.55, 0, 0.75, 0);
+}
+.hg-pack[hidden] { display: none; }
+.hg-pack-hueco { width: 100%; }
+.hg-pack-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+.hg-pack-card {
+  --raya: rgba(255, 46, 140, 0.16);
+  --chapa: #2fb4e8;
+  --pestaña: #ff2e8c;
+  position: relative;
+  width: 100%;
+  container-type: inline-size;
+  padding: 46px clamp(14px, 3.5%, 24px) 16px;
+  border: 3px solid #17140f;
+  border-radius: 22px;
+  background:
+    repeating-linear-gradient(135deg, var(--raya) 0 14px, transparent 14px 28px) top / 100% 46% no-repeat,
+    #f2ede2;
+  color: #17140f;
+  box-shadow: 9px 9px 0 #17140f;
+  text-align: center;
+  cursor: pointer;
+  rotate: -1.2deg;
+  transition: rotate 0.3s var(--spring), translate 0.3s var(--spring);
+}
+.hg-pack-card:hover { rotate: 0deg; translate: 0 -4px; }
+
+/* agujero para colgarlo en la tienda */
+.hg-pack-hole {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  width: 64px;
+  height: 16px;
+  translate: -50% 0;
+  border: 3px solid #17140f;
+  border-radius: 999px;
+  background: var(--bg);
+}
+
+
+.hg-pack-brand {
+  margin: 0;
+  font-family: 'Kuronuri 35', 'Archivo Black', sans-serif;
+  font-size: clamp(30px, 12cqw, 72px);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: #ff2e8c;
+  text-shadow: 3px 3px 0 #17140f;
+  -webkit-text-stroke: 1.5px #17140f;
+}
+.hg-pack-logo {
+  display: block;
+  width: auto;
+  max-width: 58%;
+  max-height: 15cqw;
+  margin: 6px auto 8px;
+  filter: drop-shadow(3px 3px 0 #17140f);
+  pointer-events: none;
+}
+
+/* bandeja: las piezas, y encima la burbuja de plástico. Las columnas miden
+   lo mismo en todos los blísteres; con pocas piezas, quedan centradas. */
+.hg-pack-tray { position: relative; padding: 10px; }
+.hg-pack-items {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column dense;
+  grid-auto-columns: 17cqw;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+.hg-pack-jumbo { grid-column: span 2; grid-row: span 2; }
+.hg-pack-largo { grid-row: span 2; }
+/* cada pieza lleva dentro su bichito quieto (primer fotograma del idle) */
+.hg-pack-piece { position: relative; display: block; container-type: inline-size; }
+.hg-pack-pj,
+.hg-pack-scr { position: absolute; z-index: 1; image-rendering: pixelated; background-repeat: no-repeat; }
+.hg-pack-pj {
+  left: 50%;
+  bottom: 39%;
+  width: calc(var(--fw) * 0.75cqw);
+  aspect-ratio: var(--fw) / var(--fh);
+  translate: -50% 0;
+  background-position: 0 0;
+  background-size: calc(var(--n) * 100%) 100%;
+}
+.hg-pack-pj-chef { --fw: 45; --fh: 44; --n: 2; background-image: url('assets/img/housegotchi/sprites/chef-idle.png'); }
+.hg-pack-pj-rogelio { --fw: 33; --fh: 35; --n: 2; background-image: url('assets/img/housegotchi/sprites/rogelio-idle.png'); }
+.hg-pack-pj-robot { --fw: 37; --fh: 36; --n: 2; background-image: url('assets/img/housegotchi/sprites/robot-idle.png'); }
+.hg-pack-pj-minera { --fw: 40; --fh: 36; --n: 2; background-image: url('assets/img/housegotchi/sprites/minera-idle.png'); }
+.hg-pack-pj-roni { --fw: 52; --fh: 38; --n: 2; background-image: url('assets/img/housegotchi/sprites/roni-idle.png'); }
+.hg-pack-pj-pina { --fw: 46; --fh: 42; --n: 2; background-image: url('assets/img/housegotchi/sprites/pina-idle.png'); }
+.hg-pack-pj-tendero { --fw: 38; --fh: 40; --n: 2; background-image: url('assets/img/housegotchi/sprites/tendero-idle.png'); }
+.hg-pack-pj-pastor { --fw: 40; --fh: 39; --n: 2; background-image: url('assets/img/housegotchi/sprites/pastor-idle.png'); }
+.hg-pack-pj-luna { --fw: 67; --fh: 49; --n: 3; bottom: auto; top: 43.7%; translate: -50% -50%; background-image: url('assets/img/housegotchi/sprites/luna-idle.png'); }
+.hg-pack-pj-gato { --fw: 44; --fh: 124; --n: 2; bottom: 23.8%; background-image: url('assets/img/housegotchi/sprites/gato-idle.png'); }
+.hg-pack-scr {
+  left: 9.57%;
+  top: 14.63%;
+  width: 80.87%;
+  height: 49.53%;
+  border-radius: 3cqw;
+  background: url('assets/img/housegotchi/escenas/chiringuito.png') 0 0 / 100% 100% no-repeat;
+}
+.hg-pack-scr-mina { background-image: url('assets/img/housegotchi/escenas/mina.png'); }
+.hg-pack-scr-arena { background-image: url('assets/img/housegotchi/escenas/arena.png'); }
+.hg-pack-scr-puesto { background-image: url('assets/img/housegotchi/escenas/puesto.png'); }
+/* las mismas carcasas teñidas que en la mesa (home.css) */
+.hgb-p-mina img { filter: hue-rotate(150deg) saturate(0.8) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-minera img { filter: hue-rotate(-35deg) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-arena img { filter: hue-rotate(35deg) saturate(1.1) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-puesto img { filter: hue-rotate(-60deg) saturate(0.85) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-roni img { filter: hue-rotate(18deg) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-pina img { filter: hue-rotate(-28deg) saturate(1.15) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-tendero img { filter: hue-rotate(155deg) saturate(0.7) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-pastor img { filter: hue-rotate(55deg) saturate(0.7) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-gato img { filter: hue-rotate(205deg) saturate(0.75) drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35)) !important; }
+.hgb-p-gato::after {
+  content: '';
+  position: absolute;
+  left: 9.56%;
+  width: 80.87%;
+  top: 7.58%;
+  height: 72.26%;
+  border-radius: 6cqw;
+  background: rgb(242, 232, 213);
+}
+.hg-pack-items img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 3px 0 rgba(23, 20, 15, 0.35));
+  user-select: none;
+}
+
+.hg-pack-bubble {
+  position: absolute;
+  inset: 0;
+  border: 2.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 26px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.12) 45%, rgba(255, 255, 255, 0.3));
+  box-shadow:
+    inset 0 0 0 7px rgba(255, 255, 255, 0.28),
+    inset 0 -10px 18px rgba(23, 20, 15, 0.1),
+    0 0 0 2px rgba(23, 20, 15, 0.25);
+  transform-origin: 100% 0;
+  transition: translate 0.7s cubic-bezier(0.5, 0, 0.75, 0), rotate 0.7s ease-in, opacity 0.5s ease 0.2s;
+}
+.hg-pack-shine {
+  position: absolute;
+  top: 8%;
+  left: 7%;
+  width: 26%;
+  height: 70%;
+  border-radius: 40%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 60%);
+  rotate: 20deg;
+  opacity: 0.55;
+}
+
+.hg-pack-list {
+  margin: 10px 0 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+.hg-pack-small {
+  margin: 4px 0 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.65;
+}
+.hg-pack-open { font-size: 16px; padding: 0.9em 1.8em; }
+
+/* abrir: tiembla, el plástico sale volando, el cartón cae */
+.hg-pack.is-tearing .hg-pack-card { animation: hg-shake 0.36s ease-in-out; }
+@keyframes hg-shake {
+  0%, 100% { translate: 0 0; rotate: -1.2deg; }
+  25% { translate: -4px 0; rotate: -2.6deg; }
+  50% { translate: 4px -2px; rotate: 0.6deg; }
+  75% { translate: -2px 0; rotate: -1.8deg; }
+}
+.hg-pack.is-open .hg-pack-bubble { translate: 70% -160%; rotate: 32deg; opacity: 0; }
+.hg-pack.is-gone { opacity: 0; translate: 0 70px; pointer-events: none; }
+
+/* ---------- cartones temáticos ---------- */
+/* Tourist Trap: toalla de playa rosa (el de siempre). */
+/* Offline Working Sheep: prado de rayas verdes y ovejitas-nube. */
+.hgb-offline-working-sheep {
+  --chapa: #fff;
+  --pestaña: #2fb4e8;
+  background:
+    radial-gradient(circle at 12% 14%, #fff 0 13px, transparent 14px),
+    radial-gradient(circle at 16% 11%, #fff 0 11px, transparent 12px),
+    radial-gradient(circle at 84% 34%, #fff 0 10px, transparent 11px),
+    radial-gradient(circle at 88% 31%, #fff 0 12px, transparent 13px),
+    repeating-linear-gradient(0deg, rgba(47, 180, 232, 0.26) 0 12px, transparent 12px 24px) top / 100% 46% no-repeat,
+    #eef0dc;
+}
+/* Dig Me Out!: tierra con piedritas y chapa de oro. */
+.hgb-dig-me-out {
+  --chapa: #f0c43a;
+  --pestaña: #d39a4e;
+  background:
+    radial-gradient(circle, rgba(105, 72, 40, 0.28) 0 3px, transparent 4px) 0 0 / 34px 30px,
+    radial-gradient(circle, rgba(105, 72, 40, 0.18) 0 2px, transparent 3px) 17px 15px / 34px 30px,
+    linear-gradient(#e3cfae, #e3cfae) top / 100% 46% no-repeat,
+    #f2ead9;
+}
+/* ChatDefender XP: escritorio azul con rayas de monitor viejo. */
+.hgb-chatdefenderxp {
+  --chapa: #6cc04a;
+  --pestaña: #7db4ef;
+  background:
+    repeating-linear-gradient(0deg, rgba(58, 110, 165, 0.16) 0 2px, transparent 2px 6px) top / 100% 46% no-repeat,
+    linear-gradient(#cfe0f7, #eaf2fc) top / 100% 46% no-repeat,
+    #eef3f9;
+}
+/* Pizza Kaisen: masa con pepperoni y chapa de tomate. */
+.hgb-pizza-kaisen {
+  --chapa: #e8573c;
+  --pestaña: #f2b04a;
+  background:
+    radial-gradient(circle, rgba(196, 58, 40, 0.30) 0 6px, transparent 7px) 0 0 / 46px 40px,
+    radial-gradient(circle, rgba(110, 140, 60, 0.30) 0 2px, transparent 3px) 23px 20px / 46px 40px,
+    linear-gradient(#f6d58f, #f6d58f) top / 100% 46% no-repeat,
+    #fbf0d6;
+}
+/* Figurines Please: mantel de cuadros y musgo del Belén. */
+.hgb-figurines-please {
+  --chapa: #f4d35e;
+  --pestaña: #7aa37a;
+  background:
+    repeating-linear-gradient(0deg, rgba(160, 52, 52, 0.16) 0 10px, transparent 10px 20px) top / 100% 46% no-repeat,
+    repeating-linear-gradient(90deg, rgba(160, 52, 52, 0.16) 0 10px, transparent 10px 20px) top / 100% 46% no-repeat,
+    radial-gradient(circle, rgba(90, 130, 80, 0.22) 0 2px, transparent 3px) 0 0 / 14px 12px,
+    #f3eedf;
+}
+
+@media (max-width: 560px) {
+  .hg-pack-card { padding-top: 40px; }
+  .hg-pack-brand { font-size: 34px; }
+  .hg-pack-items { grid-auto-columns: 19cqw; gap: 6px; }
+}
+
+/* =====================================================================
+   Caja de cacharros (housegotchi.html): caja de cartón abierta con los
+   blísters de pie dentro, como discos en una caja. Asoma la parte de
+   arriba de cada uno; los que faltan son huecos con su pista.
+   ===================================================================== */
+.hg-caja {
+  --kraft: #c99a5b;
+  position: relative;
+  width: min(820px, 100%);
+  margin: 6px auto 34px;
+  padding-top: 22px;
+}
+.hg-caja-titulo {
+  margin: 0 0 6px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--fg, #f2ede2);
+  opacity: 0.8;
+}
+/* las solapas de atrás, abiertas */
+.hg-caja::before,
+.hg-caja::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  width: 34%;
+  height: 60px;
+  border: 3px solid #17140f;
+  background: #b5864b;
+  z-index: 0;
+}
+.hg-caja::before { left: 2%; transform: skewX(-24deg); transform-origin: 0 100%; border-radius: 6px 4px 0 0; }
+.hg-caja::after { right: 2%; transform: skewX(24deg); transform-origin: 100% 100%; border-radius: 4px 6px 0 0; }
+
+.hg-caja-dentro {
+  position: relative;
+  z-index: 1;
+  /* Una columna por blíster; housegotchi.js ajusta --zm para que cada
+     miniatura mida justo lo que su columna (sin pisarse con la de al lado). */
+  --cols: 6;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 150px));
+  justify-content: center;
+  align-items: end;
+  column-gap: clamp(6px, 1.6vw, 16px);
+  padding: 30px 6% 0;
+  height: 150px;
+  background: #3a2a18;
+  border: 3px solid #17140f;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  margin: 0 4%;
+}
+.hg-caja-slot {
+  position: relative;
+  min-width: 0;
+  height: 120px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  translate: 0 0;
+  transition: translate 0.25s steps(3, end);
+}
+.hg-caja-slot:hover,
+.hg-caja-slot:focus-visible { translate: 0 -18px; }
+.hg-caja-slot:focus-visible { outline: none; }
+.hg-caja-slot:focus-visible .hg-caja-mini { outline: 3px solid #ff2e8c; outline-offset: 4px; border-radius: 6px; }
+/* el blíster entero, en pequeño (mide 600px y se ve a un cuarto) */
+.hg-caja-mini {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 600px;
+  zoom: var(--zm, 0.25);
+  translate: -50% 0;
+  pointer-events: none;
+}
+.hg-caja-mini .hg-pack-card { rotate: 0deg; transition: none; box-shadow: 6px 6px 0 #17140f; }
+/* abierto: las piezas están en la mesa y el plástico vacío */
+.hg-caja-slot.is-fuera .hg-pack-items { visibility: hidden; }
+.hg-caja-slot.is-fuera .hg-pack-bubble { opacity: 0.35; border-style: dashed; }
+.hg-caja-estado {
+  position: absolute;
+  left: 50%;
+  top: -26px;
+  translate: -50% 0;
+  z-index: 3;
+  padding: 1px 6px;
+  border: 2px solid #17140f;
+  border-radius: 999px;
+  background: #f2ede2;
+  color: #17140f;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.hg-caja-slot.is-nuevo .hg-caja-estado { background: #2fb4e8; animation: hg-tab 1.8s steps(2, end) infinite; }
+@keyframes hg-tab { 0%, 70%, 100% { translate: 0 0; } 80% { translate: 3px -4px; } 90% { translate: 0 0; } }
+.hg-caja-slot.is-fuera .hg-caja-estado { background: #ff2e8c; }
+/* hueco: el blíster aún no está; te dice dónde recogerlo */
+.hg-caja-hueco {
+  position: relative;
+  min-width: 0;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: 6px 6px 0;
+  overflow: hidden;
+  border: 3px dashed rgba(242, 237, 226, 0.45);
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  color: #f2ede2;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.15;
+  transition: translate 0.25s steps(3, end);
+}
+.hg-caja-hueco b { font-family: 'Archivo Black', sans-serif; font-size: 16px; line-height: 1; opacity: 0.7; }
+.hg-caja-hueco:hover, .hg-caja-hueco:focus-visible { translate: 0 -10px; border-color: #ff2e8c; }
+
+/* el frente de la caja: cartón con su rotulador y su cinta */
+.hg-caja-frente {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 104px;
+  margin-top: -52px;
+  border: 3px solid #17140f;
+  border-radius: 4px 4px 10px 10px;
+  background:
+    repeating-linear-gradient(90deg, rgba(23, 20, 15, 0.07) 0 2px, transparent 2px 7px),
+    var(--kraft);
+  box-shadow: 9px 9px 0 #17140f;
+  pointer-events: none;
+}
+.hg-caja-frente::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 90px;
+  height: 46px;
+  translate: -50% 0;
+  background: rgba(240, 226, 190, 0.7);
+  border-left: 2px dashed rgba(23, 20, 15, 0.25);
+  border-right: 2px dashed rgba(23, 20, 15, 0.25);
+}
+.hg-caja-rotulo {
+  position: relative;
+  margin: 18px 0 0;
+  font-family: 'Kuronuri 35', 'Archivo Black', sans-serif;
+  font-size: clamp(26px, 4.6vw, 40px);
+  line-height: 1;
+  color: #17140f;
+  letter-spacing: 0.04em;
+  rotate: -2deg;
+}
+.hg-caja-rotulo small {
+  display: block;
+  margin-top: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.hg-caja-cuenta {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 12px;
+  color: #17140f;
+  opacity: 0.7;
+}
+
+@media (max-width: 560px) {
+  /* dos filas de tres: la de atrás asoma por encima de la de delante */
+  .hg-caja-dentro { --cols: 3; height: auto; row-gap: 0; padding: 20px 5% 0; margin: 0 2%; }
+  .hg-caja-slot, .hg-caja-hueco { height: 96px; }
+  .hg-caja-slot:nth-child(n + 4), .hg-caja-hueco:nth-child(n + 4) { margin-top: 10px; z-index: 1; }
+  .hg-caja-estado { top: -14px; }
+  .hg-caja-hueco { font-size: 9px; }
+  .hg-caja-hueco b { font-size: 14px; }
+  .hg-caja-frente { height: 84px; margin-top: -34px; }
+  .hg-caja-cuenta { display: none; }
+}
+
+/* =====================================================================
+   En la página de cada juego (project.html): su blíster y «Recoger».
+   ===================================================================== */
+.hgb-juego {
+  margin-top: 40px;
+  padding: 24px clamp(14px, 3vw, 26px) 28px;
+  border: 3px dashed currentColor;
+  border-radius: 20px;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.hgb-juego h4 {
+  margin: 0;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.hgb-juego p.hgb-juego-txt { margin: -8px 0 0; font-size: 14px; opacity: 0.8; max-width: 46ch; }
+.hgb-juego .hg-pack { width: min(520px, 100%); padding-bottom: 0; }
+.hgb-juego .hg-pack-card { cursor: default; }
+/* la página de proyecto pone su letra a todos los <p>: aquí manda el cartón */
+.hgb-juego .hg-pack-card p { color: #17140f; line-height: 1.2; }
+.hgb-juego .hg-pack-card .hg-pack-brand { font-size: clamp(30px, 12cqw, 72px); line-height: 0.95; color: #ff2e8c; font-weight: 400; }
+.hgb-juego .hg-pack-card .hg-pack-list { font-size: 14px; font-weight: 700; }
+.hgb-juego .hg-pack-card .hg-pack-small { font-size: 11px; font-weight: 600; }
+.hgb-juego .hg-pack-hole { background: var(--bg); }
+.hgb-juego .hg-pack.is-recogido .hg-pack-card { animation: hgb-a-la-caja 0.7s steps(7, end) forwards; }
+@keyframes hgb-a-la-caja {
+  0% { translate: 0 0; scale: 1; opacity: 1; }
+  30% { translate: 0 -16px; scale: 1.02; opacity: 1; }
+  100% { translate: 0 60px; scale: 0.4; opacity: 0; }
+}
+.hgb-juego .hg-pack.is-guardado .hg-pack-card { opacity: 0.45; filter: grayscale(0.4); }
+.hgb-juego-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hg-caja-slot, .hg-caja-hueco { transition: none; }
+  .hg-caja-slot.is-nuevo .hg-caja-estado { animation: none; }
+  .hgb-juego .hg-pack.is-recogido .hg-pack-card { animation: none; }
+}
+.hgb-juego .pill.is-static { cursor: default; background: transparent; color: inherit; border-color: currentColor; box-shadow: none; }

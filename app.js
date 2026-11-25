@@ -56,7 +56,9 @@ function applyTheme(theme) {
     themeIcon.setAttribute('stroke-linejoin', 'round');
   }
   const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeColorMeta) themeColorMeta.setAttribute('content', theme === 'dark' ? '#0c0c0a' : '#ec6ea0');
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute('content', theme === 'dark' ? '#0c0c0a' : '#ff2e8c');
+  }
   updateThemeLabel();
   localStorage.setItem('portfolio-theme', theme);
 }
@@ -84,6 +86,10 @@ function applyLang(lang) {
     const val = t(lang, el.getAttribute('data-i18n-title'));
     if (val) { el.title = val; el.setAttribute('aria-label', val); }
   });
+  document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+    const val = t(lang, el.getAttribute('data-i18n-aria'));
+    if (val) el.setAttribute('aria-label', val);
+  });
   document.querySelectorAll('[data-i18n]').forEach(function (el) {
     const val = t(lang, el.getAttribute('data-i18n'));
     if (val === undefined) return;
@@ -93,6 +99,10 @@ function applyLang(lang) {
       navIcon.setAttribute('title', val);
       navIcon.setAttribute('aria-label', val);
     }
+  });
+  document.querySelectorAll('[data-alt-es]').forEach(function (el) {
+    const val = el.getAttribute('data-alt-' + lang);
+    if (val) el.alt = val;
   });
 
   updateThemeLabel();
@@ -416,6 +426,44 @@ function renderHome(lang) {
 }
 
 /* ============ Render de la página de detalle ============ */
+/* ============ Housegotchi: el blíster del juego y «Recoger» ============ */
+// Cada juego con piezas de Housegotchi enseña su blíster (blister.js); al
+// recogerlo va a la caja de cacharros de housegotchi.html.
+// HOUSEGOTCHI OCULTO (24/11/2026): ponlo a false para volver a enseñar el blíster en las fichas
+const HG_OCULTO = true;
+function housegotchiHtml(item, lang) {
+  if (HG_OCULTO) return '';
+  const HGB = window.HGB;
+  const b = HGB && HGB.get(item.slug);
+  if (!b) return '';
+  const lo = HGB.tiene(item.slug);
+  return `<div class="hgb-juego" data-hgb-juego="${item.slug}">
+      <h4>${t(lang, 'housegotchi.juego.titulo')}</h4>
+      <p class="hgb-juego-txt">${HGB.txt('housegotchi.juego.texto', { juego: b.juego })}</p>
+      <div class="hg-pack${lo ? ' is-guardado' : ''}">${HGB.markup(item.slug)}</div>
+      <div class="hgb-juego-btns">${hgbBotones(lo, lang)}</div>
+    </div>`;
+}
+function hgbBotones(lo, lang) {
+  const ir = `<a class="pill${lo ? ' pill-accent' : ''}" href="housegotchi.html">${t(lang, 'housegotchi.juego.ir')} →</a>`;
+  return lo
+    ? `<span class="pill is-static">${t(lang, 'housegotchi.juego.yaEsta')}</span>${ir}`
+    : `<button type="button" class="pill pill-accent" data-hgb-recoger>${t(lang, 'housegotchi.juego.recoger')}</button>`;
+}
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('[data-hgb-recoger]');
+  if (!btn || !window.HGB) return;
+  const box = btn.closest('[data-hgb-juego]');
+  if (!box || !window.HGB.recoger(box.dataset.hgbJuego)) return;
+  const pack = box.querySelector('.hg-pack');
+  pack.classList.add('is-recogido');
+  box.querySelector('.hgb-juego-btns').innerHTML =
+    `<span class="pill is-static">${t(currentLang, 'housegotchi.juego.recogido')}</span>` +
+    `<a class="pill pill-accent" href="housegotchi.html">${t(currentLang, 'housegotchi.juego.ir')} →</a>`;
+  setTimeout(function () { pack.classList.remove('is-recogido'); pack.classList.add('is-guardado'); },
+    matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 800);
+});
+
 function renderDetail(lang) {
   const root = document.getElementById('project-detail');
   if (!root) return;
@@ -510,6 +558,7 @@ function renderDetail(lang) {
         ${menuHtml}
         ${controlsHtml}
         ${creditsHtml}
+        ${housegotchiHtml(item, lang)}
       </div>
       <div class="detail-side">
         ${metaHtml}
@@ -551,6 +600,7 @@ function initNavPath() {
   if (!bar) return;
   const icons = Array.from(bar.querySelectorAll('.nav-icon'));
   const boxes = icons.map(a => a.querySelector('.icon-box'));
+  // HOUSEGOTCHI OCULTO (24/11/2026): vuelve a añadir 'housegotchi' al final cuando se enseñe otra vez
   const sections = ['inicio', 'juegos', 'otros-proyectos', 'sobre-mi'].map(id => document.getElementById(id));
   const onHome = sections.every(Boolean);
 
@@ -567,7 +617,7 @@ function initNavPath() {
   // En la página de proyecto, el "nivel" es la sección a la que pertenece
   const fixedLevel = document.getElementById('project-detail')
     ? (new URLSearchParams(location.search).get('kind') === 'other' ? 2 : 1)
-    : null;
+    : document.body.classList.contains('page-hg') ? 4 : null;
 
   let centers = [], cross = 0, horizontal = false;
 
@@ -659,6 +709,13 @@ if (themeToggle) {
   });
 }
 
+// La casita de la luna (Housegotchi) también apaga y enciende la luz
+document.querySelectorAll('[data-hg-theme]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    switchTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+});
+
 // La ficha de idioma da la vuelta como una carta
 if (langToggle) {
   langToggle.addEventListener('click', function () {
@@ -712,6 +769,39 @@ if (footerSheep) footerSheep.addEventListener('click', () => bleat(footerSheep))
   }, { passive: true });
 })();
 
+/* ============ Portada: el nombre enseña un trozo distinto del mosaico en cada visita ============
+   La textura (como la cabecera de itch) es más ancha que el nombre; sin JS se queda en el 30 %. */
+(function () {
+  const h = document.querySelector('.page-home .hero-name-trama');
+  if (!h) return;
+  h.style.backgroundPositionX = `${Math.round(Math.random() * 100)}%`;
+})();
+
+/* ============ Portada: el collage respira con el ratón ============
+   Un parallax muy corto sobre la capa de recortes; la copia se queda quieta. */
+function initHeroParallax() {
+  const art = document.querySelector('.page-home .hero-art');
+  if (!art || !matchMedia('(pointer: fine)').matches || reduceMotion.matches) return;
+  const hero = art.closest('.hero') || art;
+  let raf = 0, mx = 0, my = 0;
+  function apply() {
+    raf = 0;
+    art.style.setProperty('--mx', mx.toFixed(3));
+    art.style.setProperty('--my', my.toFixed(3));
+  }
+  hero.addEventListener('pointermove', function (e) {
+    if (reduceMotion.matches) return;
+    const r = art.getBoundingClientRect();
+    mx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2 || 1)));
+    my = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2 || 1)));
+    if (!raf) raf = requestAnimationFrame(apply);
+  }, { passive: true });
+  hero.addEventListener('pointerleave', function () {
+    mx = 0; my = 0;
+    if (!raf) raf = requestAnimationFrame(apply);
+  });
+}
+
 /* ============ Aviso tras enviar el formulario (FormSubmit vuelve con ?enviado=1) ============ */
 function checkFormSent() {
   const params = new URLSearchParams(location.search);
@@ -751,10 +841,32 @@ function selectFromBack() {
   setTimeout(() => card.classList.remove('is-selected'), 4000);
 }
 
+/* ============ Enlaces profundos: recalcular el ancla tras pintar el contenido ============
+   La portada genera tarjetas y el «sobre mí» después de cargar, así que el navegador
+   se queda corto al saltar a #contacto, #sobre-mi, etc. Volvemos a colocarlo cuando
+   el diseño ya tiene su altura definitiva. */
+function restoreHash() {
+  const hash = location.hash;
+  if (!hash || hash.length < 2) return;
+  let el;
+  try { el = document.querySelector(hash); } catch (e) { return; }
+  if (!el) return;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      el.scrollIntoView({ block: 'start' });
+      root.style.scrollBehavior = prev;
+    });
+  });
+}
+
 /* ============ Arranque ============ */
 applyLang(currentLang);
 initNavPath();
+initHeroParallax();
 checkFormSent();
+restoreHash();
 selectFromBack();
 
 // Portada: la pantalla de Tourist Trap (un vídeo en bucle) se para con «reducir movimiento»
@@ -765,4 +877,56 @@ selectFromBack();
   const sync = () => { if (mq.matches) { v.pause(); } else { v.play().catch(() => {}); } };
   mq.addEventListener('change', sync);
   sync();
+})();
+
+// Portada: la pantalla de Offline Working Sheep pasa capturas (sin animación con «reducir movimiento»)
+(function () {
+  const imgs = document.querySelectorAll('.hero-slides img');
+  if (imgs.length < 2) return;
+  const mq = matchMedia('(prefers-reduced-motion: reduce)');
+  let i = 0;
+  setInterval(() => {
+    if (mq.matches || document.hidden) return;
+    imgs[i].classList.remove('is-on');
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add('is-on');
+  }, 2800);
+})();
+
+/* ============ Portada de Housegotchi: el nombre gira alrededor de la consola ============
+   Elipse recorrida dos veces; por delante va de izquierda a derecha para leerse al derecho.
+   El texto se recorta en dos SVG: la mitad de arriba va detrás de la consola y la de abajo delante. */
+(function () {
+  const ruta = document.getElementById('hgp-ruta');
+  if (!ruta) return;
+  const cx = 302, cy = 372, rx = 286, ry = 40;
+  const vuelta = `M ${cx - rx} ${cy} A ${rx} ${ry} 0 0 0 ${cx + rx} ${cy} A ${rx} ${ry} 0 0 0 ${cx - rx} ${cy}`;
+  ruta.setAttribute('d', vuelta + ' ' + vuelta.replace('M', 'L'));
+  const L = ruta.getTotalLength() / 2;
+  const tps = document.querySelectorAll('.hgp-orbita textPath');
+  function frase() {
+    const txt = t(currentLang, 'hgPortada.orbita') || 'HOUSEGOTCHI ✦ ';
+    tps.forEach(function (tp) {
+      tp.textContent = txt;
+      tp.setAttribute('textLength', L);
+      tp.setAttribute('lengthAdjust', 'spacing');
+    });
+  }
+  frase();
+  new MutationObserver(frase).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = false, raf = 0, off = 0, last = 0;
+  function paso(now) {
+    if (last) off = (off + (now - last) * 0.05) % L;
+    last = now;
+    tps.forEach(tp => tp.setAttribute('startOffset', off));
+    raf = visible && !reduce.matches ? requestAnimationFrame(paso) : 0;
+  }
+  function arrancar() { if (!raf && visible && !reduce.matches) { last = 0; raf = requestAnimationFrame(paso); } }
+  const sec = document.getElementById('housegotchi');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; arrancar(); }).observe(sec);
+  } else { visible = true; arrancar(); }
+  reduce.addEventListener('change', arrancar);
 })();

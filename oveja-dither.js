@@ -19,11 +19,11 @@ function setup(canvas) {
      Columnas: rosa, pistacho, papel, tinta, rosa oscuro.
      Filas (tramas, 1 = tono oscuro del color): liso, puntos, líneas, diagonal, tablero, casi oscuro. */
   const COLORS = [
-    ['#ec6ea0', '#a8336a'],  // 0 rosa
-    ['#a4be5c', '#5f7a2a'],  // 1 pistacho
+    ['#ff2e8c', '#a8336a'],  // 0 rosa
+    ['#2fb4e8', '#5f7a2a'],  // 1 pistacho
     ['#f2ede2', '#b9ab90'],  // 2 papel
     ['#17140f', '#000000'],  // 3 tinta
-    ['#f4a8c6', '#c94f84'],  // 4 rosa suave
+    ['#ff9cc8', '#c94f84'],  // 4 rosa suave
   ];
   const PATTERNS = [
     [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0],   // 0 liso

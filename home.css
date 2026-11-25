@@ -1,0 +1,1532 @@
+/* =====================================================================
+   Portada: una capa de papel encima del póster que ya existe.
+   Paleta de style.css (paleta B, postal riso): rosa flúor, cian, papel y tinta. Nada más.
+   Solo se carga en index.html (body.page-home).
+   ===================================================================== */
+
+@font-face {
+  font-family: 'Allo';
+  src: url('assets/fonts/allo/AlloVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Variables de la capa de papel ---------- */
+body.page-home {
+  --paper: #f2ede2;
+  --ink: #17140f;
+  --pink: #ff2e8c;
+  --cyan: #2fb4e8;
+  --cyan-deep: #1f9fd4;
+
+  /* Dentro del póster siempre se lee sobre papel o cian, nunca sobre el fondo. */
+  --hero-bg: var(--paper);
+  --hero-ink: var(--ink);
+  --hero-soft: #4a443c;
+  --hero-plate: var(--ink);
+  --hero-plate-fg: var(--paper);
+  --tape: var(--cyan);
+
+  --allo: 'Allo', 'Archivo Black', sans-serif;
+  --mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Oscuro: la portada es una carcasa Housegotchi (magenta con grano) y el texto,
+   crema como el rótulo de las casitas. Crema sobre magenta da 4,6:1; tinta, 3,9. */
+html[data-theme="dark"] body.page-home {
+  --magenta: #d4146c;
+  --cream: #fffdf6;
+  --hero-bg: var(--magenta);
+  --hero-ink: var(--cream);
+  --hero-soft: var(--cream);
+  --hero-plate: var(--ink);
+  --hero-plate-fg: var(--cream);
+  --tape: var(--cyan);
+
+  /* Grano de la carcasa: punto crema y punto de tinta cruzados. */
+  --halftone-dot: rgba(255, 253, 246, 0.22);
+  --halftone-dot-2: rgba(23, 20, 15, 0.16);
+}
+
+body.page-home ::selection { background: var(--pink); color: var(--ink); }
+
+/* ---------- Barra lateral: teclas de imprenta ---------- */
+.page-home .icon-box {
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--border);
+}
+.page-home .nav-icon:hover .icon-box {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--border);
+}
+.page-home .nav-icon:active .icon-box {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--border);
+}
+.page-home .nav-icon.is-active .icon-box,
+.page-home .nav-icon.is-active:hover .icon-box {
+  background: var(--accent);
+  color: var(--card);
+  box-shadow: 1px 1px 0 var(--border);
+  transform: translate(2px, 2px);
+}
+.page-home .nav-icon.is-active .icon-box svg { stroke: var(--card); fill: none; }
+.page-home .nav-icon.is-active .icon-box svg.svg-fill { fill: var(--card); stroke: none; }
+.page-home .nav-icon.is-active .nav-label { color: var(--accent); }
+.page-home .lang-icon { font-family: var(--allo); font-weight: 800; }
+
+/* ---------- Títulos de sección con la fuente nueva ---------- */
+.page-home h3.section-title {
+  margin: 0;
+  font-family: var(--allo);
+  font-variation-settings: 'wght' 900, 'opsz' 32, 'ROND' 0;
+  min-width: 0;
+  max-width: 100%;
+  font-size: clamp(40px, 5.2vw, 78px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.008em;
+  text-transform: uppercase;
+}
+
+.page-home .section-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.6vw, 22px);
+  padding: 0 0 clamp(12px, 1.4vw, 17px);
+  padding-right: clamp(0px, 7vw, 110px);
+  margin-bottom: clamp(28px, 3.4vw, 46px);
+  border-bottom: 2px solid var(--border);
+}
+
+.page-home .head-dots {
+  flex: 1;
+  align-self: center;
+  height: 16px;
+  background-image: radial-gradient(circle, var(--text) 1.6px, transparent 1.8px);
+  background-size: 11px 11px;
+  background-position: 0 100%;
+  opacity: 0.26;
+}
+
+.page-home .mascot { top: clamp(38px, 4.2vw, 58px); right: clamp(18px, 2.4vw, 34px); }
+.page-home .deco-games,
+.page-home .deco-about { width: 66px; height: 66px; }
+.page-home .deco-other { width: 104px; height: 64px; }
+
+.page-home .main > section:not(.hero):not(.contact-band) {
+  padding: clamp(54px, 6vw, 86px) clamp(22px, 4.4vw, 64px);
+}
+.page-home #juegos { padding-top: clamp(58px, 6.4vw, 92px); }
+.page-home #otros-proyectos,
+.page-home #sobre-mi { padding-top: clamp(36px, 4.2vw, 58px); }
+
+/* =====================================================================
+   Portada
+   ===================================================================== */
+/* ---------- Collage de la derecha ---------- */
+.page-home .hero-art {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  translate: calc(var(--mx, 0) * 7px) calc(var(--my, 0) * 6px);
+  transition: translate 0.18s ease-out;
+}
+
+.page-home .hero-ring-disc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(92%, 470px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle at 50% 50%,
+      transparent 0 9px,
+      rgba(23, 20, 15, 0.27) 9px 10px),
+    repeating-conic-gradient(from 0deg at 50% 50%,
+      transparent 0 13deg,
+      rgba(23, 20, 15, 0.045) 13deg 14deg);
+  opacity: 0.92;
+}
+.page-home .hero-ring-disc::after {
+  content: '';
+  position: absolute;
+  inset: -3%;
+  border: 1.5px dashed rgba(23, 20, 15, 0.3);
+  border-radius: 50%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .hero-ring-disc { animation: home-spin 90s linear infinite; }
+}
+
+.page-home .hero-sun,
+.page-home .hero-moon {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: clamp(80px, 7.6vw, 110px);
+  height: auto;
+  filter: drop-shadow(3px 4px 0 rgba(23, 20, 15, 0.16));
+}
+.page-home .hero-moon { display: none; width: clamp(72px, 7vw, 100px); }
+html[data-theme="dark"] .page-home .hero-sun { display: none; }
+html[data-theme="dark"] .page-home .hero-moon { display: block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .hero-sun { animation: home-spin 52s linear infinite; }
+  .page-home .hero-moon { animation: home-sway 9s steps(7, end) infinite alternate; }
+}
+
+.page-home .hero-palm {
+  position: absolute;
+  z-index: 2;
+  right: -6%;
+  bottom: -2%;
+  width: clamp(90px, 10vw, 150px);
+  height: auto;
+  transform: rotate(6deg);
+  transform-origin: 50% 100%;
+  filter: drop-shadow(4px 8px 0 rgba(23, 20, 15, 0.18));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .hero-palm { animation: home-sway 7s steps(6, end) infinite alternate; }
+}
+
+.page-home .hero-screen {
+  position: absolute;
+  z-index: 6;
+  top: 0;
+  right: 0;
+  width: clamp(220px, 24vw, 330px);
+  margin: 0;
+  padding: 8px 8px 9px;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 8px 8px 0 rgba(23, 20, 15, 0.26);
+  transform: rotate(2.4deg);
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s var(--ease), translate 0.2s var(--ease);
+}
+.page-home .hero-screen:hover { translate: 0 -3px; box-shadow: 11px 11px 0 rgba(23, 20, 15, 0.3); }
+.page-home .hero-screen:focus-visible { outline: 3px solid var(--pink); outline-offset: 4px; }
+.page-home .hero-screen-view {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1.5px solid var(--ink);
+  background: var(--ink);
+}
+.page-home .hero-screen-view video {
+  display: block;
+  width: 100%;
+  height: 108%;
+  object-fit: cover;
+  object-position: center top;
+  border: 0;
+  background: var(--ink);
+}
+.page-home .hero-tape {
+  position: absolute;
+  z-index: 2;
+  top: -11px;
+  left: 50%;
+  width: 88px;
+  height: 24px;
+  background: var(--tape);
+  opacity: 0.92;
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 1px 0 rgba(23, 20, 15, 0.14);
+  clip-path: polygon(0 10%, 5% 0, 96% 3%, 100% 12%, 98% 90%, 93% 100%, 5% 96%, 0 86%);
+}
+
+.page-home .hero-cut {
+  position: absolute;
+  z-index: 5;
+  display: block;
+  height: auto;
+  filter: drop-shadow(0 10px 16px rgba(23, 20, 15, 0.26));
+}
+.page-home .hero-cut-curro {
+  top: 20%;
+  left: 17%;
+  width: clamp(64px, 7vw, 102px);
+  transform-origin: 50% 96%;
+  z-index: 5;
+}
+.page-home .hero-cut-rogelio {
+  bottom: 0;
+  left: 28%;
+  width: clamp(104px, 11.5vw, 166px);
+  transform-origin: 50% 96%;
+  z-index: 5;
+}
+.page-home .hero-cut-robot {
+  bottom: 3%;
+  left: 63%;
+  width: clamp(44px, 4vw, 58px);
+  transform: rotate(-4deg);
+  transform-origin: 50% 96%;
+  z-index: 4;
+}
+.page-home .hero-cut-troll {
+  bottom: 16%;
+  left: 8%;
+  width: clamp(48px, 4.4vw, 64px);
+  transform: rotate(3deg);
+  z-index: 4;
+}
+.page-home .hero-stage {
+  position: absolute;
+  z-index: 3;
+  left: 13%;
+  bottom: 0;
+  width: 46%;
+  height: 15%;
+  border: 2px dashed rgba(23, 20, 15, 0.24);
+  border-radius: 50%;
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+/* Iconos-app de OWS: pegatinas cuadradas de papel alrededor del centro. */
+.page-home .hero-app-icon {
+  position: absolute;
+  z-index: 5;
+  display: block;
+  width: clamp(34px, 3.5vw, 48px);
+  aspect-ratio: 1;
+  padding: 3px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(var(--r, 0deg));
+}
+.page-home .hero-app-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.page-home .hero-app-icon-sheep { top: 2%; left: 29%; --r: -7deg; }
+.page-home .hero-app-icon-hen { top: 42%; left: 2%; --r: 5deg; }
+.page-home .hero-app-icon-chick { bottom: 4%; right: 15%; --r: -4deg; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .hero-cut-curro { animation: home-bob 4.8s steps(8, end) infinite alternate; }
+  .page-home .hero-cut-rogelio { animation: home-sway 5.6s steps(7, end) infinite alternate; }
+  .page-home .hero-screen { animation: home-float 7.5s ease-in-out infinite; }
+  .page-home .hero-app-icon { animation: home-float 6s ease-in-out infinite; }
+  .page-home .hero-cut-robot { animation: home-float 5.2s ease-in-out infinite alternate; }
+  .page-home .hero-cut-troll { animation: home-float 6.4s ease-in-out -1.6s infinite alternate; }
+  .page-home .hero-app-icon-hen { animation-delay: -2.1s; }
+  .page-home .hero-app-icon-chick { animation-delay: -4.2s; }
+}
+@keyframes home-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+
+@keyframes home-spin { to { transform: rotate(360deg); } }
+@keyframes home-sway {
+  from { transform: rotate(-2.2deg); }
+  to { transform: rotate(2.2deg); }
+}
+@keyframes home-bob {
+  from { transform: translateY(0) rotate(-1.6deg); }
+  to { transform: translateY(-13px) rotate(1.2deg); }
+}
+
+/* ---------- Marquesina ---------- */
+
+
+/* =====================================================================
+   Tarjetas: se dejan tal cual están en style.css, solo cambia el aire
+   ===================================================================== */
+.page-home .grid { gap: clamp(22px, 2.2vw, 30px); }
+
+/* La tarjeta de GitHub cierra la rejilla: banda completa, sin huecos al final. */
+.page-home .card-gh { grid-column: 1 / -1; }
+
+/* =====================================================================
+   Sobre mí: hoja de papel con el avatar recortado
+   ===================================================================== */
+.page-home .about-wrap {
+  grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 54px);
+  padding: clamp(22px, 3vw, 38px);
+  border: 3px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 8px 8px 0 var(--border);
+}
+/* Sobre mí: crema, como la pantalla de las casitas. */
+html[data-theme="dark"] .page-home .about-wrap { background: var(--paper); }
+
+/* ---------- Semitono del papel en oscuro ----------
+   Una retícula de puntos gruesa (el punto de la imprenta) más otra más fina y
+   desfasada que rompe el damero, y una mancha suave de tinta hacia los bordes.
+   La máscara deja el papel casi liso donde va el texto: no lo ensucia, solo
+   quita el plano al color. */
+html[data-theme="dark"] .page-home .about-wrap {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .page-home .about-wrap::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -22%;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--halftone-dot) 0 1.05px, transparent 1.3px),
+    radial-gradient(circle at 50% 50%, var(--halftone-dot-2) 0 0.75px, transparent 1px),
+    radial-gradient(120% 95% at 92% 98%, rgba(23, 20, 15, 0.12), transparent 60%);
+  background-size: 6px 6px, 11px 11px, 100% 100%;
+  background-position: 0 0, 2px 3px, 0 0;
+  transform: rotate(5deg);
+}
+
+/* Sobre mí: la trama se aparta del bloque de texto (centro-derecha) y se queda
+   en los bordes, como la tinta que se acumula al imprimir una hoja grande. */
+html[data-theme="dark"] .page-home .about-wrap::after {
+  -webkit-mask-image: radial-gradient(26% 44% at 58% 48%, rgba(0, 0, 0, 0.1) 0 38%, rgba(0, 0, 0, 0.45) 72%, #000 100%);
+  mask-image: radial-gradient(26% 44% at 58% 48%, rgba(0, 0, 0, 0.1) 0 38%, rgba(0, 0, 0, 0.45) 72%, #000 100%);
+}
+
+.page-home .about-wrap a { color: var(--ink); }
+
+.page-home .about-photo {
+  width: 190px;
+  height: 190px;
+  border-radius: 0;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 5px 5px 0 var(--ink);
+  transform: rotate(-2deg);
+}
+
+.page-home .about-side h4 {
+  margin: 24px 0 9px;
+  padding-bottom: 5px;
+  border-bottom: 1.5px solid rgba(23, 20, 15, 0.24);
+  color: rgba(23, 20, 15, 0.68);
+  letter-spacing: 0.14em;
+}
+.page-home .about-side h4,
+.page-home .about-body h4 {
+  font-family: var(--allo);
+  font-variation-settings: 'wght' 760, 'opsz' 24;
+  font-weight: 760;
+  letter-spacing: 0.07em;
+}
+.page-home .about-side .contact-line { font-size: 13px; }
+.page-home .about-side .contact-line a { text-decoration-color: var(--pink); }
+.page-home .about-side .contact-line button { text-decoration-color: var(--pink); }
+.page-home .about-side ul {
+  display: grid;
+  gap: 5px;
+  margin-top: 2px;
+}
+.page-home .about-side li {
+  border: 0;
+  padding: 0;
+  color: var(--ink);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.page-home .about-side li:not(:last-child)::after { content: none; }
+.page-home .about-side .ci-gh { fill: var(--ink); }
+
+.page-home .about-body p.lede {
+  max-width: 34ch;
+  margin-top: 0;
+  color: var(--ink);
+  font-family: var(--allo);
+  font-variation-settings: 'wght' 720, 'opsz' 32;
+  font-size: clamp(21px, 2.2vw, 30px);
+  font-weight: 720;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: pre-line;
+}
+.page-home .about-body p.lede-2 {
+  max-width: 58ch;
+  margin-top: 14px;
+  color: rgba(23, 20, 15, 0.78);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.62;
+  letter-spacing: 0;
+}
+
+.page-home .about-body h4 {
+  margin: 28px 0 10px;
+  color: rgba(23, 20, 15, 0.68);
+  letter-spacing: 0.14em;
+}
+
+.page-home .timeline { gap: 26px; }
+.page-home .timeline-item {
+  column-gap: 26px;
+  padding-top: 16px;
+  border-top: 1.5px solid rgba(23, 20, 15, 0.28);
+}
+.page-home .timeline-item .when {
+  color: rgba(23, 20, 15, 0.8);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.page-home .timeline-item h5 {
+  margin: 3px 0 7px;
+  color: var(--ink);
+  font-family: var(--allo);
+  font-variation-settings: 'wght' 760, 'opsz' 32;
+  font-size: clamp(18px, 1.45vw, 22px);
+  font-weight: 760;
+  line-height: 1.16;
+}
+.page-home .timeline-item p {
+  color: rgba(23, 20, 15, 0.8);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =====================================================================
+   Contacto: el póster de tinta/rosa que ya trae style.css
+   ===================================================================== */
+.page-home section.contact-band { position: relative; }
+
+.page-home .cb-label {
+  font-family: var(--allo);
+  font-variation-settings: 'wght' 760, 'opsz' 24;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+}
+
+.page-home .cb-email {
+  font-family: var(--allo);
+  font-variation-settings: 'wght' 900, 'opsz' 32, 'ROND' 0;
+  font-size: clamp(15px, 4.6vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.006em;
+  line-height: 0.98;
+}
+
+.page-home .cb-hint {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* =====================================================================
+   Pie
+   ===================================================================== */
+.page-home .footer-home {
+  max-width: 1640px;
+  margin: 26px auto 0;
+  padding: 26px clamp(20px, 3vw, 44px) 46px;
+  border-top: 2px solid var(--border);
+  align-items: center;
+  gap: 18px 28px;
+}
+.page-home .footer-tiles {
+  position: static;
+  order: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.page-home .footer-link { width: 44px; height: 44px; border-radius: 8px; }
+.page-home .footer-sheep,
+.page-home .deco-footer { width: 74px; height: 74px; }
+.page-home .footer-link:hover { filter: drop-shadow(0 4px 0 var(--border)); }
+.page-home .footer-home > span { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; }
+.page-home .footer-home > span:first-of-type { order: 3; margin-left: auto; }
+.page-home .footer-home > span:last-of-type { order: 4; }
+
+/* =====================================================================
+   Responsive
+   ===================================================================== */
+@media (max-width: 1180px) {
+  .page-home .hero-art {
+    height: clamp(340px, 52vw, 440px);
+    min-height: 0;
+    margin-top: 12px;
+  }
+  .page-home .hero-cut-robot,
+  .page-home .hero-cut-troll { display: none; }
+  .page-home .hero-ring-disc { width: min(84%, 400px); }
+  .page-home .hero-screen { width: clamp(220px, 32vw, 310px); right: 4%; }
+  .page-home .hero-cut-curro { top: 16%; left: 14%; width: clamp(64px, 8.2vw, 92px); }
+  .page-home .hero-cut-rogelio { bottom: 0; left: 26%; width: clamp(100px, 13vw, 148px); }
+  .page-home .hero-stage { left: 10%; width: 50%; }
+  .page-home .hero-palm { left: auto; right: -3%; width: clamp(80px, 9vw, 120px); }
+  .page-home .hero-sun { width: 80px; }
+  .page-home .hero-moon { width: 74px; }
+
+}
+
+@media (max-width: 980px) {
+
+  .page-home .about-wrap { grid-template-columns: minmax(180px, 220px) minmax(0, 1fr); }
+  .page-home .about-photo { width: 170px; height: 170px; }
+  .page-home .about-body p.lede { font-size: clamp(20px, 3vw, 28px); }
+}
+
+@media (max-width: 860px) {
+  .page-home .main > section:not(.hero):not(.contact-band) { padding: 54px 22px; }
+
+  .page-home .hero-art { height: 330px; }
+  .page-home .hero-screen { width: clamp(180px, 46vw, 250px); right: 2%; }
+  .page-home .hero-cut-curro { top: 8%; left: 8%; width: clamp(56px, 11vw, 76px); }
+  .page-home .hero-cut-rogelio { bottom: 0; left: 24%; width: clamp(88px, 17vw, 118px); }
+  .page-home .hero-stage { left: 5%; width: 58%; height: 14%; }
+  .page-home .hero-palm { display: none; }
+  .page-home .hero-sun { width: 64px; }
+  .page-home .hero-moon { width: 60px; }
+
+
+  .page-home .section-head { padding-right: 0; }
+  .page-home .mascot { display: none; }
+
+  .page-home .about-wrap { grid-template-columns: 1fr; padding: 22px; gap: 26px; }
+  .page-home .about-photo { width: 150px; height: 150px; }
+  .page-home .about-body p.lede { max-width: none; }
+  .page-home .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+  .page-home .timeline-item .when { grid-row: auto; }
+  .page-home .timeline-item h5,
+  .page-home .timeline-item p:not(.when) { grid-column: 1; }
+
+  .page-home .footer-home { padding: 22px 18px 36px; }
+  .page-home .footer-tiles { width: 100%; order: 1; }
+  .page-home .footer-home > span:first-of-type { order: 3; margin-left: 0; }
+  .page-home .footer-home > span:last-of-type { order: 4; }
+}
+
+@media (max-width: 560px) {
+
+
+  /* Collage en dos pisos: arriba la luna y el vídeo; abajo los dos personajes
+     de pie sobre el escenario y los iconos de OWS en el hueco de la derecha.
+     Nada se pisa con nada. */
+  .page-home .hero-art { height: 380px; margin-top: 4px; }
+  .page-home .hero-ring-disc { width: 86%; top: 56%; }
+  .page-home .hero-screen { top: 3%; right: 3%; width: min(62%, 230px); padding: 6px 6px 7px; }
+  .page-home .hero-tape { width: 66px; height: 20px; top: -9px; }
+  .page-home .hero-sun,
+  .page-home .hero-moon { top: 2%; left: 3%; width: 60px; }
+  .page-home .hero-cut-curro { top: auto; bottom: 0; left: 5%; width: clamp(56px, 17vw, 68px); }
+  .page-home .hero-cut-rogelio { bottom: 0; left: 27%; width: clamp(96px, 30vw, 120px); }
+  .page-home .hero-stage { left: 0; width: 70%; height: 11%; }
+  .page-home .hero-app-icon { width: 38px; padding: 2px; border-width: 1.5px; box-shadow: 2px 2px 0 var(--ink); }
+  .page-home .hero-app-icon-sheep { top: 24%; left: 6%; }
+  .page-home .hero-app-icon-hen { top: auto; left: auto; bottom: 24%; right: 6%; }
+  .page-home .hero-app-icon-chick { bottom: 7%; right: 16%; }
+
+
+  .page-home .section-title { font-size: clamp(34px, 11vw, 58px); }
+  .page-home #otros-proyectos .section-title { font-size: clamp(30px, 9.2vw, 46px); }
+  .page-home .head-dots { height: 12px; background-size: 9px 9px; }
+
+  .page-home .about-photo { width: 130px; height: 130px; }
+  .page-home .about-body p.lede { font-size: 22px; }
+
+  .page-home section.contact-band { margin-left: 10px; margin-right: 10px; padding: 28px 22px; }
+  .page-home .cb-email { font-size: clamp(14px, 4.6vw, 64px); }
+  .page-home .footer-home > span { font-size: 8.5px; }
+}
+
+/* Móviles estrechos: la barra inferior cabe entera */
+@media (max-width: 380px) {
+  .page-home .sidebar { gap: 4px; padding: 8px 4px; }
+  .page-home .sidebar-top,
+  .page-home .sidebar-bottom { gap: 4px; }
+  .page-home .nav-icon { min-width: 0; }
+  .page-home .icon-box { width: 34px; height: 34px; border-radius: 7px; box-shadow: 2px 2px 0 var(--border); }
+  .page-home .icon-box svg { width: 17px; height: 17px; }
+  .page-home .nav-label { font-size: 7.5px; letter-spacing: 0.03em; white-space: nowrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .hero-ring-disc,
+  .page-home .hero-sun,
+  .page-home .hero-moon,
+  .page-home .hero-cut-curro,
+  .page-home .hero-cut-rogelio,
+  .page-home .hero-palm,
+  .page-home .hero-screen,
+  .page-home .hero-app-icon { animation: none; }
+  .page-home .hero-art { translate: none; transition: none; }
+}
+
+/* =====================================================================
+   Housegotchi: casitas de juguete con los personajes en la pantalla.
+   Las carcasas salen del diseño de Figcraft (assets/img/housegotchi/*.webp,
+   ya con grano); el rótulo y el sprite van encima en HTML. Las medidas de la
+   pantalla y del rótulo están en % de cada imagen, y los tamaños en cqw de la
+   propia casita, así todo escala junto.
+   ===================================================================== */
+@font-face {
+  font-family: 'Kuronuri 35';
+  src: url('assets/fonts/kuronuri/kuronuri-35-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kuronuri 20';
+  src: url('assets/fonts/kuronuri/kuronuri-20-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.page-home #housegotchi {
+  max-width: 1640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: clamp(36px, 4.2vw, 58px);
+}
+
+.page-home .hg-sub {
+  max-width: 52ch;
+  margin: calc(-1 * clamp(14px, 1.8vw, 26px)) 0 clamp(24px, 3vw, 40px);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 1.05vw, 16px);
+  font-weight: 500;
+  line-height: 1.55;
+  opacity: 0.78;
+}
+
+/* Barra encima del tablero: ayuda y dos pastillas (sonido y recolocar).
+   Solo sale con JS (housegotchi.js le pone .hg-on). */
+.page-home .hg-bar {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  max-width: 1200px;
+  margin: 0 auto 16px;
+}
+.page-home .hg-bar.hg-on { display: flex; }
+.page-home .hg-help {
+  margin-right: auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+}
+.page-home .hg-pill { padding: 7px 16px; font-size: 13px; }
+.page-home .hg-pill[aria-pressed="true"] { background: var(--pink); color: var(--ink); }
+
+/* Sin JS: rejilla quieta (jumbo 2×2, largo 1×2 y tres casitas). */
+.page-home .hg-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(8px, 1.2vw, 18px);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.page-home .hg-jumbo { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+.page-home .hg-largo { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+.page-home .hg-c1 { grid-column: 4; grid-row: 1; }
+.page-home .hg-c2 { grid-column: 4; grid-row: 2; }
+.page-home .hg-c3 { grid-column: 5; grid-row: 1; }
+.page-home .hg-ghost,
+.page-home .hg-combo,
+.page-home .hg-key { display: none; }
+
+.page-home .hg-casa {
+  position: relative;
+  display: block;
+  container-type: inline-size;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  filter: drop-shadow(5px 6px 0 rgba(23, 20, 15, 0.85));
+  transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
+}
+.page-home .hg-casa img { display: block; width: 100%; height: auto; }
+.page-home .hg-casa:focus-visible { outline: 3px solid var(--pink); outline-offset: 4px; }
+
+/* Rótulo de la carcasa (Kuronuri 35, crema, como en Figcraft). */
+.page-home .hg-name {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 7.7%;
+  width: 87.8%;
+  top: 3.6%;
+  height: 8.8%;
+  color: #fffdf6;
+  font-family: 'Kuronuri 35', Georgia, serif;
+  font-size: 7.2cqw;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.13em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.page-home .hg-largo .hg-name { top: 1.8%; height: 4.39%; }
+.page-home .hg-jumbo .hg-name {
+  left: 25.4%;
+  width: 49.2%;
+  top: 4%;
+  height: 7.6%;
+  justify-content: center;
+  font-size: 5.2cqw;
+}
+
+/* Etiqueta pequeña abajo a la derecha: de qué juego es. */
+.page-home .hg-tag {
+  position: absolute;
+  right: 4.5%;
+  bottom: 0.6%;
+  color: #fffdf6;
+  font-family: 'Kuronuri 20', Georgia, serif;
+  font-size: 4cqw;
+  line-height: 1.15;
+  letter-spacing: 0.13em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.page-home .hg-jumbo .hg-tag { font-size: 2.6cqw; bottom: 0.4%; }
+
+/* Pantalla LCD: rejilla de píxel muy suave y el sprite apoyado abajo. */
+.page-home .hg-screen {
+  position: absolute;
+  left: 9.56%;
+  width: 80.87%;
+  top: 14.6%;
+  height: 49.4%;
+  border-radius: 6cqw;
+  overflow: hidden;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(23, 20, 15, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 20, 15, 0.035) 1px, transparent 1px);
+  background-size: 1.2cqw 1.2cqw;
+}
+.page-home .hg-largo .hg-screen { top: 7.58%; height: 72.26%; }
+.page-home .hg-jumbo .hg-screen { left: 9.57%; top: 14.63%; height: 49.53%; border-radius: 3cqw; background-size: 0.9cqw 0.9cqw; }
+/* El jumbo es un escenario: dibujo de fondo en 1 bit (216×132 píxeles de sprite)
+   y los bichitos que van de visita, al mismo tamaño que en su casita. */
+.page-home .hg-jumbo .hg-screen-chiringuito {
+  background-image:
+    url('assets/img/housegotchi/escenas/chiringuito.png'),
+    linear-gradient(rgba(23, 20, 15, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 20, 15, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 0.9cqw 0.9cqw, 0.9cqw 0.9cqw;
+  image-rendering: pixelated;
+}
+.page-home .hg-jumbo .hg-sprite { --px: 0.375cqw; }
+/* Ampliación de la mina (Dig Me Out!): mismas reglas, otro dibujo y otra carcasa. */
+.page-home .hg-casa[hidden] { display: none; }
+.page-home .hg-jumbo .hg-screen-mina {
+  background-image:
+    url('assets/img/housegotchi/escenas/mina.png'),
+    linear-gradient(rgba(23, 20, 15, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 20, 15, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 0.9cqw 0.9cqw, 0.9cqw 0.9cqw;
+  image-rendering: pixelated;
+}
+.page-home .hg-mina > img { filter: hue-rotate(150deg) saturate(0.8); }
+.page-home .hg-minera > img { filter: hue-rotate(-35deg); }
+.page-home .hg-gato > img { filter: hue-rotate(205deg) saturate(0.75); }
+/* Pizza Kaisen y Figurines Please. */
+.page-home .hg-jumbo .hg-screen-arena {
+  background-image:
+    url('assets/img/housegotchi/escenas/arena.png'),
+    linear-gradient(rgba(23, 20, 15, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 20, 15, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 0.9cqw 0.9cqw, 0.9cqw 0.9cqw;
+  image-rendering: pixelated;
+}
+.page-home .hg-jumbo .hg-screen-puesto {
+  background-image:
+    url('assets/img/housegotchi/escenas/puesto.png'),
+    linear-gradient(rgba(23, 20, 15, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 20, 15, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 0.9cqw 0.9cqw, 0.9cqw 0.9cqw;
+  image-rendering: pixelated;
+}
+.page-home .hg-arena > img { filter: hue-rotate(35deg) saturate(1.1); }
+.page-home .hg-puesto > img { filter: hue-rotate(-60deg) saturate(0.85); }
+.page-home .hg-roni > img { filter: hue-rotate(18deg); }
+.page-home .hg-pina > img { filter: hue-rotate(-28deg) saturate(1.15); }
+.page-home .hg-tendero > img { filter: hue-rotate(155deg) saturate(0.7); }
+.page-home .hg-pastor > img { filter: hue-rotate(55deg) saturate(0.7); }
+.page-home .hg-gato .hg-screen { background-color: rgb(242, 232, 213); }
+/* La DEUDA del cartel: dígitos de 3×5 píxeles colocados sobre la rejilla del dibujo. */
+.page-home .hg-deuda { position: absolute; inset: 0; pointer-events: none; }
+.page-home .hg-deuda i {
+  position: absolute;
+  top: calc(43 / 132 * 100%);
+  width: calc(3 / 216 * 100%);
+  height: calc(5 / 132 * 100%);
+  background: var(--digitos) 0 0 / 1000% 100% no-repeat;
+  image-rendering: pixelated;
+}
+
+/* Con JS: mesa de juego con puntos y casitas sueltas en una rejilla de módulos
+   (housegotchi.js pone left/top/width de cada casita y la altura del tablero). */
+.page-home .hg-grid.hg-on {
+  display: block;
+  position: relative;
+  max-width: 1200px;
+  border-radius: 18px;
+  background-image: radial-gradient(color-mix(in srgb, currentColor 16%, transparent) 1.5px, transparent 1.6px);
+  background-size: 20px 20px;
+  background-position: 6px 6px;
+}
+.page-home .hg-on .hg-casa {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: pan-y;
+}
+.page-home .hg-on.hg-ready .hg-casa {
+  transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.25s var(--ease), filter 0.25s var(--ease);
+}
+.page-home .hg-on .hg-casa:hover { transform: translateY(-3px); }
+.page-home .hg-on .hg-casa.is-armed { transform: scale(1.03) rotate(-1deg); }
+.page-home .hg-on .hg-casa.is-drag,
+.page-home .hg-on.hg-ready .hg-casa.is-drag {
+  z-index: 20;
+  cursor: grabbing;
+  transition: transform 0.2s var(--ease), filter 0.2s var(--ease);
+  transform: rotate(-1.6deg) scale(1.03);
+  filter: drop-shadow(12px 16px 0 rgba(23, 20, 15, 0.7));
+}
+.page-home .hg-casa img { -webkit-user-drag: none; pointer-events: none; }
+
+/* Hueco donde va a caer la casita al soltarla. */
+.page-home .hg-on .hg-ghost {
+  position: absolute;
+  display: block;
+  border: 3px dashed var(--pink);
+  border-radius: 7%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.page-home .hg-on .hg-ghost.on { opacity: 0.9; }
+
+/* Imán: al juntarse dos casitas, destello rosa. */
+.page-home .hg-casa.is-snap { animation: hg-snap 0.6s ease-out; }
+@keyframes hg-snap {
+  0% { filter: drop-shadow(5px 6px 0 rgba(23, 20, 15, 0.85)) drop-shadow(0 0 0 transparent); }
+  30% { filter: drop-shadow(5px 6px 0 rgba(23, 20, 15, 0.85)) drop-shadow(0 0 12px var(--pink)) brightness(1.12); }
+  100% { filter: drop-shadow(5px 6px 0 rgba(23, 20, 15, 0.85)) drop-shadow(0 0 0 transparent); }
+}
+
+/* Mientras arrastras: si en ese hueco se pegaría a otra pieza, el hueco se
+   pone macizo y la vecina brilla un poco (antes de soltar ya sabes qué pasará). */
+.page-home .hg-on .hg-ghost.iman {
+  border-style: solid;
+  background: color-mix(in srgb, var(--pink) 22%, transparent);
+  box-shadow: 0 0 18px var(--pink);
+}
+/* Mientras arrastras: la vecina con la que te pegarías late en rosa. */
+.page-home .hg-on .hg-casa.is-cerca { animation: hg-cerca 0.7s ease-in-out infinite alternate; }
+@keyframes hg-cerca {
+  from { filter: drop-shadow(5px 6px 0 rgba(23, 20, 15, 0.85)) drop-shadow(0 0 4px var(--pink)) drop-shadow(0 0 0 var(--pink)); }
+  to { filter: drop-shadow(5px 6px 0 rgba(23, 20, 15, 0.85)) drop-shadow(0 0 10px var(--pink)) drop-shadow(0 0 18px var(--pink)) brightness(1.08); }
+}
+
+/* Golpe al caer en su sitio (después del deslizamiento con rebote). */
+.page-home .hg-casa.is-land { animation: hg-land 0.32s ease-out 0.28s; }
+@keyframes hg-land {
+  35% { translate: 0 2px; scale: 1.025 0.975; }
+  70% { translate: 0 -1px; scale: 0.995 1.005; }
+}
+.page-home .hg-casa.is-land.is-snap { animation: hg-land 0.32s ease-out 0.28s, hg-snap 0.6s ease-out 0.28s; }
+/* Ahora no puede: la carcasa niega con la cabeza. */
+.page-home .hg-casa.is-no { animation: hg-no 0.3s ease-out; }
+@keyframes hg-no {
+  20% { translate: -4px 0; rotate: -0.6deg; }
+  45% { translate: 3px 0; rotate: 0.4deg; }
+  70% { translate: -2px 0; }
+}
+
+/* Mensaje de combo sobre la junta de las dos casitas: una ventanita de LCD
+   como las de un Tamagotchi (letra de píxel, marco de esquinas mordidas,
+   nada se tuerce) que aparece y se va de golpe, con un parpadeo. */
+.page-home .hg-on .hg-combo {
+  --px: 3px;
+  position: absolute;
+  z-index: 30;
+  display: block;
+  margin: 0;
+  padding: 6px 12px 5px;
+  background: #c9cfa6;
+  color: #17140f;
+  border: 0;
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 #17140f, 0 var(--px) 0 0 #17140f,
+    calc(var(--px) * -1) 0 0 0 #17140f, var(--px) 0 0 0 #17140f,
+    0 calc(var(--px) * 2) 0 0 rgba(23, 20, 15, 0.35);
+  font-family: 'Kuronuri 20', 'Kuronuri 35', monospace;
+  font-size: clamp(12px, 1.05vw, 15px);
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+}
+.page-home .hg-on .hg-combo.on { visibility: visible; animation: hg-lcd-entra 0.3s steps(1, end) both; }
+@keyframes hg-lcd-entra { 0% { opacity: 1; } 33% { opacity: 0; } 66% { opacity: 1; } }
+
+/* Botones A, B y W de la carcasa: invisibles encima de los dibujados. */
+.page-home .hg-on .hg-key {
+  position: absolute;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.page-home .hg-on .hg-key { transition: transform 0.12s var(--ease), background 0.12s ease, box-shadow 0.12s ease; }
+/* Pulsado: el botón dibujado se hunde (sombra por dentro y un pelo más pequeño). */
+.page-home .hg-on .hg-key:active,
+.page-home .hg-on .hg-key.is-hundido {
+  background: rgba(23, 20, 15, 0.26);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+  transform: scale(0.92);
+  transition-duration: 0.04s;
+}
+/* La W está dibujada como triángulo: que el hundido tenga su forma. */
+.page-home .hg-on .hg-key-w:active,
+.page-home .hg-on .hg-key-w.is-hundido { clip-path: polygon(50% 4%, 98% 96%, 2% 96%); }
+.page-home .hg-on .hg-key:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.page-home .hg-key-w { border-radius: 4px; }
+.page-home .hg-key-a { left: 17.4%; top: 75%; width: 10%; height: 10.6%; }
+.page-home .hg-key-w { left: 39%; top: 68.7%; width: 25%; height: 21.9%; }
+.page-home .hg-key-b { left: 75.2%; top: 75%; width: 10.8%; height: 11%; }
+.page-home .hg-largo .hg-key-a { top: 84.8%; height: 5%; }
+.page-home .hg-largo .hg-key-w { top: 81.5%; height: 10.7%; }
+.page-home .hg-largo .hg-key-b { top: 84.6%; height: 5.4%; }
+.page-home .hg-jumbo .hg-key-a { left: 10.7%; top: 68.4%; width: 16.9%; height: 16.9%; }
+.page-home .hg-jumbo .hg-key-w { left: 37.4%; top: 68.5%; width: 25.1%; height: 21.7%; }
+.page-home .hg-jumbo .hg-key-b { left: 71.9%; top: 68.4%; width: 16.9%; height: 16.9%; }
+/* La zona que se puede tocar es algo mayor que el botón dibujado (para el dedo). */
+.page-home .hg-on .hg-key::after { content: ''; position: absolute; inset: -30%; }
+
+/* Sprites: el JS cambia la tira (--img), el fotograma, la posición y el giro.
+   Un píxel del sprite mide 0.75cqw de su casita, así en el jumbo sale al doble.
+   Sin JS se queda la animación de reposo en CSS. */
+.page-home .hg-sprite {
+  --px: 0.75cqw;
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  width: calc(var(--fw) * var(--px));
+  height: calc(var(--fh) * var(--px));
+  margin-left: calc(-1 * var(--eje) * var(--px));
+  background: var(--img) 0 0 / calc(var(--n) * 100%) 100% no-repeat;
+  image-rendering: pixelated;
+  transform-origin: calc(var(--eje) * var(--px)) 100%;
+  transform: translateY(calc(var(--jy, 0) * -1cqw)) scale(var(--flip, 1), 1);
+  animation: hg-idle calc(var(--n) * 0.42s) steps(var(--n), jump-none) infinite;
+}
+.page-home .hg-on .hg-sprite { animation: none; }
+.page-home .hg-largo .hg-sprite { bottom: 34%; }
+.page-home .hg-sprite-chef { --img: url('assets/img/housegotchi/sprites/chef-idle.png'); --n: 2; --fw: 45; --fh: 44; --eje: 14; }
+.page-home .hg-sprite-rogelio { --img: url('assets/img/housegotchi/sprites/rogelio-idle.png'); --n: 2; --fw: 33; --fh: 35; --eje: 14; }
+.page-home .hg-sprite-robot { --img: url('assets/img/housegotchi/sprites/robot-idle.png'); --n: 2; --fw: 37; --fh: 36; --eje: 16; }
+.page-home .hg-sprite-minera { --img: url('assets/img/housegotchi/sprites/minera-idle.png'); --n: 2; --fw: 40; --fh: 36; --eje: 12; }
+.page-home .hg-sprite-roni { --img: url('assets/img/housegotchi/sprites/roni-idle.png'); --n: 2; --fw: 52; --fh: 38; --eje: 25; }
+.page-home .hg-sprite-pina { --img: url('assets/img/housegotchi/sprites/pina-idle.png'); --n: 2; --fw: 46; --fh: 42; --eje: 22; }
+.page-home .hg-sprite-tendero { --img: url('assets/img/housegotchi/sprites/tendero-idle.png'); --n: 2; --fw: 38; --fh: 40; --eje: 17; }
+.page-home .hg-sprite-pastor { --img: url('assets/img/housegotchi/sprites/pastor-idle.png'); --n: 2; --fw: 40; --fh: 39; --eje: 17; }
+.page-home .hg-sprite-gato { --img: url('assets/img/housegotchi/sprites/gato-idle.png'); --n: 2; --fw: 44; --fh: 124; --eje: 21; animation-duration: 1.7s; }
+.page-home .hg-largo .hg-sprite-gato { bottom: 5%; }
+.page-home .hg-sprite-luna { --img: url('assets/img/housegotchi/sprites/luna-idle.png'); --n: 3; --fw: 67; --fh: 49; --eje: 33.5; animation-duration: 2.7s; }
+
+/* Bocadillos de LCD encima del bichito (frases, saludos, z Z z, notas) y los
+   efectos de la luna. --k es 1 en una casita y 0.5 en el jumbo (mismo tamaño
+   en pantalla). housegotchi.js los crea y los quita. */
+.page-home .hg-bocadillo {
+  --k: 1;
+  position: absolute;
+  z-index: 2;
+  translate: -50% 0;
+  padding: calc(1.1cqw * var(--k)) calc(2cqw * var(--k)) calc(0.8cqw * var(--k));
+  background: #f2e8d5;
+  color: var(--ink, #17140f);
+  /* Marco de píxel con las esquinas mordidas, como en una pantallita. */
+  --b: calc(0.75cqw * var(--k));
+  border: 0;
+  box-shadow: 0 calc(var(--b) * -1) 0 0 #17140f, 0 var(--b) 0 0 #17140f, calc(var(--b) * -1) 0 0 0 #17140f, var(--b) 0 0 0 #17140f;
+  font-family: 'Kuronuri 20', 'Kuronuri 35', monospace;
+  font-size: calc(6.4cqw * var(--k));
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  width: max-content;
+  max-width: calc(64cqw * var(--k));
+  pointer-events: none;
+  animation: hg-bocadillo var(--dur, 1.7s) steps(1, end) both, hg-bocadillo-sube var(--dur, 1.7s) steps(3, end) both;
+}
+.page-home .hg-bocadillo::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(100% + var(--b));
+  width: calc(var(--b) * 3);
+  height: calc(var(--b) * 2);
+  translate: -50% 0;
+  background: #17140f;
+  /* Pico escalonado: dos filas de píxeles. */
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 66.6% 50%, 66.6% 100%, 33.3% 100%, 33.3% 50%, 0 50%);
+}
+.page-home .hg-bocadillo.hg-zz,
+.page-home .hg-bocadillo.hg-paga,
+.page-home .hg-bocadillo.hg-nota { background: none; border: 0; box-shadow: none; padding: 0; font-family: 'Kuronuri 35', monospace; }
+.page-home .hg-bocadillo.hg-zz::after,
+.page-home .hg-bocadillo.hg-paga::after,
+.page-home .hg-bocadillo.hg-nota::after { display: none; }
+.page-home .hg-bocadillo.hg-zz { font-size: calc(7cqw * var(--k)); }
+.page-home .hg-bocadillo.hg-nota { font-size: calc(10cqw * var(--k)); }
+.page-home .hg-bocadillo.hg-paga { font-size: calc(8cqw * var(--k)); }
+/* Mareado: como en una pantallita de verdad, nada gira; mira a un lado y a otro a saltos. */
+.page-home .hg-sprite.is-mareado { animation: hg-mareo-mira 0.36s steps(1, end) infinite; }
+@keyframes hg-mareo-mira { 0% { scale: 1 1; } 50% { scale: -1 1; } }
+@keyframes hg-bocadillo { 0% { opacity: 0; } 6% { opacity: 1; } 88% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes hg-bocadillo-sube { from { translate: -50% 0; } to { translate: -50% calc(-3cqw * var(--k)); } }
+
+.page-home .hg-estrella {
+  --k: 1;
+  position: absolute;
+  width: calc(3cqw * var(--k));
+  height: calc(3cqw * var(--k));
+  background:
+    linear-gradient(#17140f, #17140f) center / 34% 100% no-repeat,
+    linear-gradient(#17140f, #17140f) center / 100% 34% no-repeat;
+  pointer-events: none;
+  animation: hg-titila 0.6s steps(2, jump-none) infinite both;
+}
+@keyframes hg-titila { 0% { opacity: 1; scale: 1; } 100% { opacity: 0.25; scale: 0.6; } }
+
+/* Sueño: bocadillo de pensamiento (borde de puntos) encima del que duerme. */
+.page-home .hg-bocadillo.hg-sueño { box-shadow: none; outline: var(--b) dotted #17140f; }
+.page-home .hg-bocadillo.hg-sueño::after { display: none; }
+
+/* El vaso del gato: aparece en una repisa, el gato lo empuja y cae a saltos
+   hasta el suelo (housegotchi.js lo quita al llegar y suena el «¡clonc!»). */
+.page-home .hg-vaso {
+  position: absolute;
+  right: 6%;
+  top: 34%;
+  width: 24%;
+  height: 0.75cqw;
+  background: #17140f;
+  pointer-events: none;
+}
+.page-home .hg-vaso::before {
+  content: '';
+  position: absolute;
+  left: 18%;
+  bottom: 100%;
+  width: 4.5cqw;
+  height: 5.25cqw;
+  box-sizing: border-box;
+  border: 0.75cqw solid #17140f;
+  border-top: 0;
+  background: #f2e8d5;
+  animation: hg-vaso-cae 0.9s steps(8, end) both;
+}
+@keyframes hg-vaso-cae {
+  0%, 30% { translate: 0 0; }
+  45% { translate: 6cqw 0; }
+  100% { translate: 9cqw 82cqw; }
+}
+
+/* Estrella fugaz de LCD: una cruz con una estela de puntos que se encogen,
+   ya dibujada en diagonal (nada gira) y que avanza a saltos. */
+.page-home .hg-fugaz {
+  --k: 1;
+  --p: calc(1.2cqw * var(--k));
+  position: absolute;
+  left: 0;
+  width: calc(3.4cqw * var(--k));
+  height: calc(3.4cqw * var(--k));
+  background:
+    linear-gradient(#17140f, #17140f) center / 34% 100% no-repeat,
+    linear-gradient(#17140f, #17140f) center / 100% 34% no-repeat;
+  pointer-events: none;
+  animation: hg-fugaz 0.9s steps(7, end) both;
+}
+.page-home .hg-fugaz::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--p);
+  height: var(--p);
+  translate: -50% -50%;
+  box-shadow:
+    calc(var(--p) * -3) calc(var(--p) * -1) 0 0 #17140f,
+    calc(var(--p) * -6) calc(var(--p) * -2) 0 calc(var(--p) * -0.2) #17140f,
+    calc(var(--p) * -9) calc(var(--p) * -3) 0 calc(var(--p) * -0.35) #17140f;
+}
+@keyframes hg-fugaz {
+  from { translate: -10cqw 0; }
+  to { translate: 110cqw 40cqw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-home .hg-bocadillo { animation: hg-bocadillo var(--dur, 1.7s) steps(1, end) both; }
+  .page-home .hg-estrella { animation: none; }
+  .page-home .hg-fugaz { display: none; }
+}
+
+@keyframes hg-idle {
+  from { background-position-x: 0%; }
+  to { background-position-x: 100%; }
+}
+
+/* Móvil sin JS: el jumbo arriba a lo ancho; debajo, largo y casitas. */
+@media (max-width: 760px) {
+  .page-home .hg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .page-home .hg-jumbo { grid-column: 1 / -1; grid-row: 1; }
+  .page-home .hg-largo { grid-column: 1; grid-row: 2 / span 2; }
+  .page-home .hg-c1 { grid-column: 2; grid-row: 2; }
+  .page-home .hg-c2 { grid-column: 2; grid-row: 3; }
+  .page-home .hg-c3 { grid-column: 1; grid-row: 4; }
+  .page-home .hg-help { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .hg-sprite { animation: none; }
+  .page-home .hg-casa,
+  .page-home .hg-on.hg-ready .hg-casa { transition: none; }
+  .page-home .hg-casa.is-snap,
+  .page-home .hg-casa.is-land,
+  .page-home .hg-casa.is-land.is-snap,
+  .page-home .hg-casa.is-no { animation: none; }
+  .page-home .hg-sprite.is-mareado { animation: none; }
+  .page-home .hg-on .hg-casa.is-cerca { animation: none; filter: drop-shadow(5px 6px 0 rgba(23, 20, 15, 0.85)) drop-shadow(0 0 12px var(--pink)); }
+}
+
+
+/* =====================================================================
+   Portada mixta (19/11/2026): la izquierda de siempre (style.css, .hero-simple:
+   negro con dither, nombre rosa, pastillas) y a la derecha el collage de pegatinas
+   y dos pantallas de gameplay, sueltos sobre el fondo (sin hoja de papel detrás).
+
+   El collage es una caja de proporción fija (1 : 1.05) y todo lo de dentro se mide
+   en cqw (anchura de la caja), así que la composición es la misma en cualquier
+   tamaño de ventana: solo cambia de escala. Va al final del archivo para pisar las
+   posiciones antiguas, incluidas las de los @media de arriba.
+   ===================================================================== */
+/* Dos filas flexibles vacías (arriba y abajo) se comen la altura del collage; así el
+   nombre, los puntos, el puesto y los botones quedan juntos y centrados en vertical. */
+.page-home .hero.hero-mix {
+  grid-template-rows: 1fr auto auto auto auto 1fr;
+  /* Sin altura de pantalla completa: la altura la marca el collage, así no queda
+     una franja vacía arriba en ventanas altas. La izquierda gana un poco de ancho. */
+  min-height: 0;
+  padding: clamp(44px, 6vh, 80px) 40px clamp(88px, 11vh, 150px) 56px;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 12fr);
+  column-gap: clamp(24px, 2.5vw, 48px);
+}
+.page-home .hero-mix .hero-name { font-size: clamp(60px, calc(10vw - 20px), 176px); }
+.page-home .hero-mix h2.role { font-size: clamp(20px, 2.2vw, 34px); }
+/* Sobre el rosa flúor el gris de --text-soft se apaga: el subtítulo va en tinta */
+html:not([data-theme="dark"]) .page-home .hero-mix h2.role { color: var(--ink); }
+.page-home .hero-mix .hero-actions { gap: 14px; margin-top: 16px; }
+.page-home .hero-mix .hero-actions .pill { font-size: clamp(14px, 1.1vw, 17px); padding: 0.95em 1.6em; }
+.page-home .hero-mix > .hero-name    { grid-row: 2; }
+.page-home .hero-mix > .hero-dots    { grid-row: 3; }
+.page-home .hero-mix > .role         { grid-row: 4; }
+.page-home .hero-mix > .hero-actions { grid-row: 5; }
+.page-home .hero.hero-mix > .hero-board {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  isolation: isolate;
+}
+.page-home .hero-mix .hero-art {
+  position: relative;
+  width: max(300px, calc((100svh - 140px) / 1.05));
+  max-width: 100%;
+  aspect-ratio: 1 / 1.05;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  container-type: inline-size;
+}
+
+.page-home .hero-mix .hero-ring-disc { top: 54%; left: 46%; width: 88cqw; }
+.page-home .hero-mix .hero-stage { left: 14%; bottom: 1%; width: 50%; height: 13%; }
+.page-home .hero-mix .hero-sun,
+.page-home .hero-mix .hero-moon { top: 3%; left: 0; width: 17cqw; }
+
+/* Pantallas: Tourist Trap arriba a la derecha y OWS debajo, algo más pequeña. */
+.page-home .hero-mix .hero-screen {
+  top: 1%;
+  right: 0;
+  width: 54cqw;
+  padding: 1.3cqw 1.3cqw 1.5cqw;
+  border-width: max(2px, 0.5cqw);
+  box-shadow: 1.3cqw 1.3cqw 0 rgba(23, 20, 15, 0.26);
+}
+.page-home .hero-mix .hero-screen-ows {
+  top: 46%;
+  right: 3%;
+  width: 41cqw;
+  transform: rotate(-2.6deg);
+}
+.page-home .hero-mix .hero-tape { top: -1.8cqw; width: 15cqw; height: 4cqw; }
+.page-home .hero-screen-ows .hero-tape { left: 30%; background: var(--pink); transform: translateX(-50%) rotate(4deg); }
+.page-home .hero-screen-label {
+  display: block;
+  padding: 1cqw 0.3cqw 0;
+  font-family: var(--mono);
+  font-size: max(8px, 1.7cqw);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.page-home .hero-slides img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.page-home .hero-slides img.is-on { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .hero-screen-ows { animation: home-float 8.4s ease-in-out -3s infinite; }
+}
+
+/* Personajes y pegatinas. */
+.page-home .hero-mix .hero-cut-curro   { display: block; top: 22%; bottom: auto; left: 18%; width: 15cqw; }
+.page-home .hero-mix .hero-cut-rogelio { display: block; top: auto; bottom: 1%; left: 29%; width: 27cqw; }
+.page-home .hero-mix .hero-cut-robot   { display: block; top: auto; bottom: 7%; left: 63%; width: 8.5cqw; }
+.page-home .hero-mix .hero-cut-troll   { display: block; top: auto; bottom: 10%; left: 3%; width: 10cqw; }
+.page-home .hero-mix .hero-palm        { display: block; top: auto; bottom: -1%; left: auto; right: -3%; width: 19cqw; }
+
+/* Iconos de OWS: sin marco de papel blanco; la sombra dura sigue la forma del icono. */
+.page-home .hero-mix .hero-app-icon {
+  width: 8.5cqw;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  filter: drop-shadow(0.4cqw 0.5cqw 0 rgba(23, 20, 15, 0.85));
+}
+.page-home .hero-mix .hero-app-icon-sheep { top: 4%; left: 30%; right: auto; bottom: auto; }
+.page-home .hero-mix .hero-app-icon-hen   { top: 42%; left: 1%; right: auto; bottom: auto; }
+.page-home .hero-mix .hero-app-icon-chick { top: auto; left: auto; bottom: 6%; right: 18%; }
+
+/* Una sola columna: el collage baja debajo de los botones. */
+@media (max-width: 1180px) {
+  .page-home .hero.hero-mix { grid-template-rows: none; grid-template-columns: minmax(0, 1fr); }
+  .page-home .hero-mix > .hero-name,
+  .page-home .hero-mix > .hero-dots,
+  .page-home .hero-mix > .role,
+  .page-home .hero-mix > .hero-actions { grid-row: auto; }
+  .page-home .hero.hero-mix > .hero-board {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 24px;
+  }
+  .page-home .hero-mix .hero-art { width: min(100%, 560px); }
+}
+@media (max-width: 860px) {
+  .page-home .hero.hero-mix { padding: 48px 20px 80px; }
+}
+
+/* =====================================================================
+   Página Housegotchi (housegotchi.html, 19/11/2026)
+   Empieza con el juguete en su blíster: cartón crema con agujero de colgar,
+   burbuja de plástico con las cinco piezas y una pestaña «tira». Al abrirlo
+   el plástico sale volando y las piezas caen al tablero (housegotchi.js).
+   Sin JS el paquete no sale (lleva hidden) y se ve el tablero quieto.
+   ===================================================================== */
+.page-hg .main { display: flex; flex-direction: column; min-height: 100vh; }
+.page-hg #housegotchi { flex: 1; width: 100%; padding-top: clamp(28px, 4vw, 56px); }
+.page-hg h1.section-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(30px, 5vw, 52px);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.hg-stack { display: grid; }
+.hg-stack > .hg-pack,
+.hg-stack > .hg-play { grid-area: 1 / 1; }
+.hg-page.hg-boxed .hg-play { visibility: hidden; opacity: 0; pointer-events: none; }
+
+
+/* las piezas caen al tablero, una detrás de otra */
+.hg-page.hg-unboxing .hg-casa { animation: hg-drop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+.hg-page .hg-casa.hg-cae { animation: hg-drop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) both; animation-delay: calc(var(--i, 0) * 140ms); }
+@keyframes hg-drop {
+  from { opacity: 0; translate: 0 -80px; scale: 0.8; rotate: -6deg; }
+  to { opacity: 1; translate: 0 0; scale: 1; rotate: 0deg; }
+}
+/* y vuelven a su blíster: suben a saltos y se van */
+.hg-page .hg-casa.hg-guarda { animation: hg-sube 0.42s steps(5, end) both; animation-delay: calc(var(--i, 0) * 90ms); pointer-events: none; }
+@keyframes hg-sube {
+  to { opacity: 0; translate: 0 -90px; scale: 0.7; }
+}
+/* la mesa sin piezas */
+.hg-vacia {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.55;
+  pointer-events: none;
+}
+.hg-vacia[hidden] { display: none; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .hg-page.hg-unboxing .hg-casa { animation: none; }
+  .hg-page .hg-casa.hg-cae, .hg-page .hg-casa.hg-guarda, .hg-caja-slot { animation: none; transition: none; }
+  .page-home .hg-vaso::before { animation-duration: 0.2s; }
+}
+
+/* =====================================================================
+   Portada de Housegotchi en la home (18/11/2026): va debajo del correo.
+   Viene de herramientas/mockups/y2k.html: la consola con el nombre
+   girando alrededor (por detrás medio transparente, por delante con
+   contorno). Pulsar la consola o «Jugar» lleva a housegotchi.html.
+   ===================================================================== */
+.page-home .main > section.hgp { padding: clamp(40px, 5vw, 72px) clamp(22px, 4.4vw, 64px) clamp(30px, 4vw, 56px); }
+.hgp-portada {
+  position: relative; max-width: 1384px; margin: 0 auto; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: clamp(520px, 52vw, 680px); padding: 40px 20px 48px;
+  border: 3px solid #17140f; border-radius: 22px; color: #f2ede2;
+  background: #17140f radial-gradient(circle, rgba(255, 46, 140,.22) 1.5px, transparent 1.8px) 0 0 / 22px 22px;
+  box-shadow: 8px 9px 0 rgba(23,20,15,.35);
+}
+html[data-theme="dark"] .hgp-portada { border-color: #f2ede2; box-shadow: 8px 9px 0 rgba(242,237,226,.18); }
+.hgp-ante {
+  margin: 0 0 6px; font-family: 'Kuronuri 20', monospace; font-size: 13px;
+  letter-spacing: .3em; text-transform: uppercase; color: #ff2e8c; text-align: center; text-wrap: balance;
+}
+.hgp-escenario {
+  position: relative; display: block; width: min(420px, 62vw); aspect-ratio: 1;
+  color: inherit; text-decoration: none; cursor: pointer; outline-offset: 10px;
+}
+.hgp-jumbo { position: absolute; inset: 0; z-index: 2; display: block; container-type: inline-size; transition: transform .2s; }
+.hgp-escenario:hover .hgp-jumbo, .hgp-escenario:focus-visible .hgp-jumbo { transform: translateY(-4px) rotate(-1deg); }
+.hgp-jumbo img { width: 100%; height: 100%; display: block; }
+.hgp-nombre {
+  position: absolute; left: 25.4%; width: 49.2%; top: 4%; height: 7.6%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fffdf6; font-family: 'Kuronuri 35', serif; font-size: 5cqw; letter-spacing: .13em;
+}
+.hgp-lcd {
+  position: absolute; left: 9.57%; width: 80.87%; top: 14.63%; height: 49.53%; border-radius: 3.4% / 5.6%;
+  background: #ece6d3; color: #17140f; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 5% 0 0;
+}
+.hgp-titulo { font-family: 'Kuronuri 35', serif; font-size: 10.5cqw; line-height: .9; text-align: center; letter-spacing: .04em; }
+.hgp-pulsa {
+  font-family: 'Kuronuri 20', monospace; font-size: 4cqw; letter-spacing: .14em; text-transform: uppercase;
+  animation: hgp-parpadeo 1s steps(1) infinite;
+}
+@keyframes hgp-parpadeo { 50% { opacity: 0; } }
+.hgp-suelo {
+  width: 100%; display: flex; justify-content: center; align-items: flex-end; gap: 6%;
+  border-bottom: .7cqw solid #17140f; padding-bottom: .4cqw;
+}
+/* Sprites en tira horizontal: el tamaño va en cqw de la consola. */
+.hgp-spr {
+  --u: .3cqw; flex: none; display: block;
+  width: calc(var(--fw) * var(--u)); height: calc(var(--fh) * var(--u));
+  background: var(--img) 0 0 / calc(var(--fw) * var(--n) * var(--u)) 100% no-repeat;
+  image-rendering: pixelated; animation: hgp-spr calc(var(--n) * .32s) steps(var(--n)) infinite;
+}
+@keyframes hgp-spr { to { background-position-x: calc(var(--fw) * var(--n) * var(--u) * -1); } }
+.hgp-rogelio { --img: url('assets/img/housegotchi/sprites/rogelio-idle.png'); --n: 2; --fw: 33; --fh: 35; }
+.hgp-chef    { --img: url('assets/img/housegotchi/sprites/chef-idle.png');    --n: 2; --fw: 45; --fh: 44; }
+.hgp-robot   { --img: url('assets/img/housegotchi/sprites/robot-idle.png');   --n: 2; --fw: 37; --fh: 36; }
+.hgp-orbita { position: absolute; left: -22%; top: 0; width: 144%; height: 100%; overflow: visible; pointer-events: none; }
+.hgp-detras { z-index: 1; opacity: .45; }
+.hgp-delante { z-index: 3; }
+.hgp-orbita text { font-family: 'Kuronuri 35', serif; font-size: 34px; letter-spacing: .08em; fill: #ff2e8c; }
+.hgp-delante text { paint-order: stroke; stroke: #17140f; stroke-width: 8px; stroke-linejoin: round; }
+.hgp-jugar {
+  margin-top: 22px; font: 800 22px var(--allo, 'Allo', sans-serif); color: #17140f; text-decoration: none;
+  background: #ff2e8c; border: 3px solid #f2ede2; border-radius: 99px; padding: 12px 30px 10px;
+  box-shadow: 5px 6px 0 #f2ede2; transition: transform .12s, box-shadow .12s;
+}
+.hgp-jugar:hover { transform: translate(-1px, -2px); box-shadow: 6px 8px 0 #f2ede2; }
+.hgp-jugar:active { transform: translate(3px, 4px); box-shadow: 2px 2px 0 #f2ede2; }
+@media (max-width: 560px) {
+  .page-home .main > section.hgp { padding: 34px 12px 24px; }
+  .hgp-portada { min-height: 0; padding: 34px 10px 36px; }
+  .hgp-ante { font-size: 11px; letter-spacing: .18em; margin-bottom: 10px; }
+  .hgp-escenario { width: min(300px, 64vw); }
+  .hgp-orbita text { font-size: 40px; }
+  .hgp-jugar { font-size: 18px; padding: 10px 22px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hgp-pulsa, .hgp-spr { animation: none; }
+  .hgp-jumbo, .hgp-jugar { transition: none; }
+}
+
+/* Prueba (estudio de estética): el nombre como la cabecera de itch.io, con el mismo mosaico
+   de capturas en trama fina (rosa arriba, azul abajo) y un contorno de tinta gordo.
+   La textura sale de las capas de la cabecera, con una sardina de Tourist Trap y el calvo
+   groucho de Figurines Please (herramientas/trama_nombre_itch.py → trama-nombre-itch-2.webp), y es
+   más ancha que el nombre: app.js la desplaza al azar en cada visita para que asomen otros juegos.
+   Para quitarlo, basta con borrar la clase hero-name-trama del h1 de index.html. */
+.page-home .hero-name.hero-name-trama {
+  width: fit-content;
+  color: transparent;
+  background: url("assets/img/home/trama-nombre-itch-2.webp") 30% 0 / auto 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(5px 0 0 var(--ink)) drop-shadow(-5px 0 0 var(--ink))
+          drop-shadow(0 5px 0 var(--ink)) drop-shadow(0 -5px 0 var(--ink));
+}

@@ -803,6 +803,16 @@ footer {
 .back-link:hover { color: var(--text); }
 
 .detail-cover .card-thumb { aspect-ratio: 16 / 9; height: auto; max-height: 70vh; box-shadow: none; }
+.detail-banner { border-radius: 18px; border: 2px solid var(--border); overflow: hidden; }
+.detail-banner img { display: block; width: 100%; height: auto; }
+.detail-banner .banner-dark { display: none; }
+html[data-theme="dark"] .detail-banner.has-dark .banner-light { display: none; }
+html[data-theme="dark"] .detail-banner.has-dark .banner-dark { display: block; }
+@media (max-width: 700px) { .detail-banner { max-width: 520px; margin: 0 auto; } }
+/* entrada C2 al fondo de cada juego, un poco torcida como si estuviera suelta sobre la mesa */
+.detail-ticket { margin: 56px auto 8px; max-width: 620px; padding: 0 12px; }
+.detail-ticket img { display: block; width: 100%; height: auto; transform: rotate(-2deg); filter: drop-shadow(0 10px 18px rgba(0,0,0,.22)); transition: transform .3s ease; }
+.detail-ticket img:hover { transform: rotate(0deg) translateY(-4px); }
 
 .detail-body {
   display: grid;
@@ -1471,6 +1481,12 @@ html[data-theme="dark"] .pill-accent { color: #17140f; }
 /* Página de contacto */
 .contact-page { padding-top: 56px; }
 .contact-page .contact-band { margin: 0; max-width: 1100px; }
+.contact-poster { position: relative; max-width: 1100px; margin: 72px auto 0; transform: rotate(-1.2deg); }
+.contact-poster img { display: block; width: 100%; height: auto; box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+/* dos trozos de cinta arriba */
+.contact-poster::before, .contact-poster::after { content: ''; position: absolute; top: -16px; width: 120px; height: 32px; background: rgba(242,237,226,.72); box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+.contact-poster::before { left: 40px; transform: rotate(-8deg); }
+.contact-poster::after { right: 40px; transform: rotate(7deg); }
 .cb-page-title { margin: 0 0 6px; font-family: 'Archivo Black', sans-serif; font-size: clamp(36px, 5vw, 80px); line-height: 1; }
 @media (max-width: 860px) {
   .cb-more-wrap { padding: 0 26px; justify-content: stretch; }
@@ -1735,4 +1751,265 @@ html[data-theme="dark"] .pill-accent { color: #17140f; }
   .branch-cut-guiri { width: 90px; right: 8%; }
   .branch-cut-minera { width: 72px; }
   .branch-word { font-size: 42px; }
+}
+
+/* ============ Trilogía Windows (boceto 21) ============
+   Cada juego viste su página con un sistema distinto, siempre en la paleta B:
+   OWS = baldosas de Windows 8, ChatDefender XP = ventanas de XP, Dig Me Out = biseles de Windows 95. */
+
+/* --- Windows 8: todo plano, cuadrado y en minúsculas --- */
+[data-os="win8"] .detail-banner,
+[data-os="win8"] .gallery-thumb,
+[data-os="win8"] .pill { border-radius: 0; }
+[data-os="win8"] .detail-main h4 { font-family: 'Segoe UI', 'Selawik', sans-serif; font-weight: 300; font-size: 30px; text-transform: lowercase; letter-spacing: 0; margin: 34px 0 12px; }
+[data-os="win8"] .detail-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: none; border: 0; border-radius: 0; padding: 0; }
+[data-os="win8"] .detail-meta > div { aspect-ratio: 1; padding: 12px; justify-content: flex-end; background: #2fb4e8; transition: transform .15s ease; }
+[data-os="win8"] .detail-meta > div:first-child { grid-column: span 2; aspect-ratio: 2 / 1; background: #17140f; }
+[data-os="win8"] .detail-meta > div:nth-child(4n+2) { background: #ff2e8c; }
+[data-os="win8"] .detail-meta > div:nth-child(4n+4) { background: #f2ede2; }
+[data-os="win8"] .detail-meta > div:hover { transform: scale(.97); }
+[data-os="win8"] .meta-label { font-family: 'Segoe UI', sans-serif; text-transform: lowercase; letter-spacing: 0; font-weight: 400; opacity: .85; order: 2; color: #17140f; }
+[data-os="win8"] .meta-value { font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 15px; color: #17140f; }
+[data-os="win8"] .detail-meta > div:first-child .meta-label,
+[data-os="win8"] .detail-meta > div:first-child .meta-value { color: #f2ede2; }
+[data-os="win8"] .gallery-thumb { border: 0; }
+[data-os="win8"] .gallery-thumb:hover { transform: scale(.97); }
+
+/* --- Windows XP: cada bloque es una ventana con su barra azul y la X rosa --- */
+[data-os="xp"] .detail-block,
+[data-os="xp"] .detail-role,
+[data-os="xp"] .detail-meta { background: var(--card); border: 3px solid #1f9fd4; border-top: 0; border-radius: 9px 9px 0 0; padding: 0 16px 16px; margin-top: 26px; overflow: hidden; color: var(--card-text); }
+[data-os="xp"] .detail-main h4,
+[data-os="xp"] .detail-meta::before { display: flex; align-items: center; justify-content: space-between; margin: 0 -16px 14px; padding: 7px 8px 7px 12px; background: linear-gradient(180deg, #8edaf7 0%, #2fb4e8 14%, #1f9fd4 70%, #1786b5 100%); color: #fff; font-family: 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 14px; text-transform: none; letter-spacing: 0; text-shadow: 1px 1px 0 #0d5e82; }
+[data-os="xp"] .detail-meta::before { content: attr(data-win); }
+[data-os="xp"] .detail-main h4::after,
+[data-os="xp"] .detail-meta::after { content: '✕'; display: grid; place-items: center; width: 21px; height: 21px; border: 1px solid #fff; border-radius: 3px; background: linear-gradient(180deg, #ff86bd, #ff2e8c 60%, #d81f72); color: #fff; font-size: 11px; text-shadow: none; }
+[data-os="xp"] .detail-meta { position: relative; }
+[data-os="xp"] .detail-meta::after { position: absolute; top: 5px; right: 8px; }
+[data-os="xp"] .detail-main .detail-block p,
+[data-os="xp"] .detail-main .detail-role li,
+[data-os="xp"] .plain-list li { color: var(--card-text); }
+[data-os="xp"] .gallery-thumb { border-radius: 3px; border: 2px solid #1f9fd4; }
+[data-os="xp"] .pill { border-radius: 4px; border: 1px solid #17140f; background: linear-gradient(180deg, #fff, #f2ede2 70%, #ddd6c6); color: #17140f; box-shadow: none; font-family: 'Trebuchet MS', sans-serif; }
+[data-os="xp"] .pill:hover { box-shadow: inset 0 0 0 2px #ff2e8c; transform: none; }
+
+/* --- Windows 95: biseles en relieve, barra de título plana y botones cuadrados --- */
+[data-os="w95"] { --hi: #fff; --lo: #17140f; --mid: #9a9486; }
+[data-os="w95"] .detail-block,
+[data-os="w95"] .detail-role,
+[data-os="w95"] .detail-meta { background: #f2ede2; border: 0; border-radius: 0; padding: 4px 14px 14px; margin-top: 26px; color: #17140f;
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), inset -4px -4px 0 var(--mid); }
+[data-os="w95"] .detail-main h4,
+[data-os="w95"] .detail-meta::before { display: flex; align-items: center; justify-content: space-between; margin: 0 -10px 14px; min-height: 26px; padding: 3px 4px 3px 8px; background: linear-gradient(90deg, #17140f 30%, #ff2e8c); color: #f2ede2; font: 700 13px/1.2 Tahoma, Verdana, sans-serif; letter-spacing: 0; text-transform: none; }
+[data-os="w95"] .detail-meta::before { content: attr(data-win); }
+[data-os="w95"] .detail-main h4::after,
+[data-os="w95"] .detail-meta::after { content: '×'; display: grid; place-items: center; width: 18px; height: 16px; background: #f2ede2; color: #17140f; font: 700 13px/1 Tahoma, sans-serif;
+  box-shadow: inset -1px -1px 0 var(--lo), inset 1px 1px 0 var(--hi), inset -2px -2px 0 var(--mid); }
+[data-os="w95"] .detail-meta { position: relative; }
+[data-os="w95"] .detail-meta::after { position: absolute; top: 8px; right: 8px; }
+[data-os="w95"] .detail-main .detail-block p,
+[data-os="w95"] .detail-main .detail-role li,
+[data-os="w95"] .plain-list li,
+[data-os="w95"] .credit-role,
+[data-os="w95"] .meta-label,
+[data-os="w95"] .meta-value { color: #17140f; }
+[data-os="w95"] .detail-block,
+[data-os="w95"] .detail-role { font-family: Tahoma, Verdana, sans-serif; }
+[data-os="w95"] .credits-list li { border-bottom-color: #9a9486; }
+[data-os="w95"] .gallery-thumb { border: 0; border-radius: 0; box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi); padding: 3px; }
+[data-os="w95"] .gallery-thumb:hover { transform: none; filter: contrast(1.1); }
+[data-os="w95"] .pill { border: 0; border-radius: 0; background: #f2ede2; color: #17140f; font-family: Tahoma, sans-serif; transform: none;
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), inset -4px -4px 0 var(--mid); }
+[data-os="w95"] .pill:active { box-shadow: inset 2px 2px 0 var(--lo), inset -2px -2px 0 var(--hi); transform: none; }
+[data-os="w95"] .detail-banner { border-radius: 0; }
+[data-os="w95"] .detail-cover .card-thumb { border: 0; border-radius: 0; padding: 4px; background: #f2ede2;
+  box-shadow: inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--hi), inset -4px -4px 0 var(--mid); }
+[data-os="w95"] .detail-cover .card-thumb img { box-shadow: inset 0 0 0 2px var(--lo); }
+[data-os="win8"] .detail-cover .card-thumb { border-radius: 0; }
+
+/* ============ Pieles propias (PK, FP, EVAD TALE) ============
+   Mismo truco que la trilogía Windows, pero cada una sale del juego:
+   Pizza Kaisen = viñetas de manga, Figurines Please = papeleo de frontera, EVAD TALE = cajas de diálogo RPG. */
+
+/* --- Pizza Kaisen: viñetas con borde de tinta gordo y títulos en caja de narración --- */
+[data-skin="manga"] .detail-block,
+[data-skin="manga"] .detail-role,
+[data-skin="manga"] .detail-meta { background: #f2ede2; color: #17140f; border: 5px solid #17140f; border-radius: 0; padding: 30px 20px 20px; margin-top: 40px; position: relative; }
+[data-skin="manga"] .detail-main h4 { position: absolute; top: -22px; left: 14px; margin: 0; padding: 4px 12px 2px; background: #f2ede2; border: 3px solid #17140f;
+  font: 400 24px/1 'Bangers', Impact, sans-serif; letter-spacing: .04em; color: #17140f; transform: rotate(-1.5deg); }
+[data-skin="manga"] .detail-main .detail-block p,
+[data-skin="manga"] .detail-main .detail-role li,
+[data-skin="manga"] .plain-list li,
+[data-skin="manga"] .credit-role { color: #17140f; }
+/* la ficha técnica en trama rosa, como la viñeta del título del banner */
+[data-skin="manga"] .detail-meta { padding: 16px; background-color: #f2ede2; background-image: radial-gradient(#ff2e8c 30%, transparent 33%); background-size: 9px 9px; }
+[data-skin="manga"] .detail-meta > div { background: #f2ede2; border: 3px solid #17140f; padding: 8px 10px; }
+[data-skin="manga"] .meta-label { color: #17140f; font-family: 'Bangers', Impact, sans-serif; font-size: 15px; letter-spacing: .06em; }
+[data-skin="manga"] .meta-value { color: #17140f; }
+[data-skin="manga"] .gallery-thumb { border: 4px solid #17140f; border-radius: 0; }
+[data-skin="manga"] .gallery-thumb:hover { transform: rotate(-1deg) scale(1.02); }
+[data-skin="manga"] .pill { border: 3px solid #17140f; border-radius: 0; font-family: 'Bangers', Impact, sans-serif; font-size: 17px; letter-spacing: .05em; }
+[data-skin="manga"] .detail-banner,
+[data-skin="manga"] .detail-cover .card-thumb { border-radius: 0; }
+
+/* --- Figurines Please: formularios de aduana con renglones, margen rosa y sello --- */
+[data-skin="papeleo"] .detail-main { counter-reset: casilla; }
+[data-skin="papeleo"] .detail-block,
+[data-skin="papeleo"] .detail-role,
+[data-skin="papeleo"] .detail-meta { background-color: #f2ede2; color: #17140f; border: 2px solid #17140f; border-radius: 0; margin-top: 28px; padding: 14px 18px 18px 58px;
+  background-image: linear-gradient(90deg, transparent 40px, #ff2e8c 40px, #ff2e8c 42px, transparent 42px),
+                    repeating-linear-gradient(180deg, transparent 0 27px, rgba(47, 180, 232, .38) 27px 28px);
+  font-family: 'Courier New', Consolas, monospace; }
+[data-skin="papeleo"] .detail-main h4 { counter-increment: casilla; margin: 0 0 12px; padding-bottom: 6px; border-bottom: 2px solid #17140f;
+  font: 700 14px/1.3 'Courier New', Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; color: #17140f; }
+[data-skin="papeleo"] .detail-main h4::before { content: 'CASILLA ' counter(casilla, decimal-leading-zero) ' — '; color: #ff2e8c; }
+[data-skin="papeleo"] .detail-main .detail-block p,
+[data-skin="papeleo"] .detail-main .detail-role li,
+[data-skin="papeleo"] .plain-list li,
+[data-skin="papeleo"] .credit-role,
+[data-skin="papeleo"] .meta-label,
+[data-skin="papeleo"] .meta-value { color: #17140f; font-family: 'Courier New', Consolas, monospace; }
+[data-skin="papeleo"] .credits-list li { border-bottom: 1px dashed #17140f; }
+[data-skin="papeleo"] .detail-meta { padding-left: 18px; background-image: repeating-linear-gradient(180deg, transparent 0 27px, rgba(47, 180, 232, .38) 27px 28px); }
+[data-skin="papeleo"] .gallery-thumb { border: 0; border-radius: 0; padding: 6px 6px 18px; background: #f2ede2; box-shadow: 0 3px 8px rgba(0, 0, 0, .25); transform: rotate(-1.2deg); }
+[data-skin="papeleo"] .gallery-thumb:nth-child(even) { transform: rotate(1.4deg); }
+[data-skin="papeleo"] .gallery-thumb:hover { transform: rotate(0) translateY(-3px); }
+[data-skin="papeleo"] .pill { border-radius: 0; border: 2px dashed #17140f; font-family: 'Courier New', Consolas, monospace; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+[data-skin="papeleo"] .detail-banner,
+[data-skin="papeleo"] .detail-cover .card-thumb { border-radius: 0; }
+
+/* --- EVAD TALE: cada bloque es una caja de diálogo negra con borde de papel y corazones azules --- */
+[data-skin="rpg"] .detail-block,
+[data-skin="rpg"] .detail-role,
+[data-skin="rpg"] .detail-meta { background: #0c0c0a; color: #f2ede2; border: 5px solid #f2ede2; border-radius: 0; outline: 3px solid #0c0c0a; margin-top: 30px; padding: 16px 20px 20px;
+  font-family: 'Pixelify Sans', 'Courier New', monospace; }
+[data-skin="rpg"] .detail-main h4 { margin: 0 0 12px; font: 500 22px/1.2 'Pixelify Sans', 'Courier New', monospace; letter-spacing: 0; text-transform: none; color: #f2ede2; }
+[data-skin="rpg"] .detail-main h4::before { content: '* '; color: #2fb4e8; }
+[data-skin="rpg"] .detail-main .detail-block p,
+[data-skin="rpg"] .detail-main .detail-role li,
+[data-skin="rpg"] .plain-list li,
+[data-skin="rpg"] .credits-list li,
+[data-skin="rpg"] .meta-value { color: #f2ede2; font-family: 'Pixelify Sans', 'Courier New', monospace; }
+[data-skin="rpg"] .credit-role,
+[data-skin="rpg"] .meta-label { color: #2fb4e8; font-family: 'Pixelify Sans', 'Courier New', monospace; }
+[data-skin="rpg"] .credits-list li { border-bottom-color: rgba(242, 237, 226, .25); }
+[data-skin="rpg"] .detail-role li,
+[data-skin="rpg"] .plain-list li { list-style: none; }
+[data-skin="rpg"] .detail-role li::before,
+[data-skin="rpg"] .plain-list li::before { content: '♥'; width: auto; height: auto; background: none; color: #2fb4e8; font-size: 13px; line-height: 1; top: .35em; }
+[data-skin="rpg"] .detail-meta > div { background: none; border: 0; }
+[data-skin="rpg"] .gallery-thumb { border: 4px solid #f2ede2; border-radius: 0; }
+[data-skin="rpg"] .gallery-thumb img,
+[data-skin="rpg"] .detail-banner img { image-rendering: pixelated; }
+[data-skin="rpg"] .pill,
+[data-skin="rpg"] .pill.pill-accent { border-radius: 0; border: 4px solid #f2ede2; background: #0c0c0a; color: #f2ede2; font-family: 'Pixelify Sans', 'Courier New', monospace; box-shadow: none; }
+[data-skin="rpg"] .pill.pill-accent { border-color: #2fb4e8; }
+[data-skin="rpg"] .pill:hover { color: #2fb4e8; border-color: #2fb4e8; transform: none; }
+[data-skin="rpg"] .pill:hover::before { content: '♥ '; }
+[data-skin="rpg"] .detail-banner,
+[data-skin="rpg"] .detail-cover .card-thumb { border-radius: 0; }
+
+/* ============ Página de repos: collage dadá (newinspo N1) ============ */
+.repos-page { padding: 56px 24px 80px; max-width: 1180px; }
+.repos-head { position: relative; margin: 22px 0 48px; }
+.repos-title { display: flex; gap: 6px; flex-wrap: wrap; margin: 0; line-height: 1; font-size: clamp(64px, 12vw, 150px); }
+/* letras de nota de rescate: cada una de un recorte distinto */
+.rn { display: inline-block; padding: .04em .14em; box-shadow: 2px 3px 0 rgba(0,0,0,.18); }
+.rn-a { background: #17140f; color: #f2ede2; font-family: 'Arial Black', Impact, sans-serif; transform: rotate(-4deg); }
+.rn-b { background: #ff2e8c; color: #17140f; font-family: Georgia, 'Times New Roman', serif; font-style: italic; transform: rotate(3deg); }
+.rn-c { background: #f2ede2; color: #17140f; font-family: 'Courier New', monospace; font-weight: 700; border: 3px solid #17140f; transform: rotate(-2deg); }
+.rn-d { background: #2fb4e8; color: #17140f; font-family: Impact, 'Arial Narrow', sans-serif; transform: rotate(5deg); }
+.rn-e { background: #f2ede2; color: #ff2e8c; font-family: 'Times New Roman', serif; font-weight: 900; text-decoration: underline; transform: rotate(-6deg); }
+.repos-sub { margin: 22px 0 0; font-family: 'Courier New', monospace; font-size: 15px; }
+.repos-sub span { background: #f2ede2; color: #17140f; padding: 3px 8px; box-shadow: 2px 2px 0 rgba(0,0,0,.2); }
+.repos-sello { position: absolute; right: 4%; top: 10px; transform: rotate(9deg); border: 4px solid #ff2e8c; color: #ff2e8c; font: 700 24px 'Courier New', monospace; padding: 6px 14px; border-radius: 6px; }
+
+.collage { display: grid; grid-template-columns: repeat(6, 1fr); gap: 34px 28px; align-items: start; }
+.recorte { position: relative; display: block; background: #f2ede2; color: #17140f; padding: 26px 24px 24px; text-decoration: none;
+  box-shadow: 4px 6px 0 rgba(0,0,0,.22); clip-path: polygon(0 2%, 4% 0, 30% 1.5%, 62% 0, 100% 1%, 99% 40%, 100% 97%, 70% 100%, 35% 98.5%, 2% 100%, 0 60%);
+  transition: transform .25s ease; }
+a.recorte:hover { transform: rotate(0deg) scale(1.02) !important; }
+.recorte p { font-family: 'Courier New', monospace; font-size: 15px; line-height: 1.45; margin: 12px 0 0; max-width: 34ch; }
+.recorte-tit { margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.05; display: flex; flex-wrap: wrap; gap: 4px; }
+.recorte-ir { position: absolute; right: 16px; bottom: 10px; font: 900 34px 'Arial Black', sans-serif; color: #ff2e8c; }
+.recorte-cinta { position: absolute; right: 52px; top: 4px; background: #2fb4e8; color: #17140f; font: 700 13px 'Courier New', monospace; text-transform: uppercase; letter-spacing: .08em; padding: 5px 16px; transform: rotate(8deg); }
+.recorte-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 16px 0 0; }
+.recorte-tags li { font: 700 13px 'Courier New', monospace; border: 2px solid #17140f; padding: 2px 8px; }
+.recorte-tags li:nth-child(odd) { background: #ff2e8c; transform: rotate(-2deg); }
+.recorte-tags li:nth-child(3n) { background: #2fb4e8; transform: rotate(3deg); }
+.pegado { display: block; width: 100%; height: auto; filter: drop-shadow(3px 4px 0 rgba(0,0,0,.25)); }
+
+.r-figcraft { grid-column: 1 / span 3; transform: rotate(-1.5deg); }
+.r-juegos { grid-column: 4 / span 3; grid-row: span 2; transform: rotate(1.2deg); background: #17140f; color: #f2ede2; }
+.r-juegos .r-juegos .p1 { transform: rotate(-4deg); margin: 4px 0 -18px -36px; width: 108%; }
+.r-juegos .p2 { transform: rotate(3deg); margin: 0 -30px 18px 10px; width: 100%; }
+.r-fp { grid-column: 1 / span 3; transform: rotate(1deg); margin-left: 30px; }
+.r-fp .p3 { transform: rotate(-2deg); margin: 0 0 16px; }
+.r-dam { grid-column: 2 / span 3; transform: rotate(-2deg); background: #2fb4e8; }
+.r-web { grid-column: 5 / span 2; transform: rotate(3deg); margin-top: 40px; }
+.repos-ir { display: inline-flex; align-items: center; gap: .4em; margin-top: 30px; background: #ff2e8c; color: #17140f; text-decoration: none;
+  font: 900 clamp(26px, 4vw, 48px)/1 'Arial Black', Impact, sans-serif; text-transform: uppercase; padding: 22px 34px; border: 5px solid #17140f;
+  transform: rotate(-1.5deg); transition: transform .15s ease, background .15s ease; }
+.repos-ir:hover { background: #2fb4e8; transform: rotate(0) scale(1.03); }
+.repos-ir:active { transform: scale(.98); }
+
+@media (max-width: 760px) {
+  .collage { grid-template-columns: 1fr; gap: 34px; }
+  .collage .recorte { grid-column: 1 !important; grid-row: auto; margin-left: 0; margin-top: 0; }
+  .r-juegos .p1, .r-juegos .p2 { margin-left: 0; margin-right: 0; width: 100%; }
+  .repos-sello { position: static; display: inline-block; margin-top: 16px; }
+}
+
+/* --- Repos, segunda pasada dadá (newinspo N10: maximalismo, letras estiradas, pixelado, sinsentido 2000) --- */
+.repos-page { position: relative; overflow-x: clip; }
+.repos-head, .collage, .dada-tira { position: relative; z-index: 1; }
+.dada-fondo { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.dada-git { position: absolute; right: -4%; top: 330px; font: 400 clamp(220px, 34vw, 520px)/.8 Impact, 'Arial Narrow', sans-serif;
+  color: transparent; -webkit-text-stroke: 3px #ff2e8c; transform: rotate(-8deg) scaleY(2.1); transform-origin: top right; opacity: .45; }
+.dada-pixel { position: absolute; left: -30px; top: 520px; width: 180px; height: 180px; transform: rotate(14deg);
+  background: repeating-conic-gradient(#2fb4e8 0 25%, transparent 0 50%) 0 0 / 30px 30px; opacity: .8; }
+
+/* letras del título: alturas y estiramientos que no casan */
+.repos-title { align-items: flex-end; }
+.rn-a.estira-y { transform: rotate(-4deg) scaleY(1.35); transform-origin: bottom; }
+.rn-e.estira-y { transform: rotate(-6deg) scaleY(1.2); transform-origin: bottom; }
+.rn-b.peque { font-size: .62em; transform: rotate(8deg) translateY(-.6em); }
+.rn-c.estira-x { transform: rotate(-2deg) scaleX(1.45); margin: 0 .2em; }
+.rn-d.baja { transform: rotate(5deg) translateY(.18em); font-size: 1.12em; }
+.rn-b.punto { font-size: .5em; transform: rotate(-20deg); }
+
+/* tira de commits sin sentido, como cinta de embalar */
+.dada-tira { margin: 14px -24px 54px; background: #17140f; color: #f2ede2; transform: rotate(-2deg); overflow: hidden; white-space: nowrap;
+  border-top: 4px solid #ff2e8c; border-bottom: 4px solid #2fb4e8; font: 700 15px 'Courier New', monospace; padding: 9px 0; }
+.dada-tira span { display: inline-block; animation: dada-tira 38s linear infinite; }
+@keyframes dada-tira { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .dada-tira span { animation: none; } }
+
+/* recortes: cinta adhesiva, títulos estirados, trama */
+.collage { position: relative; }
+.recorte { z-index: 1; }
+.recorte::before { content: ''; position: absolute; top: 0; left: 50%; width: 110px; height: 24px; margin-left: -55px;
+  background: rgba(47, 180, 232, .5); transform: rotate(-3deg); }
+.r-dam::before, .r-juegos::before { background: rgba(255, 46, 140, .55); }
+.recorte-tit .rn-d { transform: rotate(4deg) scaleY(1.4); transform-origin: bottom; }
+.recorte-tit .rn-b { transform: rotate(2deg) scaleX(1.25); transform-origin: left; margin-right: .3em; }
+.r-dam { background-color: #2fb4e8; background-image: radial-gradient(#ff2e8c 1.6px, transparent 1.8px); background-size: 9px 9px; }
+.r-dam p { background: #2fb4e8; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 4px; }
+.r-web p { font-family: Georgia, serif; font-style: italic; }
+
+/* pegatinas de personajes de verdad (minera y Xeferías de Dig Me Out, guiri de Tourist Trap, oveja de OWS) */
+.pegatina { position: absolute; z-index: 2; pointer-events: none; }
+.pg-minera { width: 112px; image-rendering: pixelated; left: 38%; top: -92px; transform: rotate(-8deg); }
+.pg-guiri { width: 112px; right: -4px; top: 52%; transform: rotate(8deg); }
+.pg-oveja { width: 120px; left: -40px; bottom: 150px; transform: rotate(-12deg) scaleX(-1); }
+.pg-jefe { width: 260px; image-rendering: pixelated; right: -60px; bottom: -110px; z-index: 0; transform: rotate(-4deg); }
+
+@media (max-width: 760px) {
+  .dada-git { top: 260px; right: -20%; }
+  .dada-tira { margin: 10px -16px 40px; }
+  /* en una columna van en los huecos entre recortes, sin tapar texto ni los números */
+  .pg-minera { width: 76px; left: 10px; top: -66px; }
+  .pg-guiri { width: 66px; left: -14px; right: auto; top: 198px; }
+  .pg-oveja { width: 70px; left: auto; right: -14px; top: 572px; bottom: auto; }
+  .pg-jefe { width: 170px; right: -30px; bottom: -80px; }
 }

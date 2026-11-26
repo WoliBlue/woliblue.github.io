@@ -127,6 +127,7 @@ const UI = {
         solo: '¿Nadie compra?|¡Figuritas!|¡Que se acaba la semana!'
       }
     },
+    repos: { back: '← Volver al portfolio', sub: 'Lo que hay en mi GitHub, recortado y pegado.', figcraft: 'Paquete de Unity que convierte diseños de FigCraft en UI lista para usar.', pronto: 'próximamente', juegos: 'OWS, ChatDefender XP y las jams: el código de los proyectos del máster.', fp: 'El repo de la jam de Navidad, abierto entero.', dam: 'Prácticas de clase y apps de Android.', web: 'HTML, CSS y JS a mano, y scripts de Python que imprimen los banners en trama.', todos: 'Ver todos en GitHub' },
     contactForm: { cta: 'O contáctame por aquí', kicker: 'Contacto', title: 'Escríbeme', intro: 'Cuéntame qué necesitas y te respondo al correo que me dejes.', back: '← Volver al portfolio', name: 'Nombre', email: 'Correo', reason: 'Motivo', pick: 'Elige uno…', job: 'Oferta de trabajo', collab: 'Colaboración / proyecto', jam: 'Game jam', other: 'Otro', message: 'Mensaje', send: 'Enviar mensaje', note: 'Solo usaré tus datos para responderte.', badEmail: 'Escribe un correo válido, por ejemplo nombre@dominio.com' },
     toast: { copied: 'CORREO COPIADO AL PORTAPAPELES', failed: 'No se pudo copiar — ', sent: '¡MENSAJE ENVIADO! TE RESPONDO PRONTO' },
     placeholder: { pending: 'Imagen pendiente — sustituye' },
@@ -265,6 +266,7 @@ const UI = {
         solo: 'Nobody buying?|Figurines!|The week is ending!'
       }
     },
+    repos: { back: '← Back to the portfolio', sub: 'What’s on my GitHub, cut out and pasted.', figcraft: 'A Unity package that turns FigCraft designs into ready-to-use UI.', pronto: 'coming soon', juegos: 'OWS, ChatDefender XP and the jams: the code of my master’s projects.', fp: 'The Christmas jam repo, fully open.', dam: 'Coursework and Android apps.', web: 'Hand-written HTML, CSS and JS, plus Python scripts that print the halftone banners.', todos: 'See them all on GitHub' },
     contactForm: { cta: 'Or contact me here', kicker: 'Contact', title: 'Write to me', intro: 'Tell me what you need and I’ll reply to the email you leave.', back: '← Back to the portfolio', name: 'Name', email: 'Email', reason: 'Reason', pick: 'Choose one…', job: 'Job offer', collab: 'Collaboration / project', jam: 'Game jam', other: 'Other', message: 'Message', send: 'Send message', note: 'I’ll only use your details to reply.', badEmail: 'Enter a valid email, e.g. name@domain.com' },
     toast: { copied: 'EMAIL COPIED TO CLIPBOARD', failed: 'Could not copy — ', sent: 'MESSAGE SENT! I’LL GET BACK TO YOU SOON' },
     placeholder: { pending: 'Image pending — replace' },

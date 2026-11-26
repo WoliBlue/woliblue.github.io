@@ -14,6 +14,7 @@ const PROJECTS = {
       font: 'Chewy',
       featured: true,
       cover: { type: 'image', src: 'assets/img/tourist-trap/keyart.jpg' },
+      ticket: 'assets/img/entradas/tourist-trap.webp',
       logo: 'assets/img/tourist-trap/logo.png',
       external: { url: 'https://yalosegames.github.io/' },
       video: { src: 'assets/video/tourist-trap-gameplay-hito-05-11.mp4', poster: 'assets/img/tourist-trap/gameplay-hito-05-11-poster.jpg' },
@@ -132,8 +133,10 @@ const PROJECTS = {
     },
     {
       slug: 'pizza-kaisen',
+      skin: 'manga',
       font: 'Bangers',
       cover: { type: 'image', src: 'assets/img/pizza-kaisen.png' },
+      banner: { wide: 'assets/img/banners/pk-ancho-2.webp', narrow: 'assets/img/banners/pk-movil-2.webp' },
       gallery: [
         { video: 'assets/video/pizza-kaisen-comic.mp4', poster: 'assets/img/gallery/pizza-kaisen-comic-poster.jpg' },
         'assets/img/gallery/pizza-kaisen-1.jpg',
@@ -199,8 +202,11 @@ const PROJECTS = {
     },
     {
       slug: 'figurines-please',
+      skin: 'papeleo',
       font: 'Silkscreen',
       cover: { type: 'image', src: 'assets/img/figurines-please.png' },
+      ticket: 'assets/img/entradas/figurines-please.webp',
+      banner: { wide: 'assets/img/banners/fp-ancho.webp', narrow: 'assets/img/banners/fp-movil.webp' },
       gallery: [
         'assets/img/gallery/figurines-please-1.jpg',
         'assets/img/gallery/figurines-please-2.jpg',
@@ -268,8 +274,10 @@ const PROJECTS = {
     },
     {
       slug: 'evad-tale',
+      skin: 'rpg',
       font: 'Pixelify Sans',
       cover: { type: 'image', src: 'assets/img/evad-tale.png' },
+      banner: { wide: 'assets/img/banners/et-ancho.webp', narrow: 'assets/img/banners/et-movil.webp' },
       gallery: [
         'assets/img/gallery/evad-tale-1.jpg',
         'assets/img/gallery/evad-tale-2.jpg'
@@ -328,8 +336,11 @@ const PROJECTS = {
     },
     {
       slug: 'offline-working-sheep',
+      os: 'win8',
       font: 'Space Grotesk',
       cover: { type: 'image', src: 'assets/img/ows/cover.jpg' },
+      ticket: 'assets/img/entradas/offline-working-sheep.webp',
+      banner: { wide: 'assets/img/banners/ows-ancho.webp', narrow: 'assets/img/banners/ows-movil.webp', wideDark: 'assets/img/banners/ows-oscuro-ancho.webp', narrowDark: 'assets/img/banners/ows-oscuro-movil.webp' },
       gallery: [
         'assets/img/ows/menu.webp',
         'assets/img/ows/tu-mesa.webp',
@@ -417,8 +428,11 @@ const PROJECTS = {
     },
     {
       slug: 'chatdefenderxp',
+      os: 'xp',
       font: 'Courier Prime',
       cover: { type: 'image', src: 'assets/img/chatdefenderxp/cover.jpg' },
+      ticket: 'assets/img/entradas/chatdefenderxp.webp',
+      banner: { wide: 'assets/img/banners/cdxp-ancho.webp', narrow: 'assets/img/banners/cdxp-movil.webp' },
       gallery: [
         'assets/img/chatdefenderxp/menu.jpg',
         'assets/img/chatdefenderxp/wave-hud.jpg',
@@ -489,8 +503,11 @@ const PROJECTS = {
     },
     {
       slug: 'dig-me-out',
+      os: 'w95',
       font: 'Press Start 2P',
       cover: { type: 'image', src: 'assets/img/dig-me-out/cover.jpg' },
+      ticket: 'assets/img/entradas/dig-me-out.webp',
+      banner: { wide: 'assets/img/banners/dmo-ancho-2.webp', narrow: 'assets/img/banners/dmo-movil-2.webp' },
       gallery: [
         'assets/img/dig-me-out/hub.jpg',
         'assets/img/dig-me-out/menu.jpg',
@@ -897,7 +914,7 @@ const PROJECTS = {
 /* Repos de GitHub — tarjeta simple sin página de detalle */
 const GITHUB_CARD = {
   tags: ['Java', 'Python', 'Kotlin', 'Android Studio', 'PHP'],
-  url: 'https://github.com/woliblue?tab=repositories',
+  url: 'repos.html',   // antes iba directo a GitHub; ahora pasa por la página en collage que lo explica
   es: { title: 'Repositorios en GitHub', desc: 'Prácticas, proyectos del ciclo DAM y experimentos que voy subiendo.' },
   en: { title: 'GitHub repositories', desc: 'Coursework, DAM projects and experiments I keep uploading.' }
 };

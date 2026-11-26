@@ -361,7 +361,7 @@ function cardMarkup(item, kind, lang, index) {
 function githubCardMarkup(lang) {
   const g = GITHUB_CARD;
   const tags = (g.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
-  return `<a class="card card-gh span-2 reveal" href="${g.url}" target="_blank" rel="noopener">
+  return `<a class="card card-gh span-2 reveal" href="${g.url}">
     <div class="card-inner">
       <div class="gh-art" aria-hidden="true">
         <span class="gh-tile">${decoSvg('tileGithub')}</span>
@@ -482,6 +482,18 @@ function renderDetail(lang) {
 
   const d = item[lang];
   document.title = d.title + ' — Jose Arenas';
+  // trilogía Windows: OWS = Windows 8, ChatDefender XP = XP, Dig Me Out = 95 (pieles en style.css)
+  if (item.os) root.dataset.os = item.os; else delete root.dataset.os;
+  // pieles propias: Pizza Kaisen = manga, Figurines Please = papeleo de frontera, EVAD TALE = diálogo RPG
+  if (item.skin) root.dataset.skin = item.skin; else delete root.dataset.skin;
+  // la fuente de los títulos se carga recortada a sus letras (&text=); la piel la usa en todo el texto, así que va entera
+  const pielFuente = { manga: 'Bangers', rpg: 'Pixelify+Sans:wght@400..700' }[item.skin];
+  if (pielFuente && !document.querySelector('link[data-piel]')) {
+    const l = document.createElement('link');
+    l.rel = 'stylesheet'; l.dataset.piel = '';
+    l.href = 'https://fonts.googleapis.com/css2?family=' + pielFuente + '&display=swap';
+    document.head.appendChild(l);
+  }
   currentGallery = (item.gallery || []).map(normalizeMedia);
 
   const tags = (d.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
@@ -491,7 +503,7 @@ function renderDetail(lang) {
   const desc = (d.description || []).map((p, i) => `<p>${p}</p>${i === 0 ? starsHtml : ''}`).join('');
 
   const metaHtml = (d.meta && d.meta.length)
-    ? `<div class="detail-meta">${d.meta.map(m => `<div><span class="meta-label">${m.label}</span><span class="meta-value">${m.value}</span></div>`).join('')}</div>`
+    ? `<div class="detail-meta" data-win="${d.title}">${d.meta.map(m => `<div><span class="meta-label">${m.label}</span><span class="meta-value">${m.value}</span></div>`).join('')}</div>`
     : '';
 
   const roleItems = Array.isArray(d.role) ? d.role : (d.role ? [d.role] : []);
@@ -537,7 +549,11 @@ function renderDetail(lang) {
   }
   const externalHtml = links.join('');
 
-  const coverHtml = item.video
+  // banner propio de la subpágina: ancho en escritorio, el póster en móvil y, si lo hay, su versión oscura
+  const bannerPic = (wide, narrow, cls) => `<picture class="${cls}"><source media="(max-width: 700px)" srcset="${narrow}"><img src="${wide}" alt="${d.alt || d.title}"></picture>`;
+  const coverHtml = item.banner
+    ? `<div class="detail-banner${item.banner.wideDark ? ' has-dark' : ''}">${bannerPic(item.banner.wide, item.banner.narrow, 'banner-light')}${item.banner.wideDark ? bannerPic(item.banner.wideDark, item.banner.narrowDark, 'banner-dark') : ''}</div>`
+    : item.video
     ? `<div class="card-thumb detail-thumb detail-video"><video controls playsinline preload="none" poster="${item.video.poster || item.cover.src}" src="${item.video.src}"></video></div>`
     : coverMarkup(item.cover, d, lang).replace('card-thumb', 'card-thumb detail-thumb');
 
@@ -567,6 +583,7 @@ function renderDetail(lang) {
         ${item.slug === 'offline-working-sheep' ? '<canvas class="oveja-dither" aria-hidden="true"></canvas>' : ''}
       </div>
     </div>
+    ${item.ticket ? `<div class="detail-ticket"><img src="${item.ticket}" alt="" loading="lazy"></div>` : ''}
   `;
 }
 

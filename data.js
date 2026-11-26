@@ -571,6 +571,62 @@ const PROJECTS = {
 
   other: [
     {
+      slug: 'figcraft-to-unity',
+      font: 'Archivo Black',
+      cover: { type: 'image', src: 'assets/img/figcraft-unity/portada.webp' },
+      external: { url: 'https://github.com/WoliBlue/FigCraft-to-Unity' },
+      es: {
+        title: 'FigCraft to Unity',
+        badge: 'Herramienta · Unity',
+        alt: 'Portada de FigCraft to Unity: las palabras FigCraft y Unity en letras recortadas de colores',
+        summary: 'Paquete de Unity de código abierto que une FigCraft y Unity: captura la UI del juego en capas editables y devuelve los cambios del diseño a la escena.',
+        description: [
+          'Retocar una interfaz de Unity suele ser ir y venir entre la herramienta de diseño y el editor, copiando posiciones, tamaños y colores a mano. FigCraft to Unity acorta ese camino.',
+          'Con el juego en marcha, Ctrl+Shift+Alt+F captura la pantalla de uGUI y la convierte en capas editables de FigCraft. Al volver a Unity, la ventana Design Changes enseña lo que ha cambiado en el diseño (posición, tamaño, texto, tamaño de fuente, alineación, color e imagen) y lo aplica a la escena.',
+          'Incluye además un conversor de línea de comandos que pasa un diseño de FigCraft a UI Toolkit (.uxml y .uss). Funciona con Unity 6, uGUI y TextMeshPro, se instala desde el Package Manager con la URL del repositorio y tiene licencia MIT.'
+        ],
+        role: [
+          'Diseño y programación del paquete en C#',
+          'Captura de uGUI a capas de FigCraft y aplicación de los cambios a la escena',
+          'Conversor de FigCraft a UI Toolkit (.uxml y .uss)',
+          'Documentación y publicación como paquete de Unity de código abierto'
+        ],
+        tags: ['Unity', 'C#', 'Herramientas', 'uGUI', 'TextMeshPro', 'UI Toolkit', 'FigCraft', 'Código abierto'],
+        meta: [
+          { label: 'Fecha', value: 'Noviembre 2026' },
+          { label: 'Versión', value: '0.1.0-preview.1' },
+          { label: 'Motor', value: 'Unity 6' },
+          { label: 'Licencia', value: 'MIT' }
+        ],
+        external: { label: 'Ver el repositorio en GitHub' }
+      },
+      en: {
+        title: 'FigCraft to Unity',
+        badge: 'Tool · Unity',
+        alt: 'FigCraft to Unity cover: the words FigCraft and Unity in colourful cut-out letters',
+        summary: 'Open-source Unity package that links FigCraft and Unity: it captures the game UI as editable layers and brings design changes back into the scene.',
+        description: [
+          'Tweaking a Unity interface usually means going back and forth between the design tool and the editor, copying positions, sizes and colours by hand. FigCraft to Unity shortens that loop.',
+          'In Play Mode, Ctrl+Shift+Alt+F captures the uGUI screen and turns it into editable FigCraft layers. Back in Unity, the Design Changes window lists what changed in the design (position, size, text, font size, alignment, colour and image) and applies it to the scene.',
+          'It also ships a command-line converter that turns a FigCraft design into UI Toolkit (.uxml and .uss). It works with Unity 6, uGUI and TextMeshPro, installs from the Package Manager with the repository URL and is MIT licensed.'
+        ],
+        role: [
+          'Design and programming of the package in C#',
+          'Capturing uGUI into FigCraft layers and applying changes back to the scene',
+          'FigCraft to UI Toolkit converter (.uxml and .uss)',
+          'Documentation and release as an open-source Unity package'
+        ],
+        tags: ['Unity', 'C#', 'Tools', 'uGUI', 'TextMeshPro', 'UI Toolkit', 'FigCraft', 'Open source'],
+        meta: [
+          { label: 'Date', value: 'November 2026' },
+          { label: 'Version', value: '0.1.0-preview.1' },
+          { label: 'Engine', value: 'Unity 6' },
+          { label: 'License', value: 'MIT' }
+        ],
+        external: { label: 'View the repository on GitHub' }
+      }
+    },
+    {
       slug: 'marbellatrad',
       font: 'Source Serif 4',
       cover: { type: 'image', src: 'assets/img/marbellatrad/portada-logo.png' },
@@ -704,6 +760,68 @@ const PROJECTS = {
       }
     },
     {
+      slug: 'restaurantos',
+      wide: true,
+      font: 'Nunito',
+      cover: { type: 'image', src: 'assets/img/restaurantos-cover.svg' },
+      external: { url: 'https://www.figma.com/slides/7IyBX59VYXxiaZ1q9LT5nX/RestaurantOS--Presentaci%C3%B3n-TFG-?node-id=1-266' },
+      repo: 'https://github.com/imadhanaty/TFG_restaurantOS',
+      credits: [
+        { name: 'José Arenas', role: 'UI/UX · Android' },
+        { name: 'Imad Hanaty', role: 'Business logic' },
+        { name: 'Sergio Suárez', role: 'Database' },
+        { name: 'Luis Herencia', role: 'Lead & programming' }
+      ],
+      es: {
+        title: 'RestaurantOS',
+        badge: 'TFG · Medac Nova',
+        alt: 'Logo de RestaurantOS',
+        summary: 'App Android de pedidos y reservas para restaurantes, sin comisiones ni dependencia de plataformas de terceros.',
+        description: [
+          'Muchos restaurantes dependen de plataformas de reparto de terceros para recibir pedidos, lo que implica comisiones altas y poca personalización. Eso reduce sus beneficios y limita su relación directa con el cliente.',
+          'RestaurantOS ofrece una aplicación propia para cada restaurante: sin comisiones, fácil de usar y personalizable. El cliente navega el menú, guarda favoritos, gestiona el carrito y paga; el restaurante tiene un panel de administración con los pedidos pendientes y completados.',
+          'Es una app Android nativa en Java, con Firebase para autenticación y base de datos y Stripe para los pagos.'
+        ],
+        role: [
+          'Diseño UI/UX de toda la app',
+          'Implementación en Android (Java) de login, registro y recuperar contraseña',
+          'Pantallas de inicio, menú, carrito, favoritos, perfil y compra',
+          'Navegación principal'
+        ],
+        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'TFG'],
+        meta: [
+          { label: 'Entrega', value: 'Junio 2025' },
+          { label: 'Plataforma', value: 'Android' },
+          { label: 'Tecnología', value: 'Java · Firebase · Stripe' }
+        ],
+        external: { label: 'Ver presentación en Figma' }
+      },
+      en: {
+        title: 'RestaurantOS',
+        badge: 'Capstone · Medac Nova',
+        alt: 'RestaurantOS logo',
+        summary: 'An Android ordering and booking app for restaurants, with no commissions and no dependency on third-party platforms.',
+        description: [
+          'Many restaurants depend on third-party delivery platforms to receive orders, which means high commissions and little room for personalization. That cuts into their margins and limits their direct relationship with customers.',
+          'RestaurantOS gives each restaurant its own app: no commissions, easy to use and customizable. Customers browse the menu, save favorites, manage their cart and pay; the restaurant gets an admin panel with pending and completed orders.',
+          'It’s a native Android app in Java, using Firebase for authentication and data and Stripe for payments.'
+        ],
+        role: [
+          'UI/UX design of the whole app',
+          'Android (Java) implementation of login, sign-up and password recovery',
+          'Home, menu, cart, favorites, profile and checkout screens',
+          'Main navigation'
+        ],
+        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'Capstone'],
+        meta: [
+          { label: 'Delivered', value: 'June 2025' },
+          { label: 'Platform', value: 'Android' },
+          { label: 'Tech', value: 'Java · Firebase · Stripe' }
+        ],
+        external: { label: 'View presentation on Figma' }
+      }
+    },
+    {
       slug: 'memorias-de-un-maestro',
       font: 'Playfair Display',
       cover: { type: 'image', src: 'assets/img/book/card.jpg' },
@@ -774,6 +892,7 @@ const PROJECTS = {
     },
     {
       slug: 'playdate-music-player',
+      wideMd: true,
       font: 'Space Mono',
       cover: { type: 'image', src: 'assets/img/playdate/card-cover.png' },
       gallery: [
@@ -844,68 +963,6 @@ const PROJECTS = {
           'Crank — volume or scrub through the song',
           'Menu — shuffle, visualizer and D-pad action'
         ]
-      }
-    },
-    {
-      slug: 'restaurantos',
-      wide: true,
-      font: 'Nunito',
-      cover: { type: 'image', src: 'assets/img/restaurantos-cover.svg' },
-      external: { url: 'https://www.figma.com/slides/7IyBX59VYXxiaZ1q9LT5nX/RestaurantOS--Presentaci%C3%B3n-TFG-?node-id=1-266' },
-      repo: 'https://github.com/imadhanaty/TFG_restaurantOS',
-      credits: [
-        { name: 'José Arenas', role: 'UI/UX · Android' },
-        { name: 'Imad Hanaty', role: 'Business logic' },
-        { name: 'Sergio Suárez', role: 'Database' },
-        { name: 'Luis Herencia', role: 'Lead & programming' }
-      ],
-      es: {
-        title: 'RestaurantOS',
-        badge: 'TFG · Medac Nova',
-        alt: 'Logo de RestaurantOS',
-        summary: 'App Android de pedidos y reservas para restaurantes, sin comisiones ni dependencia de plataformas de terceros.',
-        description: [
-          'Muchos restaurantes dependen de plataformas de reparto de terceros para recibir pedidos, lo que implica comisiones altas y poca personalización. Eso reduce sus beneficios y limita su relación directa con el cliente.',
-          'RestaurantOS ofrece una aplicación propia para cada restaurante: sin comisiones, fácil de usar y personalizable. El cliente navega el menú, guarda favoritos, gestiona el carrito y paga; el restaurante tiene un panel de administración con los pedidos pendientes y completados.',
-          'Es una app Android nativa en Java, con Firebase para autenticación y base de datos y Stripe para los pagos.'
-        ],
-        role: [
-          'Diseño UI/UX de toda la app',
-          'Implementación en Android (Java) de login, registro y recuperar contraseña',
-          'Pantallas de inicio, menú, carrito, favoritos, perfil y compra',
-          'Navegación principal'
-        ],
-        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'TFG'],
-        meta: [
-          { label: 'Entrega', value: 'Junio 2025' },
-          { label: 'Plataforma', value: 'Android' },
-          { label: 'Tecnología', value: 'Java · Firebase · Stripe' }
-        ],
-        external: { label: 'Ver presentación en Figma' }
-      },
-      en: {
-        title: 'RestaurantOS',
-        badge: 'Capstone · Medac Nova',
-        alt: 'RestaurantOS logo',
-        summary: 'An Android ordering and booking app for restaurants, with no commissions and no dependency on third-party platforms.',
-        description: [
-          'Many restaurants depend on third-party delivery platforms to receive orders, which means high commissions and little room for personalization. That cuts into their margins and limits their direct relationship with customers.',
-          'RestaurantOS gives each restaurant its own app: no commissions, easy to use and customizable. Customers browse the menu, save favorites, manage their cart and pay; the restaurant gets an admin panel with pending and completed orders.',
-          'It’s a native Android app in Java, using Firebase for authentication and data and Stripe for payments.'
-        ],
-        role: [
-          'UI/UX design of the whole app',
-          'Android (Java) implementation of login, sign-up and password recovery',
-          'Home, menu, cart, favorites, profile and checkout screens',
-          'Main navigation'
-        ],
-        tags: ['Android', 'Java', 'Firebase', 'UI/UX', 'Capstone'],
-        meta: [
-          { label: 'Delivered', value: 'June 2025' },
-          { label: 'Platform', value: 'Android' },
-          { label: 'Tech', value: 'Java · Firebase · Stripe' }
-        ],
-        external: { label: 'View presentation on Figma' }
       }
     }
   ]

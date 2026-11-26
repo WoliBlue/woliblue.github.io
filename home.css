@@ -350,8 +350,9 @@ html[data-theme="dark"] .page-home .hero-moon { display: block; }
    ===================================================================== */
 .page-home .grid { gap: clamp(22px, 2.2vw, 30px); }
 
-/* La tarjeta de GitHub cierra la rejilla: banda completa, sin huecos al final. */
-.page-home .card-gh { grid-column: 1 / -1; }
+/* La tarjeta de GitHub cierra la rejilla como tarjeta de 2×1 (span-2): con RestaurantOS ancha en la
+   fila 2 y GitHub en la 3, las de «Otros proyectos» encajan en zigzag sin huecos. Si cambia el número
+   de tarjetas, revisa que la cuenta siga cuadrando (3 columnas y, con wideMd, 2 columnas). */
 
 /* =====================================================================
    Sobre mí: hoja de papel con el avatar recortado

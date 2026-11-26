@@ -343,8 +343,8 @@ function cardMarkup(item, kind, lang, index) {
   const tags = (d.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
   const delay = Math.min(index || 0, 6) * 70;
   // Cada tarjeta es un bloque de color del póster; el color rota rosa → oliva → crema.
-  // wide: true en data.js = la tarjeta ocupa dos columnas.
-  return `<a class="card card-c${(index || 0) % 3}${item.wide ? ' span-2' : ''} reveal" style="transition-delay:${delay}ms" href="project.html?slug=${item.slug}&kind=${kind}">
+  // wide: true en data.js = la tarjeta ocupa dos columnas; wideMd: true = solo cuando la cuadrícula tiene dos columnas.
+  return `<a class="card card-c${(index || 0) % 3}${item.wide ? ' span-2' : ''}${item.wideMd ? ' span-2-md' : ''} reveal" style="transition-delay:${delay}ms" href="project.html?slug=${item.slug}&kind=${kind}">
     <div class="card-inner">
       ${coverMarkup(item.cover, d, lang)}
       <div class="card-body">

@@ -2018,3 +2018,11 @@ a.recorte:hover { transform: rotate(0deg) scale(1.02) !important; }
   .pg-oveja { width: 70px; left: auto; right: -14px; top: 572px; bottom: auto; }
   .pg-jefe { width: 170px; right: -30px; bottom: -80px; }
 }
+
+/* --- Repos con tema claro: el fondo es rosa, así que lo que era rosa pasa a tinta para no desaparecer --- */
+html:not([data-theme="dark"]) .repos-sello { border-color: #17140f; color: #17140f; }
+html:not([data-theme="dark"]) .dada-git { -webkit-text-stroke-color: #17140f; opacity: .22; }
+html:not([data-theme="dark"]) .repos-title .rn-b { background: #17140f; color: #ff2e8c; }
+html:not([data-theme="dark"]) .repos-ir { background: #17140f; color: #f2ede2; border-color: #17140f; }
+html:not([data-theme="dark"]) .repos-ir:hover { background: #2fb4e8; color: #17140f; }
+html:not([data-theme="dark"]) .dada-tira { border-top-color: #f2ede2; }

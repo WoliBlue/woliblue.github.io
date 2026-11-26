@@ -34,13 +34,15 @@ const UI = {
       ],
       socialList: ['Trabajo en equipo', 'Comunicación', 'Resolución de problemas', 'Adaptabilidad', 'Creatividad', 'Atención al público', 'Paciencia'],
       experience: [
-        { when: 'Jun 2025 — Sept 2025', title: 'Traductor en Marbellatrad', desc: 'Colaboración en la preparación de traducciones juradas (inglés/español) y soporte técnico especializado.' },
+        { when: 'Jun 2025 — Actualidad', title: 'Traductor en Marbellatrad', desc: 'Colaboración en la preparación de traducciones juradas (inglés/español) y soporte técnico especializado.' },
+        { when: 'Oct 2026', title: 'Diseño web para Marbellatrad', desc: 'Rediseño completo de la web: 7 maquetas de escritorio y móvil en FigCraft, sistema visual y aplicación en WordPress, con los textos revisados en español e inglés.' },
         { when: 'Mar 2025 — Jun 2025', title: 'Prácticas en EY GDS', desc: 'Gestión proactiva de incidencias y automatización de tareas mediante BluePrism, Kibana y TrustPortal.' },
         { when: 'Jun 2024 — Sept 2024', title: 'Servicio al cliente, Kinépolis', desc: 'Ventas de cara al público, mantenimiento, acomodación, cocina y limpieza del cine.' }
       ],
       education: [
         { when: 'Oct 2025 — Dic 2026', title: 'Escuela Superior de Videojuegos y Arte Digital, Málaga', desc: 'Máster en Diseño y Desarrollo de Videojuegos, en curso.' },
-        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova, Málaga', desc: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).' }
+        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova, Málaga', desc: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM).' },
+        { when: 'Sept 2023', title: 'Nivel C2 de inglés, Cambridge', desc: 'Reading C2, Writing C2, Listening C1, Spoken Production and Interaction C2.' }
       ]
     },
     footer: { location: 'Málaga, España' },
@@ -173,13 +175,15 @@ const UI = {
       ],
       socialList: ['Teamwork', 'Communication', 'Problem solving', 'Adaptability', 'Creativity', 'Customer service', 'Patience'],
       experience: [
-        { when: 'Jun 2025 — Sept 2025', title: 'Translator at Marbellatrad', desc: 'Helped prepare sworn translations (English/Spanish) and provided specialized technical support.' },
+        { when: 'Jun 2025 — Present', title: 'Translator at Marbellatrad', desc: 'Helped prepare sworn translations (English/Spanish) and provided specialized technical support.' },
+        { when: 'Oct 2026', title: 'Web design for Marbellatrad', desc: 'Full website redesign: 7 desktop and mobile mockups in FigCraft, a visual system and its build in WordPress, with the copy revised in Spanish and English.' },
         { when: 'Mar 2025 — Jun 2025', title: 'Internship at EY GDS', desc: 'Proactive incident management and task automation using BluePrism, Kibana and TrustPortal.' },
         { when: 'Jun 2024 — Sept 2024', title: 'Customer service, Kinépolis', desc: 'Front-of-house sales, maintenance, ushering, kitchen and cinema cleaning.' }
       ],
       education: [
         { when: 'Oct 2025 — Dec 2026', title: 'Escuela Superior de Videojuegos y Arte Digital, Málaga', desc: 'Master’s in Game Design and Development, in progress.' },
-        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova, Málaga', desc: 'Higher Technician in Multiplatform Application Development (DAM).' }
+        { when: 'Sept 2023 — Jun 2025', title: 'Centro Medac Nova, Málaga', desc: 'Higher Technician in Multiplatform Application Development (DAM).' },
+        { when: 'Sept 2023', title: 'C2 English level, Cambridge', desc: 'Reading C2, Writing C2, Listening C1, Spoken Production and Interaction C2.' }
       ]
     },
     footer: { location: 'Málaga, Spain' },

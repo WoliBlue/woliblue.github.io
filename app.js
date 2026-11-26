@@ -107,7 +107,7 @@ function applyLang(lang) {
 
   updateThemeLabel();
   // El botón del CV descarga la versión del idioma activo
-  document.querySelectorAll('[data-cv]').forEach(a => { a.href = lang === 'en' ? 'cv-en.pdf' : 'cv-es.pdf'; });
+  document.querySelectorAll('[data-cv]').forEach(a => { a.href = lang === 'en' ? 'cv-en-2.pdf' : 'cv-es-2.pdf'; a.download = lang === 'en' ? 'CV-Jose-Arenas-EN.pdf' : 'CV-Jose-Arenas.pdf'; });
   renderAbout(lang);
   renderHome(lang);
   renderDetail(lang);
@@ -277,7 +277,7 @@ function renderAbout(lang) {
   if (idiomasList) idiomasList.innerHTML = about.idiomasList.map(i => `<li>${i.lang} — ${i.level}</li>`).join('');
   if (socialList) socialList.innerHTML = about.socialList.map(s => `<li>${s}</li>`).join('');
 
-  const timelineItem = it => `<div class="timeline-item"><p class="when">${it.when}</p><h5>${it.title}</h5><p>${it.desc}</p></div>`;
+  const timelineItem = it => `<div class="timeline-item">${it.when ? `<p class="when">${it.when}</p>` : ''}<h5>${it.title}</h5><p>${it.desc}</p></div>`;
   if (experienceEl) experienceEl.innerHTML = about.experience.map(timelineItem).join('');
   if (educationEl) educationEl.innerHTML = about.education.map(timelineItem).join('');
 }

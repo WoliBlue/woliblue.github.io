@@ -107,7 +107,7 @@ function applyLang(lang) {
 
   updateThemeLabel();
   // El botón del CV descarga la versión del idioma activo
-  document.querySelectorAll('[data-cv]').forEach(a => { a.href = lang === 'en' ? 'cv-en-2.pdf' : 'cv-es-2.pdf'; a.download = lang === 'en' ? 'CV-Jose-Arenas-EN.pdf' : 'CV-Jose-Arenas.pdf'; });
+  document.querySelectorAll('[data-cv]').forEach(a => { a.href = lang === 'en' ? 'cv-en-3.pdf' : 'cv-es-3.pdf'; a.download = lang === 'en' ? 'CV-Jose-Arenas-EN.pdf' : 'CV-Jose-Arenas.pdf'; });
   renderAbout(lang);
   renderHome(lang);
   renderDetail(lang);
